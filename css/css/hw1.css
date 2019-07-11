@@ -1,0 +1,156 @@
+/*Week 4 assignment
+Web Design For Everybody
+Introduction to CSS3*/
+
+
+body{
+    margin: 1%;
+    margin-top: -1%;
+    padding: 1%;
+}
+
+header{
+    background-color: rgb(215,215,215);
+    background-image: url(../images/flywheel.jpg);
+    background-repeat: no-repeat;
+    /*background-attachment: fixed;*/
+    background-position: top center;
+    background-size: cover;
+    /*padding: 1%;*/
+}
+
+h1{
+    color: rgb(250,80,150);
+    font-size: 350%;
+    text-align: center;
+    margin-bottom: -0.5%;
+}
+
+nav{
+    text-align: center;
+    margin-top: -0.5%;
+}
+
+nav a{
+    width: 10%;
+    display: inline-block;
+    background-color: rgba(250,250,250, 0.3);
+    color: rgb(0,0,0);
+    padding: 15px;
+    margin: 30px;
+    border-radius: 20px;
+    text-decoration: none;
+}
+
+.active{
+    background-color: rgba(250,250,250,1.0);
+    color: rgb(0,0,190);
+}
+
+.left{
+    display: inline-block;
+    background-color: rgb(0,150,0);
+    /*float: left;*/
+   /*margin-bottom: -1%;*/
+}
+.right{
+    display: inline-block;
+    float: right;
+    width: 82%;
+    overflow: auto;
+}
+
+img{
+    width: 200px;
+    display: block;
+    border: solid 2px rgb(0,0,0);
+    text-align: center;
+    margin: 10px;
+    margin-top: 15%;
+    margin-bottom: 15%;
+}
+
+table{
+    margin: 0 auto;
+    height: 45px;
+    font-family: impact, "times new roman", arial;
+    font-size: 120%;
+    font-weight: bold;
+    line-height: 1.6;
+    overflow: scroll;
+}
+
+table th{
+    /*background: rgb(145,155,0);*/
+    background-image: linear-gradient(to bottom right, rgba(145,155,0,0.5), rgba(45,55,0,1));
+    background-image: -webkit-gradient(to bottom right, rgba(145,155,0,0.5), rgba(45,55,0,1));
+    background-image: -webkit-linear-gradient(to bottom right, rgba(145,155,0,0.5), rgba(45,55,0,1));
+    background-image: -moz-linear-gradient(to bottom right, rgba(145,155,0,0.5), rgba(45,55,0,1));
+    background-image: -o-linear-gradient(to bottom right, rgba(145,155,0,0.5), rgba(45,55,0,1));
+    background-image: -ms-linear-gradient(to bottom right, rgba(145,155,0,0.5), rgba(45,55,0,1));
+    color: rgb(255,255,255);
+    border-spacing: 0;
+    border: 1px solid rgb(0,75,0);
+    -webkit-border-radius: 5px 5px 0px 0px;
+    -moz-border-radius: 5px 5px 0px 0px;
+    border-radius: 5px 5px 0px 0px;
+    border-bottom: 5px solid rgb(0,75,0);
+    width: 145px;
+    height: 45px;
+    /*padding: 1%;*/
+}
+
+table th:first-child{
+    width: 400px;
+    
+}
+
+table tr{
+    opacity: .8;
+    text-align: center;
+}
+
+table tr:hover{
+    opacity: 1;
+}
+
+table td:first-child{
+    text-align: left;
+}
+
+table td{
+    padding: 1%;
+    color: rgb(20,40,0);
+    background-color: rgb(215,255,200);
+    border-radius: 2px;
+    /*text-shadow: 0px 0px 1px rgb(150,225,150);*/
+    text-shadow: 0px 0px 1px rgb(250,250,250), 0px 0px 15px rgb(0,0,0);
+}
+
+table tr:hover td{
+    text-shadow: none;
+}
+
+/*table tr:last-child{
+    -webkit-border-radius: 0px 0px 10px 10px;
+    -moz-border-radius: 0px 0px 10px 10px;
+    border-radius: 0px 0px 10px 10px;
+}*/
+
+table tr:last-child>td:first-child{
+    -webkit-border-radius: 0px 0px 0px 10px;
+    -moz-border-radius: 0px 0px 0px 10px;
+    border-radius: 0px 0px 0px 10px;
+}
+
+table tr:last-child>td:last-child{
+    -webkit-border-radius: 0px 0px 10px 0px;
+    -moz-border-radius: 0px 0px 10px 0px;
+    border-radius: 0px 0px 10px 0px;
+}
+
+
+
+
+
+
