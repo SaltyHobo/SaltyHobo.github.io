@@ -1,1 +1,1 @@
-Coursera - HTML5 assignments
+Coursera - HTML5 files.
