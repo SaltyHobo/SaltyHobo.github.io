@@ -2,6 +2,8 @@
 Web Design For Everybody
 Introduction to CSS3*/
 
+/*please ignore the commented out lines*/
+
 
 body{
     margin: 1%;
@@ -98,6 +100,7 @@ table th{
     width: 145px;
     height: 45px;
     /*padding: 1%;*/
+   text-decoration:overline rgb(145,155,0);
 }
 
 table th:first-child{
@@ -110,13 +113,18 @@ table tr{
     text-align: center;
 }
 
+table td:first-child{
+    text-align: left;
+}
+
 table tr:hover{
     opacity: 1;
 }
 
-table td:first-child{
-    text-align: left;
+table tr:first-child:hover{
+    opacity:.8;
 }
+
 
 table td{
     padding: 1%;
