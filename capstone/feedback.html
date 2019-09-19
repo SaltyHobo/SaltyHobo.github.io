@@ -63,7 +63,7 @@
         <!--contact details-->
             <label>Tell me about you first.</label><br/>
             <label for="name">Full name: &nbsp;&nbsp;</label>&nbsp;&nbsp;
-                <input type="text" id="name" name="name" maxlength="75" placeholder="John Doe"><br/>
+                <input type="text" id="name" name="name" minlength="2" maxlength="75" pattern="[a-zA-Z0-9]+" placeholder="John Doe" required><br/>
             <label>E-mail: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <input type="email" id="email" name="email" maxlength="254" placeholder="woohoo@gmail.com"/></label><br/>
             <label for="birthday">Date of Birth:</label>
@@ -88,7 +88,7 @@
                 <label>Compliment <input type="radio" id="compliment" name="reason" value="compliment"></label> &nbsp;&nbsp;&nbsp;
                 <label>Report Error <input type="radio" id="error" name="reason" value="error"></label> &nbsp;&nbsp;&nbsp;
                 <label>Suggestion <input type="radio" id="suggestion" name="reason" value="suggestion"></label><br/>
-            <label>Please leave your kind words below: <br/>&nbsp;<textarea id="statement" name="statement" cols="25" rows="6" maxlength="250" placeholder="Type your feedback here."></textarea></label>
+            <label>Please leave your kind words below: <br/>&nbsp;<textarea id="statement" name="statement" cols="25" rows="6" minlength"5" maxlength="250" placeholder="Type your feedback here." required></textarea></label>
                 
             <br/><br/>
             <!--submit button-->
