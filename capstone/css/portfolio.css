@@ -1,5 +1,6 @@
 body{
-    background-color: #808080;
+    /*background-color: #808080;*/
+    background: linear-gradient(90deg, red, yellow, rgb(204, 204, 255));
 }
 /*make nav buttons take up full height of navbar*/
 
