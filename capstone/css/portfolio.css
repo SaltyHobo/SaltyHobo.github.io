@@ -6,7 +6,8 @@ body{
 .navbar{
     padding-top: 0;
     padding-bottom: 0;
-    background: #B0C4DE!important;
+    /*background: #B0C4DE!important;*/
+    background: linear-gradient(90deg, red, yellow, rgb(204, 204, 255));
 }
 .topnav{
     /*background-color: #B0C4DE;*/
