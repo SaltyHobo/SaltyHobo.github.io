@@ -1,13 +1,12 @@
 body{
     background-color: #808080;
 }
-/*make nav buttons take up full height of navbar*/
 
 .navbar{
     padding-top: 0;
     padding-bottom: 0;
     /*background: #B0C4DE!important;*/
-    background: linear-gradient(90deg, red, yellow, rgb(204, 204, 255));
+    background: linear-gradient(90deg, #b0b8de, #8b9bb0);
 }
 .topnav{
     /*background-color: #B0C4DE;*/
@@ -49,15 +48,9 @@ section div a{
     align-items: center;
     max-width: 100%;
     margin-bottom: 15px;
-    /*margin: 0 auto;*/
-    /*text-align: center;*/
 }
 
-/*a[href*='index']{
-    float:left;
-}*/
 a[href*='#top']{
-    /*float:right;*/
    position: fixed;
    right: 0;
    bottom: 0;
@@ -95,7 +88,6 @@ footer nav{
     border-color: red;
 }
 .btn, .btn:visited, .btn:focus{
-    /*color: #f2f2f2;*/
     background-color: #B0C4DE;
     border-color: #B0C4DE;
 }
@@ -116,10 +108,6 @@ footer nav{
     color: #f2f2f2;
     background-color: #87CEFA;
 }
-/*.active{
-    color: red;
-    background: red;
-}*/
 
 /*social media links*/
 #socialListTitle{
