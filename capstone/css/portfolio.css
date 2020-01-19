@@ -1,5 +1,18 @@
 body{
     background-color: #808080;
+    animation-name: loading-black;
+    animation-duration: 2s;
+}
+@keyframes loading-black{
+	0%{
+		background-color: #000000;
+	}
+	50%{
+		background-color: #09354d;
+	}
+	100%{
+		background-color: #919191;
+	}
 }
 
 .navbar{
