@@ -53,6 +53,22 @@ body{
 }
 h1{
     font-size: 2.2rem;
+	animation-name: title-move;
+	animation-duration: 2s;
+	animation-timing-function: ease-out;
+}
+@keyframes title-move{
+	0%{
+		left: 75%;
+		opacity: 0%;
+	}
+	20%{
+		opacity: 20%;
+	}
+	100%{
+		left: 0px;
+		opacity: 100%;
+	}
 }
 /*home page images*/
 #LightboxHeading{
