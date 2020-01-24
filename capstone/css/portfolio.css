@@ -53,12 +53,17 @@ body{
 }
 h1{
     font-size: 2.2rem;
+	-webkit-animation-name: title-move; /*Safari 4.0 - 8.0*/
 	animation-name: title-move;
+	-webkit-animation-duration: 2s;
 	animation-duration: 2s;
+	-webkit-animation-timing-function: ease-out;
 	animation-timing-function: ease-out;
-	animation-iteration-count: infinite;
+	-webkit-animation-iteration-count: 1;
+	animation-iteration-count: 1;
 }
-@keyframes title-move{
+@-webkit-keyframes title-move{
+	/*1st method - slide in*/
 	/*0%{
 		left: 75%;
 		opacity: 0%;
@@ -70,14 +75,140 @@ h1{
 		left: 0px;
 		opacity: 100%;
 	}*/
+	/*2d method - slide in*/
 	from {
-		margin-left: 100%;
+		margin-left: 75%;
 		width: 300%;
 	}
 	to {
 		margin-margin-left: 0%;
 		width: 100%;
 	}
+	/*3rd method - bounce*/
+	0% {
+		-webkit-transform: translateX(600px);
+        transform: translateX(600px);
+    	-webkit-animation-timing-function: ease-in;
+        animation-timing-function: ease-in;
+    	opacity: 0;
+  	}
+  	38% {
+    	-webkit-transform: translateX(0);
+        transform: translateX(0);
+    	-webkit-animation-timing-function: ease-out;
+        animation-timing-function: ease-out;
+    	opacity: 1;
+  	}
+  	55% {
+    	-webkit-transform: translateX(68px);
+        transform: translateX(68px);
+    	-webkit-animation-timing-function: ease-in;
+        animation-timing-function: ease-in;
+  	}
+  	72% {
+    	-webkit-transform: translateX(0);
+        transform: translateX(0);
+    	-webkit-animation-timing-function: ease-out;
+        animation-timing-function: ease-out;
+  	}
+  	81% {
+    	-webkit-transform: translateX(32px);
+        transform: translateX(32px);
+    	-webkit-animation-timing-function: ease-in;
+        animation-timing-function: ease-in;
+  	}
+  	90% {
+    	-webkit-transform: translateX(0);
+        transform: translateX(0);
+    	-webkit-animation-timing-function: ease-out;
+        animation-timing-function: ease-out;
+  	}
+  	95% {
+    	-webkit-transform: translateX(8px);
+        transform: translateX(8px);
+    	-webkit-animation-timing-function: ease-in;
+        animation-timing-function: ease-in;
+  	}
+  	100% {
+    	-webkit-transform: translateX(0);
+        transform: translateX(0);
+    	-webkit-animation-timing-function: ease-out;
+        animation-timing-function: ease-out;
+  	}
+}
+@keyframes title-move{
+	/*1st method - slide in*/
+	/*0%{
+		left: 75%;
+		opacity: 0%;
+	}*/
+	/*20%{
+		opacity: 20%;
+	}*/
+	/*100%{
+		left: 0px;
+		opacity: 100%;
+	}*/
+	/*2d method - slide in*/
+	from {
+		margin-left: 75%;
+		width: 300%;
+	}
+	to {
+		margin-margin-left: 0%;
+		width: 100%;
+	}
+	/*3rd method - bounce*/
+	0% {
+		-webkit-transform: translateX(600px);
+        transform: translateX(600px);
+    	-webkit-animation-timing-function: ease-in;
+        animation-timing-function: ease-in;
+    	opacity: 0;
+  	}
+  	38% {
+    	-webkit-transform: translateX(0);
+        transform: translateX(0);
+    	-webkit-animation-timing-function: ease-out;
+        animation-timing-function: ease-out;
+    	opacity: 1;
+  	}
+  	55% {
+    	-webkit-transform: translateX(68px);
+        transform: translateX(68px);
+    	-webkit-animation-timing-function: ease-in;
+        animation-timing-function: ease-in;
+  	}
+  	72% {
+    	-webkit-transform: translateX(0);
+        transform: translateX(0);
+    	-webkit-animation-timing-function: ease-out;
+        animation-timing-function: ease-out;
+  	}
+  	81% {
+    	-webkit-transform: translateX(32px);
+        transform: translateX(32px);
+    	-webkit-animation-timing-function: ease-in;
+        animation-timing-function: ease-in;
+  	}
+  	90% {
+    	-webkit-transform: translateX(0);
+        transform: translateX(0);
+    	-webkit-animation-timing-function: ease-out;
+        animation-timing-function: ease-out;
+  	}
+  	95% {
+    	-webkit-transform: translateX(8px);
+        transform: translateX(8px);
+    	-webkit-animation-timing-function: ease-in;
+        animation-timing-function: ease-in;
+  	}
+  	100% {
+    	-webkit-transform: translateX(0);
+        transform: translateX(0);
+    	-webkit-animation-timing-function: ease-out;
+        animation-timing-function: ease-out;
+  	}
 }
 /*home page images*/
 #LightboxHeading{
@@ -90,7 +221,7 @@ section div a{
     max-width: 100%;
     margin-bottom: 15px;
 }
-section div:first-child a{
+section div a:first-child img{
     max-width: 250px;
 }
 
