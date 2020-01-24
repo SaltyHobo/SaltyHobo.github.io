@@ -238,6 +238,9 @@ section div a{
 /*section div a:first-child img{
     max-width: 250px;
 }*/
+section div a img{
+    max-width: 250px;
+}
 
 a[href*='#top']{
    position: fixed;
