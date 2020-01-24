@@ -82,9 +82,8 @@ section div a{
     max-width: 100%;
     margin-bottom: 15px;
 }
-section div a:first-child{
-    /*max-width: 250px;*/
-    max-width: 10%;
+section div:first-child a{
+    max-width: 250px;
 }
 
 a[href*='#top']{
