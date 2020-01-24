@@ -7,14 +7,26 @@ body{
 	0%{
 		background-color: #000000;
 	}
-	25%{
-		background-color: #000000;
+	14.25%{
+		background-color: #ff0000;
 	}
-	50%{
-		background-color: #09354d;
+	28.5%{
+		background-color: #ffa500;
+	}
+	42.75%{
+		background-color: #ffff00;
+	}
+	57%{
+		background-color: #008000;
+	}
+	71.25%{
+		background-color: #0000ff;
+	}
+	85.5%{
+		background-color: #4b0082;
 	}
 	100%{
-		background-color: #919191;
+		background-color: #ee82ee;
 	}
 }
 
@@ -76,14 +88,14 @@ h1{
 		opacity: 100%;
 	}*/
 	/*2d method - slide in*/
-	from {
+	/*from {
 		margin-left: 75%;
 		width: 300%;
 	}
 	to {
 		margin-margin-left: 0%;
 		width: 100%;
-	}
+	}*/
 	/*3rd method - bounce*/
 	0% {
 		-webkit-transform: translateX(600px);
@@ -150,14 +162,14 @@ h1{
 		opacity: 100%;
 	}*/
 	/*2d method - slide in*/
-	from {
+	/*from {
 		margin-left: 75%;
 		width: 300%;
 	}
 	to {
 		margin-margin-left: 0%;
 		width: 100%;
-	}
+	}*/
 	/*3rd method - bounce*/
 	0% {
 		-webkit-transform: translateX(600px);
@@ -214,16 +226,18 @@ h1{
 #LightboxHeading{
     display: none;
 }
+/*note to self: clean up this section*/
 section div a{
     display: flex;
     justify-content: center;
     align-items: center;
-    max-width: 100%;
+    /*max-width: 100%;*/
+	max-width: 250px;
     margin-bottom: 15px;
 }
-section div a:first-child img{
+/*section div a:first-child img{
     max-width: 250px;
-}
+}*/
 
 a[href*='#top']{
    position: fixed;
