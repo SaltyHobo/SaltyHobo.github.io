@@ -17,6 +17,17 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
+    <!--screen reader only-->
+    <style>
+        .sr-only {
+            position: absolute;
+            left: 10000px;
+            width: 1px;
+            height: 1px;
+            top: auto;
+            overflow: hidden;
+        }
+    </style>
 </head>
 
 <body>
@@ -64,13 +75,13 @@
         <h2>Progress</h2>
             <p>
                 Progress in this course <progress value="1" id="progressCourse">100%</progress><br/>
-                HTML5 <progress value="60" max="100"></progress><br/>
-                CSS3 <progress value="55" max="100"></progress><br/>
+                HTML5 <progress value="75" max="100"></progress><br/>
+                CSS3 <progress value="75" max="100"></progress><br/>
                 JavaScript <progress value="10" max="100"></progress><br/>
                 JQuery <progress value="7" max="100"></progress><br/>
                 Bootstrap <progress value="50" max="100"></progress><br/>
                 Python <progress value="10" max="100"></progress><br/>
-                SQL <progress value="65" max="100"></progress><br/>
+                SQL <progress value="75" max="100"></progress><br/>
                 Life <progress value="33" max="99"></progress><br/>
             </p>
             <!--
@@ -83,15 +94,40 @@
                 </div>
             </progress>
             -->
+            <table class="sr-only">
+                <caption>Progress summary</caption>
+                <tbody>
+                    <tr>
+                        <th scope="row">Progress in this course</th>
+                        <td>100%</td>
+                        <th scope="row">html5</th>
+                        <td>75%</td>
+                        <th scope="row">css3</th>
+                        <td>75%</td>
+                        <th scope="row">Javascript</th>
+                        <td>10%</td>
+                        <th scope="row">jquery</th>
+                        <td>7%</td>
+                        <th scope="row">bootstrap</th>
+                        <td>50%</td>
+                        <th scope="row">python</th>
+                        <td>10%</td>
+                        <th scope="row">sql</th>
+                        <td>75%</td>
+                        <th scope="row">life</th>
+                        <td>33%</td>
+                    </tr>
+                </tbody>
+            </table>
         <br/>
     </section>
 
     <br/>
     <footer>
         <nav>
-            <a href="https://www.facebook.com/SaltyAnalyses/" target="_blank" aria-label="Go to Facebook"><i aria-hidden="true" class="fab fa-facebook-square"></i></a>
-            <a href="https://www.linkedin.com/in/andrewilley" target="_blank" aria-label="Go to LinkedIn"><i aria-hidden="true" class="fab fa-linkedin"></i></a>
-            <a href="https://github.com/SaltyHobo/" target="_blank" aria-label="Go to GitHub"><i aria-hidden="true" class="fab fa-github-square"></i></a>
+            <a href="https://www.facebook.com/SaltyAnalyses/" target="_blank" aria-label="Go to Facebook" accesskey="f"><i aria-hidden="true" class="fab fa-facebook-square"></i></a>
+            <a href="https://www.linkedin.com/in/andrewilley" target="_blank" aria-label="Go to LinkedIn" accesskey="l"><i aria-hidden="true" class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/SaltyHobo/" target="_blank" aria-label="Go to GitHub" accesskey="g"><i aria-hidden="true" class="fab fa-github-square"></i></a>
             <a href="#top" aria-label="Return to top"><i aria-hidden="true" class="fas fa-arrow-alt-circle-up"></i></a>
         </nav>
     </footer>
