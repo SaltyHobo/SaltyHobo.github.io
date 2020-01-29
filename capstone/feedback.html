@@ -17,6 +17,12 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
+    <!--highlight the instructions when tabbed to so users don't skip over-->
+    <style>
+        p:focus {
+        background-color: yellow;
+        }
+    </style>
 </head>
 
 
@@ -57,7 +63,7 @@
     <section>
     <br/>
         <h1 id="feedbackTitle">Feedback</h1>
-        <p id="feedbackText">
+        <p id="feedbackText" tabindex="0">
             This is a mock feedback form. I will not receive any information that is submitted here.
         </p>
         <br/>
