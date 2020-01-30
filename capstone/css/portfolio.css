@@ -389,8 +389,11 @@ progress[value]::-moz-progress-bar {
 }
 /*second div of progress bars with text aligned right*/
 .prog-text {
-float: left;
-text-align: right;
+	float: left;
+	text-align: right;
+}
+.prog-bar {
+	text-align: left;
 }
 /*end progress bars*/
 
