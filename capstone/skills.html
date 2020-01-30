@@ -94,6 +94,31 @@
                 </div>
             </progress>
             -->
+            <!--progress text aligned right-->
+            <div class="prog-text">
+                Progress in this course <br/>
+                HTML5 <br/>
+                CSS3 <br/>
+                JavaScript <br/>
+                JQuery <br/>
+                Bootstrap <br/>
+                Python <br/>
+                SQL <br/>
+                Life <br/>
+            </div>
+            <div class="prog-bar">
+                <progress value="1" id="progressCourse">100%</progress><br/>
+                <progress value="75" max="100"></progress><br/>
+                <progress value="75" max="100"></progress><br/>
+                <progress value="10" max="100"></progress><br/>
+                <progress value="7" max="100"></progress><br/>
+                <progress value="50" max="100"></progress><br/>
+                <progress value="10" max="100"></progress><br/>
+                <progress value="75" max="100"></progress><br/>
+                <progress value="33" max="99"></progress>
+            </div>
+            <br/>
+            <!--hidden table for screen reader only-->
             <table class="sr-only">
                 <caption>Progress summary</caption>
                 <tbody>
@@ -120,6 +145,30 @@
                 </tbody>
             </table>
         <br/>
+        
+        <!--progress step indicator-->
+        <div role="group" aria-label="progress" class="progress-indicator">
+            <ol class="progress-tracker progress-tracker--text progress-tracker--center">
+                <li class="progress-step is-complete">
+                    <span class="sr-only">completed</span>
+                    test1
+                </li>
+                <li class="progress-step is-complete">
+                    <span class="sr-only">completed</span>
+                    test2
+                </li>
+                <li class="progress-step is-active" aria-current="true">
+                test3
+                </li>
+                <li class="progress-step">
+                    <span class="sr-only">not completed</span>
+                    test4
+                </li>
+                test5
+            </ol>
+        </div>
+        <br/>
+        
     </section>
 
     <br/>
