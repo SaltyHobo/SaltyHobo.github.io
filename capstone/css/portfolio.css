@@ -387,6 +387,11 @@ progress[value]::-moz-progress-bar {
   border-radius: 2px; 
   background-size: 35px 20px, 100% 100%, 100% 100%; 
 }
+/*second div of progress bars with text aligned right*/
+.prog-text {
+float: left;
+text-align: right;
+}
 /*end progress bars*/
 
 /*feedback form*/
