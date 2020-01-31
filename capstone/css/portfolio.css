@@ -2,6 +2,9 @@ body{
     background-color: #808080;
     animation-name: loading-black;
     animation-duration: 2s;
+	font-size: 2rem;
+	color: #000000; /*black*/
+	font-family: arial, roboto, verdana, "Trebuchet MS", "Courier New";
 }
 @keyframes loading-black{
 	0%{
@@ -57,7 +60,8 @@ body{
 }
 .topnav a.active{
     background-color: #87CEFA;
-    color: #f2f2f2;
+    /*color: #f2f2f2;*/	/*not enough contrast to achieve AAA accessibility rating*/
+	color: #000224;
 }
 .fa-bars{
     color: #808080 !important;
@@ -392,6 +396,7 @@ progress[value]::-moz-progress-bar {
 	float: left;
 	text-align: right;
 	padding-left: 5px;
+	padding-right: 5px;
 }
 .prog-bar {
 	text-align: left;
