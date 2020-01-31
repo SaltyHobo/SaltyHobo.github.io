@@ -2,7 +2,7 @@ body{
     background-color: #808080;
     animation-name: loading-black;
     animation-duration: 2s;
-	font-size: 2rem;
+	font-size: 1.5rem;
 	color: #000000; /*black*/
 	font-family: arial, roboto, verdana, "Trebuchet MS", "Courier New";
 }
