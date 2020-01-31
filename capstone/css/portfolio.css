@@ -405,6 +405,9 @@ progress[value]::-moz-progress-bar {
 }
 /*end progress bars*/
 
+/*Google pie chart*/
+#piechart {margin: auto;}
+
 /*feedback form*/
 #feedbackFormTitle{
     display: none;
