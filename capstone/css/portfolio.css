@@ -395,7 +395,8 @@ progress[value]::-moz-progress-bar {
 }
 .prog-bar {
 	text-align: left;
-	padding-top: 4px;
+	padding-top: 6px;
+	padding-left: 2px;
 }
 /*end progress bars*/
 
