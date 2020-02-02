@@ -531,3 +531,14 @@ input[type=submit]{
     }
 }
 
+/*dark mode - if browser is set to dark mode*/
+@media (prefers-color-scheme: dark) {
+	section{
+    	background-color: black;
+		color: white;
+    }
+	footer{
+		background-color: black;
+		color: white;
+	}
+}
