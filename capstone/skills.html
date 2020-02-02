@@ -187,8 +187,11 @@ function drawChart() {
 ]);
 
   //title, width, height of the chart
-  var options = {'title':'What makes me, me:', 'width':750, 'height':600, 'fontSize' : 16, 'backgroundColor': 'transparent', legend : { position : 'bottom', textStyle : { bold : true } }, is3D: true};
-
+/*style 1*/
+    var options = {'title':'What makes me, me:', 'width':750, 'height':600, 'fontSize' : 16, 'backgroundColor': 'transparent', legend : { position : 'bottom', textStyle : { bold : true } }, is3D: true};
+/*style 2*/
+    var options = {'title':'What makes me, me:', titleTextStyle : { color : '#ddd' , fontName: 'arial', fontSize: '20', bold: true, italic: false } , 'width':750, 'height':600, 'fontSize' : 17, color : '#ddd' , 'backgroundColor': 'transparent', legend : { position : 'bottom', textStyle : { color : '#ddd' , bold: true } }, pieSliceTextStyle: { color: '#ddd' , bold : true }, is3D: true};
+    
   //display the chart inside the <div> element with id="piechart"
   var chart = new google.visualization.PieChart(document.getElementById('piechart'));
   chart.draw(data, options);
