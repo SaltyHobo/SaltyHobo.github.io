@@ -5,7 +5,8 @@ body{
     animation-duration: 2s;
 	font-size: 1.5rem;
 	color: #000000; /*color option 1*/
-	color: #F2F2F2; /*color option 2*/
+	color: #F2F2F2; /*color option 2 - brighter than color option 3*/
+	color: #B0C4DE; /*color option 3*/
 	font-family: arial, roboto, verdana, "Trebuchet MS", "Courier New";
 }
 @keyframes loading-black{
