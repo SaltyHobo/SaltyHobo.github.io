@@ -38,9 +38,12 @@ h1{
 }
 /*dark mode - if browser is set to dark mode*/
 @media (prefers-color-scheme: dark) {
-	body{  
-    background-color: #222;
+	body{
+    	background-color: #222;
 		color: #ddd;
 		word-spacing: .1em;
     }
+	a{
+		color: orangered;
+	}
 }
