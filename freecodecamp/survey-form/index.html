@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Survey form by SaltyHobo</title>
+  <!--stylesheet-->
+  <link rel="stylesheet" href="css/survey.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1 id="title">
+        Survey Form
+      </h1>
+      <p id="description">
+        Thank you for looking at my form.
+      </p>
+    </header>
+    <section id="main">
+      <form id="survey-form" action="index.html" method="GET">
+        <fieldset id="set-personal-info">
+          <legend for="set-personal-info">Personal Information</legend>
+          <div class="form-group">
+          <label for="name" id="name-label">Full name: </label>
+          <input type="text" name="name" id="name" class="form-control" value="" placeholder="John Doe" required autofocus>
+          </div>          
+          <div class="form-group">
+          <label for="email" id="email-label">Email: </label>
+          <input type="email" name="email" id="email" value="" placeholder="johndoe@salty.edu" required>
+          </div>
+          <div class="form-group">
+          <label for="age" id="number-label">Age: </label>
+          <input type="number" name="age" id="number" min="1" max="100" value="" placeholder="99" required>
+          </div>
+        </fieldset>
+        <fieldset id="set-preferences">
+          <legend for="set-preferences">What are your thoughts?</legend>
+          <div class="form-group">
+            <label for="dropdown" id="dropdown-label">Are you enjoying my survey?</label>
+            <select id="dropdown">
+              <option value="yes">Yes! </option>
+              <option value="totally">Totally! </option>
+              <option value="absolutely">Absolutely! </option>
+            </select>
+          </div>
+          <div class="form-group">
+            <p>
+              <label for="recommend" id="recommend-label">Would you recommend this survey to a friend?</label>
+            </p>
+            <p class="input-radio">
+              <input type="radio" name="recommend" id="recommend-yes" value="yes" required checked>
+              <label for="recommend-yes">Yes! </label>
+            </p>
+            <p class="input-radio">
+              <input type="radio" name="recommend" id="recommend-totally" value="totally" required>
+              <label for="recommend-totally">Totally! </label>
+            </p>
+            <p class="input-radio">
+              <input type="radio" name="recommend" id="recommend-absolutely" value="absolutely" required>
+              <label for="recommend-absolutely">Absolutely! </label>
+            </p>
+          </div>
+          <div class="form-group">
+            <label for="social" name="social-label">Which social media sites are you interested in connecting with me?</label>
+            <p class="input-checkbox">
+              <input type="checkbox" name="social" id="social-twitter" value="twitter">
+              <label for="social-twitter">Twitter</label>
+            </p>
+            <p class="input-checkbox">
+              <input type="checkbox" name="social" id="social-facebook" value="facebook">
+              <label for="social-facebook">Facebook</label>
+            </p>
+            <p class="input-checkbox">
+              <input type="checkbox" name="social" id="social-wordpress" value="wordpress">
+              <label for="social-wordpress">Wordpress</label>
+            </p>
+          </div>
+          <div class="form-group">
+            <p class="input-comment">
+              <label for="comment" id="comment-label">What are you final thoughts regarding this survey form?</label>
+            </p>
+            <p class="input-comment">
+          <textarea id="comment" rows="4" cols="20" placeholder="I love it!"></textarea>
+            </p>
+          </div>
+        </fieldset>
+        <div class="form-group">
+          <button type="submit" id="submit" class="submit-button" value="submit" formtarget="_self">SEND</button>
+        </div>
+      </form>
+    </section>
+  </div>
+</body>
+</html>
