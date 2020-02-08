@@ -1,3 +1,3 @@
-Project from https://www.freecodecamp.org/
+Project from freecodecamp.org
 
 Build a tribute page.
