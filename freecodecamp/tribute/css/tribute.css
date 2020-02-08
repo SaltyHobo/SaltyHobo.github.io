@@ -1,0 +1,38 @@
+h1{
+  text-align: center;
+}
+#img-div{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  text-align: center;
+}
+#image{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 25%;
+  height: auto;
+  max-height: 100%;
+  max-width: 100%;
+  tet-align: center;
+}
+#img-caption{
+  display: block;
+  text-align: center;
+  width: 35%;
+  margin: auto;
+}
+
+#tribute-info{
+  padding-right: 5%;
+  padding-left: 5%;
+}
+#salt-link{
+  text-align: center;
+}
+#tribute-link{
+  margin: auto;
+  text-align: center;
+}
