@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Technical Documentation</title>
+  <!--stylesheet-->
+  <link rel="stylesheet" href="css/technical.css">
+</head>
+<body>
+  <header>
+    <h1>HTML</h1>
+    <h2>A Technical Documentation Page</h2>
+    <nav id="navbar">
+      <header id="nav-header">
+        <h3>HTML Documentation</h3>
+        <div id="tech-nav-links">
+          <ul>
+            <li><a class="nav-link" id="to-html-intro-link" href="#prerequisites">Prerequisites</a></li>
+            <li><a class="nav-link" id="to-html-intro-link" href="#introduction">Introduction</a></li>
+            <li><a class="nav-link" id="to-html-overview-link" href="#overview">Overview</a></li>
+            <li><a class="nav-link" id="to-html-semantics-link" href="#semantics">Semantics</a></li>
+            <li><a class="nav-link" id="to-html-attributes-link" href="#attributes">Attributes</a></li>
+            <li><a class="nav-link" id="to-html-css-link" href="#css">CSS</a></li>
+          </ul>
+        </div>
+      </header>
+    </nav>
+  </header>
+  <main id="main-doc">
+    <section class="main-section" id="prerequisites">
+      <header>
+        prerequisites
+      </header>
+      <ol class="ordered-list" id="ordered-list">
+        <li>basic knowledge of computers</li>
+        <li>basic knowledge of internet</li>
+        <li>basic knowledge of web browsing</li>
+        <li>even the slightest desire to understand web design</li>
+        <li>elementary reading skills</li>
+      </ol>
+    </section>
+    <section class="main-section" id="introduction">
+      <header>Introduction</header>
+      <p class="description" id="html-intro-desc">
+        HTML stands for Hyper Text Markup Language. HTML is the standard markup language for web documents.
+      </p>
+      <p class="description" id="html-desc">
+        HTML5 is the current version of HTML.
+      </p>
+    </section>
+    <section class="main-section" id="overview">
+      <header>Overview</header>
+      <p class="description" id="html-overview-desc">
+        Web browsers (such as Chrome or Internet Explorer) received HTML documents from a web server (or other source) and render the information from these documents into web pages.
+      </p>
+    </section>
+    <section class="main-section" id="semantics">
+      <header>Semantics</header>
+      <p class="description" id="semantics-desc">
+        HTML utilizes structural semantics for text. These include headings, paragraphs, lists, links, quotes, images, videos, audio clips, and more.
+      </p>
+      <p class="ex-code" id="h1-tag-desc">
+        For example, to denote that a piece of text is the main title for the page, the opening h1 tag <code>&lt;h1&gt;</code> will indicate the beginning of the main title, and the h1 closing tag <code>&lt;/h1&gt;</code> will indicate the end of the main title: <code>&lt;h1&gt;</code>The Main Title<code>&lt;/h1&gt;</code>
+      </p>
+      <p class="ex-code" id="img-tag-desc">
+        Some tags are self-closing, such as the <code>&lt;img&gt;</code> tag.
+      </p>
+    </section>
+    <section class="main-section" id="attributes">
+      <header>Attributes</header>
+      <p class="description" id="attributes-desc">
+        HTML attributes are placed inside the opening tags to modify the element.
+      </p>
+      <p class="ex-code" id="id-att-desc">
+        An example of this is the <code>id</code> attribute. The <code>id</code> attribute creates a unique, document-wide identifier.
+      </p>
+    </section>
+    <section class="main-section" id="css">
+      <header>CSS</header>
+      <p class="description" id="css-desc">
+        CSS stands for cascading style sheets. CSS is used to describe or format the the presentation of a document written in markup language.
+      </p>
+      <p class="ex-code" id="color-desc">
+        For example, CSS code <code>h1{color:red;}</code> will make main title, the h1 title, appear red.
+      </p>
+    </section>
+  </main>
+  <footer class="footer" id="footer">
+    This page created by SaltyHobo to complete the freeCodeCamp Responsive Web Design Project: Build a Technical Documentation Page.
+  </footer>
+</body>
+</html>
