@@ -1,0 +1,111 @@
+body{
+  /*background-color: #d7e5fc;*/ /*works if there's a different logo (white background in logo is a bad match)*/
+}
+h1{
+  text-align: center;
+  text-shadow: 1px 1px gray;
+  font-family: arial, calibri, "Century gothic", helvetica, tahoma, verdana;
+  font-size: 2.5rem;
+  margin-top: 120px;
+}
+#nav-bar{
+  display: inline-block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-image: linear-gradient(-90deg, #b1cefc, white);
+  height: 110px;
+}
+/*unvisited link*/
+a:link{
+  color: #005bb5;
+  text-align: center;
+  padding: 1%;
+  text-decoration: none;
+  font-weight: bold;
+  /*font-size: 4vw;*/
+}
+/*visited link*/
+a:visited{
+  color: #014180;
+}
+/*mouse over link*/
+a:hover{
+  color: #1b8bfa;
+}
+/*selected link*/
+a:active{
+  color: #00610a;
+}
+#analyses-link{
+  float: left;
+}
+#consulting-link{
+  float: left;
+  padding-left: 3%;
+}
+/*#consulting-link{
+  float: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}*/
+#contact-link{
+  float: right;
+}
+#header-img{
+  padding-top: 5%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  height: auto;
+}
+#landing-video{
+  padding: 5%;
+}
+section{
+  font-size: 1.25rem;
+}
+.outside-link{
+  font-size: 1.25rem;
+}
+/* Responsive navigation menu (for mobile devices) */
+@media screen and (max-width: 650px) {
+  #nav-bar a {
+    float: none;
+    display: block;
+    font-size: 1.25rem;
+  }
+  .nav-link {
+    float: none;
+    display: block;
+    margin: 0%;
+    padding: 0%;
+  }
+}
+.flex-container-email{
+  display: flex;
+  flex-wrap: wrap;
+}
+.flex-container-email > label{
+  font-family: arial, calibri, "Century gothic", helvetica, tahoma, verdana;
+  font-size: 1.25rem;
+  margin-right: 2%;
+}
+.flex-container-email > input{
+  font-family: arial, calibri, "Century gothic", helvetica, tahoma, verdana;
+  font-size: 1.25rem;
+  background-color: #e8f1ff;
+}
+
+@media screen and (min-width: 651px) {
+  #nav-bar a {
+    font-size: 2rem;
+  }
+  .nav-link {
+
+  }
+}
