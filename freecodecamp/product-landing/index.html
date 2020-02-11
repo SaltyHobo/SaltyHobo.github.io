@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <!--stylesheet-->
+  <link rel="stylesheet" href="css/landing.css"
+</head>
+<body>
+  <header id="header">
+    <h1 id="landing-title">Salty's Stock Analysis and Financial Consulting Services</h1>
+    <img id="header-img" src="https://raw.githubusercontent.com/SaltyHobo/SaltyHobo.github.io/master/freecodecamp/product-landing/images/saltylife.jpg" alt="salty can logo">
+    <nav id="nav-bar">
+      <a class="nav-link" id="analyses-link" href="#analyses-section" target="_blank">Analyses</a>
+      <a class="nav-link" id="consulting-link" href="#financial-section">Consulting Services</a>
+      <a class="nav-link" id="contact-link" href="#contact-section">Contact Us</a>
+    </nav>
+  </header>
+  <div id="landing-video">
+    <iframe id="video" width="560" height="315" src="https://www.youtube-nocookie.com/embed/cHRd-06fBKo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>Your broswer doesn't support this video</iframe>
+    <figcaption id="vid-caption">
+      We have no need for a video here but a video was required for the assignment, so please enjoy this video posted by a colleague.
+    </figcaption>
+  </div>
+  <section id="analyses-section">
+    <h2>Stock Analysis</h2>
+    <p class="topic-description">
+      If you would like to read our stock analyses, please visit our analysis site at: <a class="outside-link" id="analyses-outside-link" href="https://saltyanalysis.wordpress.com/" target="_blank">SaltyAnalysis.wordpress.com</a>
+    </p>
+  </section>
+  <section id="financial-section">
+    <h2>Financial Services</h2>
+    <p class="topic-description">
+      If you would like to discuss our financial services with us, please contact us via Facebook at: <a class="outside-link" id="financial-outside-link" href="https://www.facebook.com/SaltyAnalyses/" target="_blank">facebook.com/SaltyAnalyses</a>
+    </p>
+  </section>
+  <section id="contact-section">
+    <h2>Contact Us</h2>
+    <p class="topic-description">
+      If you would like to contact us with any other general inquries, please contact us on any of our social media sites.
+      <div class="ouside-link-list">
+        <a class="outside-link" id="twitter-outside-link" href="https://twitter.com/saltyanalysis" target="_blank">Twitter</a>
+      </div>
+      <div class="ouside-link-list">
+        <a class="outside-link" id="linkedin-outside-link" href="https://www.linkedin.com/andrewilley/" target="_blank">LinkedIn</a>
+      </div>
+      <div class="ouside-link-list">
+        <a class="outside-link" id="financial-outside-link" href="https://www.facebook.com/SaltyAnalyses/" target="_blank">Facebook</a>
+      </div>
+    </p>
+  </section>
+  <form action="https://www.freecodecamp.com/email-submit" id="form">
+    <fieldset id="subscribe-form">
+      <legend for="subscribe-form">Or provide your email to receive more information in an email</legend>
+      <div id="form-group" class="flex-container-email">
+        <label for="email" id="email-label">Email</label>
+        <input type="email" name="email" id="email" value="" placeholder="enter email here"> 
+      </div>
+    </fieldset>
+    <input form="form" formaction="https://www.freecodecamp.com/email-submit" formmethod="GET" formtarget="_self" name="submit" type="submit" value="submit" id="submit">SEND</input>
+  </form>
+</body>
+</html>
