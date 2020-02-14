@@ -1,0 +1,136 @@
+body{
+  background-color: #1f1f1f;
+  font-size: 1.25rem;
+  color: #db00db;
+  font-family: arial, calibri, "Century gothic", helvetica, tahoma, verdana;
+}
+h1{
+  text-align: center;
+  font-size: 2.5rem;
+  margin-top: 95px;
+}
+h2{
+  padding: 10px 0px;
+}
+#navbar{
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-color: #db00db; /*hot pink*/
+}
+ul{
+  list-style-type: none;
+  display: block;
+  top: 0;
+  left: 0;
+  margin: 0%;
+  padding: 0%;
+  width: 100%;
+  overflow: auto;
+}
+li{
+  float: left;
+}
+li a{
+  display: block;
+  margin-right: 5px;
+  padding: 5px 20px;
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+.nav-list a{
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-size: 30px;
+}
+Li a:hover{
+  background-color: grey;
+}
+#welcome-section{
+  height: 100vh;
+  line-height: 75vh;
+}
+#projects{
+  width: 100vw;
+  background-color: #292929;
+}
+.project-tile{
+  text-decoration: none;
+  width: 200px;
+  text-align: center;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  background-color: #666666;
+}
+.project-tile-text{
+  color: #db00db;
+  font-weight: bold;
+}
+.project-image{
+  display: block;
+  width: 100%;
+}
+.projects-list{
+  display: grid;
+  grid-template-columns: auto auto auto;
+}
+.contact-section{
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+.contact-list{
+  font-size: 3rem;
+  column-count: 4;
+}
+.contact-list li{
+  text-align: center;
+  width: 100%;
+}
+.contact-list a{
+  color: #db00db;
+}
+hr{
+  border: 0.5px solid #db00db;
+}
+footer{
+  font-size: 0.75rem;
+  text-align: right;
+  border: #db00db;
+  padding: 10px 5px;
+}
+@media screen and (max-width: 650px){
+  #navbar{
+    float: none;
+    display: block;
+    margin: 0;
+    padding: 0;
+  }
+  #navbar li{
+    float: none;
+    display: block;
+    background: #db00db;
+    text-align: center;
+  }
+  .nav-list a{
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 20px;
+}
+  #welcome-section{
+  height: 100vh;
+  line-height: 25vh;
+  margin-top: 270px;
+}
+  .contact-list{
+  font-size: 3rem;
+  column-count: 2;
+  }
+}
+@media screen and (max-width: 480px){
+  #welcome-section{
+    margin-top: 200px;
+  }
+}
