@@ -74,37 +74,37 @@
         <!--contact details-->
             <label>Tell me about you first.</label><br/>
             <label for="name">Full name: &nbsp;&nbsp;</label>&nbsp;&nbsp;
-                <input type="text" id="name" name="name" minlength="2" maxlength="75" pattern="[a-zA-Z0-9]+" placeholder="John Doe" required><br/>
+                <input type="text" id="name" name="name" minlength="2" maxlength="75" pattern="[a-zA-Z0-9]+" tabindex="0" placeholder="John Doe" required><br/>
             <label>E-mail: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="email" id="email" name="email" maxlength="254" placeholder="woohoo@gmail.com"/></label><br/>
+                <input type="email" id="email" name="email" maxlength="254" tabindex="0" placeholder="woohoo@gmail.com"/></label><br/>
             <label for="birthday">Date of Birth:</label>
-                <input type="date" id="birthday" value="1969-08-15"><br/><br/>
+                <input type="date" id="birthday" tabindex="0" value="1969-08-15"><br/><br/>
             <!--ratings-->
             <hr>
             <label for="ratingInputId">On a scale of 8 to 10, what is your opinion of this site? </label>&nbsp;
-                <input type="range" name="rating" id="ratingInputId" value="10" min="8" max="10" step="0.5" oninput="ratingOutputId.value = ratingInputId.value">
+                <input type="range" name="rating" id="ratingInputId" value="10" min="8" max="10" step="0.5" tabindex="0" oninput="ratingOutputId.value = ratingInputId.value">
                     <output name="ratingOutputName" id="ratingOutputId">10</output><br/><br/>
             <label>Select all that apply: </label><br/>
             <label for="readable">readable </label>
-                <input type="checkbox" id="readable" name="missionTargets">
+                <input type="checkbox" id="readable" name="missionTargets" tabindex="0">
             &nbsp;&nbsp;
             <label for="functional">functional</label>
-                <input type="checkbox" id="functional" name="missionTargets">
+                <input type="checkbox" id="functional" name="missionTargets" tabindex="0">
             &nbsp;&nbsp;
             <label for="accessible">accessible</label>
-                <input type="checkbox" id="accessible" name="missionTargets"><br/><br/>
+                <input type="checkbox" id="accessible" name="missionTargets" tabindex="0"><br/><br/>
             <!--radio buttons-->
             <hr>
             <fieldset>
             <legend>Please select your feedback category:</legend><br/>
-                <label>Compliment <input type="radio" id="compliment" name="reason" value="compliment"></label> &nbsp;&nbsp;&nbsp;
-                <label>Report Error <input type="radio" id="error" name="reason" value="error"></label> &nbsp;&nbsp;&nbsp;
-                <label>Suggestion <input type="radio" id="suggestion" name="reason" value="suggestion"></label><br/>
+                <label>Compliment <input type="radio" id="compliment" name="reason" value="compliment" tabindex="0"></label> &nbsp;&nbsp;&nbsp;
+                <label>Report Error <input type="radio" id="error" name="reason" value="error" tabindex="0"></label> &nbsp;&nbsp;&nbsp;
+                <label>Suggestion <input type="radio" id="suggestion" name="reason" value="suggestion" tabindex="0"></label><br/>
             </fieldset>
             <br/>
             <!--text feedback-->
             <hr>
-            <label>Please leave your kind words below: <br/>&nbsp;<textarea id="statement" name="statement" cols="25" rows="6" minlength"5" maxlength="250" placeholder="Type your feedback here." required></textarea></label>
+            <label>Please leave your kind words below: <br/>&nbsp;<textarea id="statement" name="statement" cols="25" rows="6" minlength"5" maxlength="250" tabindex="0" placeholder="Type your feedback here." required></textarea></label>
                 
             <br/><br/>
             <!--submit button-->
