@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Portfolio Page</title>
+  <!--stylesheet-->
+  <link rel="stylesheet" href="css/portfolio.css">
+  <!--FontAwesome-->
+  <script src="https://kit.fontawesome.com/ff11125f8e.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <header>
+    <nav class="navbar" id="navbar">
+      <ul class="nav-list">
+        <li>
+          <a href="#welcome-section">Home</a>
+        </li>
+        <li>
+          <a href="#projects">Projects</a>
+        </li>
+        <li>
+          <a href="#contact">Contact</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <!--Welcome Section-->
+  <section class="welcome-section" id="welcome-section">
+    <h1>Salty Hobo's Portfolio</h1>
+  </section>
+  <!--Projects Section-->
+  <section class="projects-section" id="projects">
+    <h2>HTML & CSS Projects</h2>
+    <div class="projects-list">
+      <!--Tribute project tile-->
+      <a class="project-tile" id="project-tile-tribute" href="/freecodecamp/tribute/index.html" target="_blank">
+        <img class="project-image" id="project-image-tribute" src="https://raw.githubusercontent.com/SaltyHobo/SaltyHobo.github.io/master/freecodecamp/portfolio/images/tribute-screenshot.jpg" alt="tribute project">
+        <p class="project-tile-text" id="tile-tribute-desc">Tribute</p>
+      </a>
+      <!--Survey project tile-->
+      <a class="project-tile" id="project-tile-survey" href="/freecodecamp/survey/index.html" target="_blank">
+        <img class="project-image" id="project-image-survey" src="https://raw.githubusercontent.com/SaltyHobo/SaltyHobo.github.io/master/freecodecamp/portfolio/images/survey-screenshot.jpg" alt="survey project">
+        <p class="project-tile-text" id="tile-survey-desc">Survey</p>
+      </a>
+      <!--Technical Document project tile-->
+      <a class="project-tile" id="project-tile-technical" href="/freecodecamp/technical-document/index.html" target="_blank">
+        <img class="project-image" id="project-image-technical" src="https://raw.githubusercontent.com/SaltyHobo/SaltyHobo.github.io/master/freecodecamp/portfolio/images/technical-screenshot.jpg" alt="technical document project">
+        <p class="project-tile-text" id="tile-technical-desc">Technical Document</p>
+      </a>
+      <!--Landing project tile-->
+      <a class="project-tile" id="project-tile-landing" href="/freecodecamp/landing/index.html" target="_blank">
+        <img class="project-image" id="project-image-landing" src="https://raw.githubusercontent.com/SaltyHobo/SaltyHobo.github.io/master/freecodecamp/portfolio/images/landing-screenshot.jpg" alt="landing project">
+        <p class="project-tile-text" id="tile-landing-desc">Landing</p>
+      </a>
+      <!--Portfolio project tile (pop-up)-->
+      <a class="project-tile" id="project-tile-portfolio" href="#welcome-section">
+        <img class="project-image" id="project-image-portfolio" src="https://raw.githubusercontent.com/SaltyHobo/SaltyHobo.github.io/master/freecodecamp/portfolio/images/portfolio-screenshot.jpg" alt="portfolio project">
+        <p class="project-tile-text" id="tile-portfolio-desc">Portfolio</p>
+      </a>
+    </div>
+  </section>
+  <!--Contact Section-->
+  <section class="contact-section" id="contact">
+    <h2>Contact</h2>
+    <ul class="contact-list">
+      <li>
+        <a class="contact-link" id="profile-link" href="https://www.freecodecamp.org/saltyhobo" target="_blank">
+            <i class="fab fa-free-code-camp"></i>
+          </a>
+      </li>
+      <li>
+        <a class="contact-link" id="github-link" href="https://github.com/SaltyHobo" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+      </li>
+      <li>
+        <a class="contact-link" id="linkedin-link" href="https://www.linkedin.com/in/andrewilley" target="_blank">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+      </li>
+      <li>
+        <a class="contact-link" id="wordpress-link" href="https://saltyanalysis.wordpress.com" target="_blank">
+            <i class="fab fa-wordpress-simple"></i>
+          </a>
+      </li>
+    </ul>
+  </section>
+  <footer class="footer" id="footer">
+    <hr>
+    <p id="footer-desc">
+      <i class="far fa-copyright"></i>
+      A SaltyHobo production
+    </p>
+  </footer>
+</body>
+</html>
