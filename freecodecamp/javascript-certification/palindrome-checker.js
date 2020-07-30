@@ -12,7 +12,7 @@ You'll need to remove all non-alphanumeric characters (punctuation, spaces and s
 
 
 function palindrome(str) {
-  let matched = str.match(/[a-z]|\d/ig)
+  let matched = str.match(/[a-z]|\d/ig);
   let frwrd = matched.join("").toLowerCase();
   //console.log("forwards:",frwrd);
   let bckwrdArr = [];
