@@ -41,4 +41,3 @@ palindrome("My age is 0, 0 si ega ym.");
 palindrome("1 eye for of 1 eye.");
 palindrome("0_0 (: /-\ :) 0-0");
 palindrome("five|\_/|four");
-
