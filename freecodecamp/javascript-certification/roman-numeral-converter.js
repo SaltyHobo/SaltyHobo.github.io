@@ -6,7 +6,6 @@ Roman Numeral Converter:
 All roman numerals answers should be provided in upper-case."
 */
 
-// first attempt, lengthy.
 function convertToRoman(num) {
  let string = String(num);
  let romOnes = ["","I","II","III","IV","V","VI","VII","VIII","IX"];
