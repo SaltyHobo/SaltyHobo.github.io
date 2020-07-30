@@ -7,12 +7,13 @@
 <p></p>
 
 
-
+<p>
 <details>
 <summary>See HTML5 projects and more here</summary>
   <a href="https://github.com/SaltyHobo/SaltyHobo.github.io">SaltyHobo's Homepage</a>
 </details>
+  </p>
 
 
 
-- [ ] SaltyHobo:bowtie:
+<p>- [ ] SaltyHobo:bowtie:</p>
