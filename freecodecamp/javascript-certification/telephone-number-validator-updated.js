@@ -69,8 +69,6 @@ function telephoneCheck(str) {
       }
     }
   }
-  console.log("test",correctParentheses)
-  console.log("chars",permitChars)
   //results
   if (!tenDigit && !elevenDigit) {
     console.log("false: doesn't have correct number of digits");
