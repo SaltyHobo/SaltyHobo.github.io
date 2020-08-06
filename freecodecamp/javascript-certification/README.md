@@ -2,7 +2,7 @@
 
 # Test site for freeCodeCamp projects.
 
-<p>JS files for the freeCodeCamp JavaScript Algorithms and Data Structures Certification (300 hours) projects.</p>
+<p>JS projects for the freeCodeCamp JavaScript Algorithms and Data Structures Certification (300 hours).</p>
 
 <p>  &#9745; Project 1: <a href="https://saltyhobo.github.io/freecodecamp/javascript-certification/palindrome-checker-updated.js">Palindrome Checker</a></p>
 
