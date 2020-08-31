@@ -1,0 +1,173 @@
+
+<head>
+  <title>FCC sample project</title>
+  <style>
+    * {
+      box-sizing: border-box
+    } 
+    body{
+      background-color: yellow;
+    }
+    .h1{
+      margin: auto;
+      text-align: center;
+    }
+    #quote-box{
+      background-color: red;
+      margin: auto;
+      width: 75%;
+      height: auto;
+      border-style: solid;
+      border-width: 1px;
+      border-color: blue;
+      border-radius: 3px;
+      position: relative;
+      text-align: center;
+    }
+    #text{
+      height: auto;
+      margin: auto;
+      text-align: center;
+      border-style: none;
+    }
+    #quotation{
+      font-size: large;
+    }
+    #authors{
+      font-size: medium;
+    }
+    #button-div{
+      text-align: center;
+      margin: 0 auto;
+    }
+    /* Extra small devices (phones, 600px and down) */
+    .button{
+      background-color: pink;
+      text-align: center;
+      /*float: right;*/
+      display: block;
+      width: 100%;
+      bottom: 10px;
+      border-style: solid;
+      border-radius: 0px;
+      border-color: pink;
+      transition-duration: 0.6s;
+    }
+    .button:hover{
+      background-color: yellow;
+    }
+    #tweet-quote{
+      background-color: #00acee;
+      color: black;
+      border-style: solid;
+      border-color: #00acee;
+      text-align: center;
+      text-decoration: none;
+      display: block;
+      bottom: 10px;
+      border-style: solid;
+      border-radius: 0px;
+      transition-duration: 0.6s;
+    }
+    #tweet-quote:hover{
+      border-style: solid;
+      color: cyan;
+    }
+    /* Small devices (portrait tablets and large phones, 600px and up) */
+    @media only screen and (min-width: 600px) {
+      #button-div{
+        position: absolute;
+        bottom: 10px;
+        right: 15px;
+        padding-top:150px;
+    }
+      #tweet-quote{
+        display: block;
+        position: absolute;
+        bottom: 10px;
+        left: 15px;
+      }  
+    }
+  </style>
+  <script>
+    //Redux:
+    const state = ({
+      1: ({
+        author: 'Roger Ebert',
+        quote: 'Doing research on the Web is like using a library assembled piecemeal by pack rats and vandalized nightly.',
+        year: 1998
+      }),
+      1: ({
+        author: 'Erin McKean',
+        quote: 'This is a little known technological fact about the Internet, but the Internet is actually made of words and enthusiasm.',
+        year:  2007
+      }),
+      2: ({
+        author: 'Comic Book Guy',
+        quote: 'Ack. There is no emoticon to express what I am feeling right now.',
+        year: 2001
+      })
+    })
+
+    //React:
+    function mapStateToProps(state){
+      return {
+        quote: state.quote,
+        author: state.author
+      }
+    }
+
+    class Quoter extends React.Component{
+      constructor(props){
+        super(props);
+      }
+      render() {
+        const indx = Math.floor(Math.random()*3);
+        const quot1 = state[indx].quote;
+        const auth1 = state[indx].author;
+        return (
+          <div>
+            {/*<p>test indx: {indx}</p>*/}
+            <p id="quotation">
+              <b>"</b> {quot1} <b>"</b>
+            </p>
+            <p id="authors">- {auth1}</p>
+          </div>
+        )
+      }
+    }
+
+    function testing(){
+      ReactDOM.render(
+        <Quoter />,
+        document.getElementById('text')
+      );
+    }
+
+    class Button extends React.Component {
+      render() {
+        return <button class="button" id="new-quote" onClick={testing} >generate quote</button>;
+      }
+    }
+    function buttoner(){
+      ReactDOM.render(
+        <Button />,
+        document.getElementById('button-div')
+      );
+    }
+
+    testing();
+    buttoner();
+  </script>
+</head>
+<body>
+  <h1 class="h1">Front End Libraries Projects - Build a Random Quote Machine</h1>
+  <div class="container" id="quote-box">
+    <div class="output" id="text">Click the button to find a quote</div>
+    <div class="output" id="author"></div>
+    <div id="button-div"></div>
+    <!--<button class="button" id="new-quote">generate quote</button>-->
+    <a class="social-media" id="tweet-quote" href="twitter.com/intent/tweet">tweet</a> 
+  </div>
+<!--quotes sourced from: https://en.wikiquote.org/-->
+</body>
