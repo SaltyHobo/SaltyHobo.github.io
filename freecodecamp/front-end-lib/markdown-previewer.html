@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>
+  //Redux:
+  const ADD = 'ADD';
+
+  const addMardown = (message) => {
+    return {
+      type: ADD,
+      message: message
+    }
+  };
+
+  const messageReducer = (state=[], action) => {
+    switch (action.type) {
+      case ADD:
+        return [
+          ...state,
+          action.message
+        ];
+      default:
+        return state;
+    }
+  };
+
+  const store = Redux.createStore(messageReducer);
+
+  //React:
+  //make previewer:
+  class Previewer extends React.Component{
+    constructor(props) {
+      super(props);
+      this.state = {
+        input: '<h1>default text</h1>'
+      }
+    this.handleChange = this.handleChange.bind(this);
+    }
+    handleChange(event) {
+      this.setState({
+        input: event.target.value
+      });
+    }
+    render() {
+      return (
+        [
+          <textarea class="input" id="editor" value={this.state.input} onChange={this.handleChange}></textarea>,
+          <div class="window" id="preview" dangerouslySetInnerHTML={{__html: marked(this.state.input)}}></div>
+        ]
+      );
+    }
+  };
+  //React-Redux:
+  const mapStateToProps = (state) => {
+    return {messages: state}
+  };
+
+  const mapDispatchToProps = (dispatch) => {
+    return {
+      submitNewMessage: (newMessage) => {
+        dispatch(addMessage(newMessage))
+      }
+    }
+  };
+
+  const Provider = ReactRedux.Provider;
+  const connect = ReactRedux.connect;
+
+  //define container component:
+  const Container = connect(mapStateToProps,mapDispatchToProps)(Previewer);
+
+  class AppWrapper extends React.Component {
+    constructor(props){
+      super(props);
+    }
+    render() {
+      return (
+        <Provider store={store}>
+          <Container />
+        </Provider>
+      );
+    }
+  };
+
+  ReactDOM.render(
+    <AppWrapper />,
+    document.getElementById('main-container')
+  )
+</script>
+<style>
+  *{
+    /*Crayola color Eerie Black #1B1B1B*/
+    color: #1B1B1B;
+    /*Crayola color Sea Green #93DFB8*/
+    background-color: #93DFB8;
+    font-family: Arial, Calibri, sans-serif;
+    font-size: 100%;
+  }
+  h1{
+    text-align: center;
+    font-size: 7vw;
+  }
+  #main-container{
+    display: block;
+    /*Crayola color Baby Powder #FEFEFA*/
+    background-color: #FEFEFA;
+    margin: auto;
+    padding-top: 10px;
+    width: 100%;
+  }
+  #editor{
+    display: block;
+    margin: auto;
+    width: 75%;
+    /*height: auto;*/
+    text-align: left;
+    vertical-align: bottom;
+    overflow: auto;
+    height: 35vh;
+  }
+  /*
+  #markdown-submit{
+    display: block;
+    margin: auto;
+    width: 76%;
+    border-style: solid;
+  */
+    /*Crayola color Licorice #1A1110*/
+  /*
+    color: #1A1110;
+    border-color: #1A1110;
+    font-size: 100%;
+  }
+  */
+  #preview{
+    margin: auto;
+    /*Crayola color Baby Powder #FEFEFA*/
+    background-color: #FEFEFA;
+    overflow: auto;
+    height: 25vh;
+  }
+
+  @media only screen and (min-width: 600px) {
+    /* For tablets and larger: */
+    *{
+      box-sizing: border-box;
+    }
+    h1{
+      font-size: 3rem;
+    }
+    #main-container{
+      width: 50%;
+      padding: 25px;
+      border-radius: 25px;
+    }
+    #editor{
+      vertical-align: bottom;
+      font-size: 18px;
+      width: 80%;
+    }
+    /*#markdown-submit{
+      vertical-align: bottom;
+      width: 80%;
+      border: 5px solid blue;
+    }*/
+    #preview{
+      font-size: 16px;
+      width: 80%;
+    }
+  }
+</style>
+</head>
+<body>
+<h1>Markdown Previewer</h1>
+<div class="container" id="main-container">If you see this text instead of a textarea, a button, and preview area, the Javascript has not loaded. Either I did not include the right scripts for Javascript, Babel, React, and/or Redux; or your settings are preventing Javascript from running.</div>
+</body>
+</html>
