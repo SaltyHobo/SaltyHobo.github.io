@@ -1,6 +1,10 @@
 # SaltyHobo.github.io
 ### Test site for Web Design and Web Applications (Coursera, freeCodeCamp).
 
+<p>#### &#9745; My attempts at using React,Redux, and Javascript:</p>
+<a href="SaltyHobo.github.io/freecodecamp/front-end-lib/README.md">Front-End Libraries</a>
+<cite> (SaltyHobo.github.io/freecodecamp/front-end-lib/README.md)</cite>
+
 #### &#9745; My capstone project for Web Design for Everybody specialization can be found here: <br>
 <a href="https://saltyhobo.github.io/capstone/index.html">Capstone web design Project</a>
 <br/>
