@@ -1,6 +1,6 @@
 # SaltyHobo.github.io
 ### This folder contains my projects from freeCodeCamp.
-<p>Languages used include: HTML (and HTML5), CSS, SASS, Javascript, jQuery, React, Redux.</p>
+<p>Languages used include: HTML/HTML5, CSS, SASS, Javascript, jQuery, React, Redux.</p>
 <p>Also included: Responsive web design, accessibility, CSS Flexbox, CSS Grid, Bootstrap, ES6, data structures, object-oriented programming, functional programming, algorithm scripting.</p>
 
 Jump to:
