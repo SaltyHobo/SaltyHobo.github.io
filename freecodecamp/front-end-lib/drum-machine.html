@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--load Babel-->
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+<!--load React and ReactDOM-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.13.1/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.13.1/umd/react-dom.production.min.js"></script>
+<!--run React-Javascript program to build Drum Machine app-->
+<script type="text/babel">
+//event listeners, play sound when pad is clicked:
+window.onload = function startListen() {
+  document.getElementById('clap').addEventListener("click", function(){document.getElementById("Q").play(), document.getElementById("display").innerHTML="clap"; });
+  document.getElementById('open-hh').addEventListener("click", function(){document.getElementById("W").play(), document.getElementById("display").innerHTML="open-hh"; });
+  document.getElementById('closed-hh').addEventListener("click", function(){document.getElementById("E").play(), document.getElementById("display").innerHTML="closed-hh"; });
+  document.getElementById('kick-hat').addEventListener("click", function(){document.getElementById("A").play(), document.getElementById("display").innerHTML="kick-hat"; });
+  document.getElementById('kick').addEventListener("click", function(){document.getElementById("S").play(), document.getElementById("display").innerHTML="kick"; });
+  document.getElementById('side-stick').addEventListener("click", function(){document.getElementById("D").play(), document.getElementById("display").innerHTML="side-stick"; });
+  document.getElementById('snare').addEventListener("click", function(){document.getElementById("Z").play(), document.getElementById("display").innerHTML="snare"; });
+  document.getElementById('punch-kick').addEventListener("click", function(){document.getElementById("X").play(), document.getElementById("display").innerHTML="punch-kick"; });
+  document.getElementById('open-hh-small').addEventListener("click", function(){document.getElementById("C").play(), document.getElementById("display").innerHTML="open-hh-small"; });
+  //event listeners, click pad when corresponding key is pressed:
+  document.addEventListener("keydown", function(event) {if (event.keyCode === 81) {event.preventDefault(); document.getElementById("clap").click(); } });
+  document.addEventListener("keydown", function(event) {if (event.keyCode === 87) {event.preventDefault(); document.getElementById("open-hh").click(); } });
+  document.addEventListener("keydown", function(event) {if (event.keyCode === 69) {event.preventDefault(); document.getElementById("closed-hh").click(); } });
+  document.addEventListener("keydown", function(event) {if (event.keyCode === 65) {event.preventDefault(); document.getElementById("kick-hat").click(); } });
+  document.addEventListener("keydown", function(event) {if (event.keyCode === 83) {event.preventDefault(); document.getElementById("kick").click(); } });
+  document.addEventListener("keydown", function(event) {if (event.keyCode === 68) {event.preventDefault(); document.getElementById("side-stick").click(); } });
+  document.addEventListener("keydown", function(event) {if (event.keyCode === 90) {event.preventDefault(); document.getElementById("snare").click(); } });
+  document.addEventListener("keydown", function(event) {if (event.keyCode === 88) {event.preventDefault(); document.getElementById("punch-kick").click(); } });
+  document.addEventListener("keydown", function(event) {if (event.keyCode === 67) {event.preventDefault(); document.getElementById("open-hh-small").click(); } });
+};
+//React:
+//make drum machine:
+class DrumMachine extends React.Component{
+  constructor(props) {
+    super(props)
+  }
+  render() {
+    return (
+      <div class="container" id="drum-machine">
+        <h1>Drum Machine</h1>
+        <div id="display"></div>
+        <div class="drum-pad" id="clap" type="button">Q<audio class="clip" id="Q" src="https://s3.amazonaws.com/freecodecamp/drums/Heater-6.mp3"></audio></div>
+        <div class="drum-pad" id="open-hh" type="button">W<audio class="clip" id="W" src="https://s3.amazonaws.com/freecodecamp/drums/Dsc_Oh.mp3"></audio></div>
+        <div class="drum-pad" id="closed-hh" type="button">E<audio class="clip" id="E" src="https://s3.amazonaws.com/freecodecamp/drums/Cev_H2.mp3"></audio></div>
+        <div class="drum-pad" id="kick-hat" type="button">A<audio class="clip" id="A" src="https://s3.amazonaws.com/freecodecamp/drums/Kick_n_Hat.mp3"></audio></div>
+        <div class="drum-pad" id="kick" type="button">S<audio class="clip" id="S" src="https://s3.amazonaws.com/freecodecamp/drums/RP4_KICK_1.mp3"></audio></div>
+        <div class="drum-pad" id="side-stick" type="button">D<audio class="clip" id="D" src="https://s3.amazonaws.com/freecodecamp/drums/side_stick_1.mp3"></audio></div>
+        <div class="drum-pad" id="snare" type="button">Z<audio class="clip" id="Z" src="https://s3.amazonaws.com/freecodecamp/drums/Brk_Snr.mp3"></audio></div>
+        <div class="drum-pad" id="punch-kick" type="button">X<audio class="clip" id="X" src="https://s3.amazonaws.com/freecodecamp/drums/punchy_kick_1.mp3"></audio></div>
+        <div class="drum-pad" id="open-hh-small" type="button">C<audio class="clip" id="C" src="https://s3.amazonaws.com/freecodecamp/drums/Dry_Ohh.mp3"></audio></div>
+      </div>
+    );  
+  }
+};
+ReactDOM.render(
+  <DrumMachine />,
+  document.getElementById("main-container")
+);
+</script>
+<style>
+
+****style****
+
+</style>
+</head>
+<body>
+<div class="container" id="main-container"></div>
+<script> window.onload=startListen(); </script>
+<!-- moved to script in head:
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+   document.getElementById("clap").addEventListener("click", function () {
+    document.getElementById("Q").play();
+  });
+}, false);
+</script>
+-->
+</body>
+</html>
