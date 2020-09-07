@@ -62,9 +62,53 @@ ReactDOM.render(
 );
 </script>
 <style>
-
-****style****
-
+body{
+  background-color: #7FDBFF;
+}
+#main-container{
+  background-color: #0074D9;
+  margin: auto;
+  width: 75vw;
+  text-align: center;
+  border-radius: 25px;
+  text-align: center;
+}
+h1{
+  grid-area: header;
+  font-size: 40px;
+}
+#display{
+  background-color: #afeeee;
+  grid-area: screen;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  font-size: 22px;
+}
+.drum-pad{
+  margin-top: 10px;
+  background-color: #CFEEE5;
+  border-radius: 25px;
+  color: black;
+  border-style: solid;
+  border-color: black;
+  font-size: 24px;
+}
+#drum-machine{
+  margin: auto;
+  margin-bottom: 10px;
+  padding-bottom: 30px;
+  display: grid;
+  grid-template-areas:
+    "header header header"
+    "screen screen screen"
+    "pad pad pad"
+    "pad pad pad"
+    "pad pad pad";
+  justify-items: stretch;
+  row-gap: 10px;
+}
 </style>
 </head>
 <body>
