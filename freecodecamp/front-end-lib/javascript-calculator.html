@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--load Babel-->
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+<!--load React and ReactDOM-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.13.1/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.13.1/umd/react-dom.production.min.js"></script>
+<!--run React-Javascript program to build Calculator app-->
+<script type="text/babel">
+//React:
+class Calculator extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      lastArg: '0',
+      lastArgLastIndx: '',
+      currentArg: '',
+      show: '0'
+    }
+    this.handleDigit = this.handleDigit.bind(this);
+    this.handleOperator = this.handleOperator.bind(this);
+    this.handleMinus = this.handleMinus.bind(this);
+    this.submitTotal = this.submitTotal.bind(this);
+    this.clearAll = this.clearAll.bind(this);
+  }
+  handleDigit(event) {
+    const valueDigit = event.target.value;
+    const point = ".";
+    const abc = RegExp(1.1);
+    if (Number(valueDigit) == 0 && Number(this.state.currentArg == 0)) {return}
+    if (valueDigit == point && this.state.currentArg.includes(point)) {return}
+    this.setState({
+      currentArg: this.state.currentArg.concat(valueDigit),
+      show: this.state.currentArg.concat(valueDigit)
+    });
+  }
+  handleOperator(event) {
+    const valueOperator = event.target.value;
+    this.setState({
+      lastArgLastIndx: this.state.lastArg[this.state.lastArg.length - 1]
+      },
+      () => console.log("update lastArgLastIndx")
+    );
+    if (this.state.lastArg == '0') {
+      console.log("lastArg = 0")
+      this.setState({
+        lastArg: Number(this.state.currentArg) + valueOperator,
+        currentArg: '',
+        show: this.state.currentArg
+        },
+        () => console.log(this.state)
+      );
+    } else if (isNaN(this.state.lastArgLastIndx) == true && this.state.currentArg.length == 0) {
+      console.log("isNaN is true and current length is 0");
+      this.setState({
+        lastArg: this.state.lastArg.match(/[-?.0-9]*/) + valueOperator,
+        currentArg: '',
+        show: this.state.currentArg
+        },
+        () => console.log(this.state)
+      );
+    } else {
+      console.log("isNaN is false and current length is not 0");
+      this.setState({
+        lastArg: eval(this.state.lastArg + Number(this.state.currentArg)) + valueOperator,
+        currentArg: '',
+        show: this.state.currentArg
+        },
+        () => console.log(this.state)
+      );
+    }
+  }
+  handleMinus(event) {
+    const valueMinus = event.target.value;
+    this.setState({
+      lastArgLastIndx: this.state.lastArg[this.state.lastArg.length - 1]
+      },
+      () => console.log("update lastArgLastIndx")
+    );
+    if (this.state.lastArg == "0") {
+      console.log("lastArg = 0")
+      this.setState({
+        lastArg: Number(this.state.currentArg) + valueMinus,
+        currentArg: '',
+        show: this.state.currentArg
+        },
+        () => console.log(this.state)
+      );
+    } else if (typeof this.state.lastArgLastIndx !== "number" && this.state.lastArgLastIndx !== "-" && this.state.currentArg.length == 0) {
+      console.log("isNaN is true and last index not "-" and current length is 0");
+      this.setState({
+        lastArg: this.state.lastArg + valueMinus,
+        currentArg: '',
+        show: this.state.currentArg
+        },
+        () => console.log(this.state)
+      );
+    } else if (this.state.lastArgLastIndx == "-" && this.state.currentArg.length == 0) {
+      console.log("last index not '-' and currentArg is empty");
+      this.setState({
+        lastArg: this.state.lastArg,
+        currentArg: '',
+        show: this.state.currentArg
+        },
+        () => console.log(this.state)
+      );
+    } else {
+      console.log("all other possibilies");
+      this.setState({
+        lastArg: eval(this.state.lastArg + Number(this.state.currentArg)) + valueMinus,
+        currentArg: '',
+        show: this.state.lastArg
+        },
+        () => console.log(this.state)
+      );
+    }
+  }
+  submitTotal() {
+    if (this.state.lastArg == "0") {
+      this.setState((state) => ({
+        currentArg: '',
+        show: this.state.currentArg
+      }),
+        () => console.log(this.state)
+      );
+    } else {
+      this.setState((state) => ({
+        lastArg: eval(this.state.lastArg + Number(this.state.currentArg)),
+        currentArg: '',
+        show: eval(this.state.lastArg + Number(this.state.currentArg))
+      }),
+        () => console.log(this.state)
+      );
+    }
+  }
+  clearAll() {
+    this.setState({
+      lastArg: '0',
+      lastArgLastIndx: '',
+      currentArg: '',
+      show: '0'
+    });
+  }
+  render() {
+    return (
+      <div class="container" id="calculator">
+        {/*
+        <h1>test</h1>
+        <p>test last index: {this.state.lastArgLastIndx}</p>
+        <p>test lastArg: {this.state.lastArg}</p>
+        <p>test currentArg: {this.state.currentArg}</p>
+        <p>test total: {this.state.show}</p>
+        */}
+        <div class="display" id="display">{this.state.show}</div>
+        <button class="button" id="clear" value="AC" onClick={this.clearAll}>AC</button>
+        <button class="button" id="divide" value="/" onClick={this.handleOperator}>/</button>
+        <button class="button" id="multiply" value="*" onClick={this.handleOperator}>X</button>
+        <button class="button" id="subtract" value="-" onClick={this.handleMinus}>-</button>
+        <button class="button" id="add" value="+" onClick={this.handleOperator}>+</button>
+        <button class="button" id="equals" value="=" onClick={this.submitTotal}>=</button>
+        <button class="button" id="one" value="1" onClick={this.handleDigit}>1</button>
+        <button class="button" id="two" value="2" onClick={this.handleDigit}>2</button>
+        <button class="button" id="three" value="3" onClick={this.handleDigit}>3</button>
+        <button class="button" id="four" value="4" onClick={this.handleDigit}>4</button>
+        <button class="button" id="five" value="5" onClick={this.handleDigit}>5</button>
+        <button class="button" id="six" value="6" onClick={this.handleDigit}>6</button>
+        <button class="button" id="seven" value="7" onClick={this.handleDigit}>7</button>
+        <button class="button" id="eight" value="8" onClick={this.handleDigit}>8</button>
+        <button class="button" id="nine" value="9" onClick={this.handleDigit}>9</button>
+        <button class="button" id="zero" value="0" onClick={this.handleDigit}>0</button>
+        <button class="button" id="decimal" value="." onClick={this.handleDigit}>.</button>
+      </div>
+    )
+  }
+}
+ReactDOM.render(<Calculator />, document.getElementById('root'));
+</script>
+
+<!--     === update CSS ===     -->
+<style>
+
+</style>
+</head>
+<body>
+<div class="container" id="root"></div>
+</body>
+</html>
