@@ -178,10 +178,121 @@ class Calculator extends React.Component {
 }
 ReactDOM.render(<Calculator />, document.getElementById('root'));
 </script>
-
-<!--     === update CSS ===     -->
 <style>
-
+body{
+  background-color: orange;
+}
+#calculator{
+  margin: auto;
+  width: 95vw;
+  max-width: 500px;
+  border-style: solid;
+  border-radius: 25px;
+  background-color: grey;
+  text-align: right;
+  display: grid;
+  grid-template-areas:
+    "screen screen screen screen"
+    "solar solar solar ac"
+    "seven eight nine divide"
+    "four five six multiply"
+    "one two three minus"
+    "zero decimal equal plus"
+    ". . . brand"
+}
+#display{
+  display: block;
+  margin-right: 7vw;
+  margin-top: 45px;
+  margin-bottom: 45px;
+  color: black;
+  font-size: 2rem;
+  grid-area: screen;
+}
+.button{
+  width: 65%;
+  margin: auto;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background-color: #D3D3D3;
+}
+/*individual buttons*/
+#clear{
+  grid-area: ac;
+  background-color: red;
+}
+#divide{
+  grid-area: divide;
+  background-color: #A9A9A9;
+}
+#multiply{
+  grid-area: multiply;
+  background-color: #A9A9A9;
+}
+#subtract{
+  grid-area: minus;
+  background-color: #A9A9A9;
+}
+#add{
+  grid-area: plus;
+  margin-bottom: 100px;
+  background-color: #A9A9A9;
+}
+#equals{
+  grid-area: equal;
+  margin-bottom: 100px;
+  background-color: #A9A9A9;
+}
+#one{
+  grid-area: one;
+}
+#two{
+  grid-area: two;
+}
+#three{
+  grid-area: three;
+}
+#four{
+  grid-area: four;
+}
+#five{
+  grid-area: five;
+}
+#six{
+  grid-area: six;
+}
+#seven{
+  grid-area: seven;
+}
+#eight{
+  grid-area: eight;
+}
+#nine{
+  grid-area: nine;
+}
+#zero{
+  grid-area: zero;
+  margin-bottom: 100px;
+}
+#decimal{
+  grid-area: decimal;
+  margin-bottom: 100px;
+}
+#fake-solar-panel{
+  grid-area: solar;
+  width: 90%;
+  margin: auto;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 4px;
+  background-color: black;
+  background-image: repeating-linear-gradient(to right, black, #484848 10%, green 10%); 
+}
 </style>
 </head>
 <body>
