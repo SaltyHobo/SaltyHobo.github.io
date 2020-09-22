@@ -39,35 +39,61 @@ class Calculator extends React.Component {
   }
   handleOperator(event) {
     const valueOperator = event.target.value;
-    this.setState({
+    /*this.setState({
       lastArgLastIndx: this.state.lastArg[this.state.lastArg.length - 1]
       },
-      () => console.log("update lastArgLastIndx")
-    );
+      () => console.log("update lastArgLastIndx", this.state)
+    ); */
     if (this.state.lastArg == '0') {
-      console.log("lastArg = 0")
-      this.setState({
+      if (this.state.currentArg.length > 0) {
+        console.log("handleOperator: lastArg = 0 current length > 0");
+        this.setState({
         lastArg: Number(this.state.currentArg) + valueOperator,
+        lastArgLastIndx: valueOperator,
         currentArg: '',
         show: this.state.currentArg
         },
         () => console.log(this.state)
       );
-    } else if (isNaN(this.state.lastArgLastIndx) == true && this.state.currentArg.length == 0) {
-      console.log("isNaN is true and current length is 0");
+      } else {
+        console.log("handleOperator: lastArg = 0 current length = 0");
+        this.setState({
+        lastArg: Number(this.state.currentArg) + valueOperator,
+        lastArgLastIndx: valueOperator,
+        currentArg: '',
+        show: '0'
+        },
+        () => console.log(this.state)
+      );
+      }
+    } else if (this.state.lastArgLastIndx.length > 0 && typeof this.state.lastArgLastIndx !== "number" && this.state.currentArg.length == 0) {
+      console.log("handleOperator: isNaN is true and current length is 0");
       this.setState({
         lastArg: this.state.lastArg.match(/[-?.0-9]*/) + valueOperator,
+        lastArgLastIndx: valueOperator,
         currentArg: '',
-        show: this.state.currentArg
+        show: this.state.lastArg.match(/[-?.0-9]*/)
         },
         () => console.log(this.state)
       );
-    } else {
-      console.log("isNaN is false and current length is not 0");
+    } else if (typeof this.state.lastArgLastIndx == "number" && this.state.currentArg.length == 0) {
+      console.log("handleOperator: isNaN is false and current length is 0");
+      this.setState({
+        lastArg: this.state.lastArg.match(/[-?.0-9]*/) + valueOperator,
+        lastArgLastIndx: valueOperator,
+        currentArg: '',
+        show: this.state.lastArg.match(/[-?.0-9]*/)
+        },
+        () => console.log(this.state)
+      );
+    }
+    else {
+      console.log("handleOperator: other");
       this.setState({
         lastArg: eval(this.state.lastArg + Number(this.state.currentArg)) + valueOperator,
+        lastArgLastIndx: valueOperator,
         currentArg: '',
-        show: this.state.currentArg
+        show: eval(this.state.lastArg + Number(this.state.currentArg))
         },
         () => console.log(this.state)
       );
@@ -75,44 +101,60 @@ class Calculator extends React.Component {
   }
   handleMinus(event) {
     const valueMinus = event.target.value;
-    this.setState({
+    /*this.setState({
       lastArgLastIndx: this.state.lastArg[this.state.lastArg.length - 1]
       },
-      () => console.log("update lastArgLastIndx")
-    );
+      () => console.log("update lastArgLastIndx", this.state)
+    ); */
     if (this.state.lastArg == "0") {
-      console.log("lastArg = 0")
+      if (this.state.currentArg.length > 0) {
+        console.log("handleMinus: lastArg = 0 current length > 0")
       this.setState({
         lastArg: Number(this.state.currentArg) + valueMinus,
+        lastArgLastIndx: valueMinus,
         currentArg: '',
         show: this.state.currentArg
         },
         () => console.log(this.state)
       );
-    } else if (typeof this.state.lastArgLastIndx !== "number" && this.state.lastArgLastIndx !== "-" && this.state.currentArg.length == 0) {
-      console.log("isNaN is true and last index not "-" and current length is 0");
+      } else {
+        console.log("handleMinus: lastArg = 0 current length = 0")
+      this.setState({
+        lastArg: Number(this.state.currentArg) + valueMinus,
+        lastArgLastIndx: valueMinus,
+        currentArg: '',
+        show: '0'
+        },
+        () => console.log(this.state)
+      );
+      }
+    } else if (this.state.lastArgLastIndx.length > 0 && typeof this.state.lastArg[this.state.lastArg.length - 1] !== "number" && this.state.lastArgLastIndx !== "-" && this.state.currentArg.length == 0) {
+      console.log("handleMinus: isNaN is true and last index not '-' and current length is 0");
       this.setState({
         lastArg: this.state.lastArg + valueMinus,
+        lastArgLastIndx: valueMinus,
         currentArg: '',
-        show: this.state.currentArg
+        show: this.state.lastArg.match(/[-?.0-9]*/)
         },
         () => console.log(this.state)
       );
     } else if (this.state.lastArgLastIndx == "-" && this.state.currentArg.length == 0) {
-      console.log("last index not '-' and currentArg is empty");
+      console.log("handleMinus: last index '-' and currentArg is empty");
       this.setState({
         lastArg: this.state.lastArg,
+        lastArgLastIndx:  this.state.lastArg[this.state.lastArg.length - 1],
         currentArg: '',
-        show: this.state.currentArg
+        show: this.state.lastArg.match(/-?[.0-9$]*/)
         },
         () => console.log(this.state)
       );
     } else {
-      console.log("all other possibilies");
+      console.log("handleMinus: all other possibilies");
       this.setState({
         lastArg: eval(this.state.lastArg + Number(this.state.currentArg)) + valueMinus,
+        lastArgLastIndx: valueMinus,
         currentArg: '',
-        show: this.state.lastArg
+        show: eval(this.state.lastArg + Number(this.state.currentArg))
         },
         () => console.log(this.state)
       );
@@ -121,6 +163,8 @@ class Calculator extends React.Component {
   submitTotal() {
     if (this.state.lastArg == "0") {
       this.setState((state) => ({
+        lastArg: '0',
+        lastArgLastIndx: '',
         currentArg: '',
         show: this.state.currentArg
       }),
@@ -129,6 +173,7 @@ class Calculator extends React.Component {
     } else {
       this.setState((state) => ({
         lastArg: eval(this.state.lastArg + Number(this.state.currentArg)),
+        lastArgLastIndx: '',
         currentArg: '',
         show: eval(this.state.lastArg + Number(this.state.currentArg))
       }),
@@ -155,6 +200,7 @@ class Calculator extends React.Component {
         <p>test total: {this.state.show}</p>
         */}
         <div class="display" id="display">{this.state.show}</div>
+        <div class="extra" id="fake-solar-panel"></div>
         <button class="button" id="clear" value="AC" onClick={this.clearAll}>AC</button>
         <button class="button" id="divide" value="/" onClick={this.handleOperator}>/</button>
         <button class="button" id="multiply" value="*" onClick={this.handleOperator}>X</button>
