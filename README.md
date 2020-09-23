@@ -1,7 +1,7 @@
 # SaltyHobo.github.io
 ### Test site for Web Design and Web Applications (Coursera, freeCodeCamp).
 
-#### &#9745; My attempts at using React, Redux, and Javascript:
+#### &#9745; My attempts at using Javascript, React, and Redux:
 <a href="https://saltyhobo.github.io/freecodecamp/front-end-lib/">Front-End Libraries Projects</a>
 <br/>
 <a href="SaltyHobo.github.io/freecodecamp/javascript-certification/">Javascript Certification Projects</a>
