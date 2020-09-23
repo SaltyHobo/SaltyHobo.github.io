@@ -8,13 +8,13 @@
 
 <p>  &#9745; Project 2: <a href="https://saltyhobo.github.io/freecodecamp/javascript-certification/roman-numeral-converter.js">Roman Numeral Converter</a></p>
 
-<p>  &#9745; Project 3: <a href="SaltyHobo.github.io/freecodecamp/javascript-certification/caesars-cipher.js">Ceasar's Cypher</a></p>
+<p>  &#9745; Project 3: <a href="https://SaltyHobo.github.io/freecodecamp/javascript-certification/caesars-cipher.js">Ceasar's Cypher</a></p>
 
-<p>  &#9745; Project 4: <a href="SaltyHobo.github.io/freecodecamp/javascript-certification/telephone-number-validator.js">Telephone Number Validator 1</a></p>
+<p>  &#9745; Project 4: <a href="https://SaltyHobo.github.io/freecodecamp/javascript-certification/telephone-number-validator.js">Telephone Number Validator 1</a></p>
 
-<p>  &#9745; Project 4: <a href="SaltyHobo.github.io/freecodecamp/javascript-certification/telephone-number-validator-updated.js">Telephone Number Validator 2</a></p>
+<p>  &#9745; Project 4: <a href="https://SaltyHobo.github.io/freecodecamp/javascript-certification/telephone-number-validator-updated.js">Telephone Number Validator 2</a></p>
 
-<p>  &#9745; Project 5: <a href="SaltyHobo.github.io/freecodecamp/javascript-certification/cash-register.js">Cash Register</a></p>
+<p>  &#9745; Project 5: <a href="https://SaltyHobo.github.io/freecodecamp/javascript-certification/cash-register.js">Cash Register</a></p>
 
 
 
