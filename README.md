@@ -5,11 +5,11 @@
 <a href="https://saltyhobo.github.io/freecodecamp/front-end-lib/">Front-End Libraries Projects</a>
 <br/>
 <a href="SaltyHobo.github.io/freecodecamp/javascript-certification/">Javascript Certification Projects</a>
-<br/>
+<br/><br/>
 
 #### &#9745; My capstone project for Web Design for Everybody specialization can be found here: <br>
 <a href="https://saltyhobo.github.io/capstone/index.html">Capstone Web Design Project</a>
-<br/><br/>
+<br/>
 This project includes responsive design, is dark-mode compatible, and places an emphasis on accessibility.
 - [x] [WCAG AAA color contrast compliant](https://webaim.org/resources/contrastchecker/).
 - [x] [Markup validated](https://validator.w3.org/).
