@@ -7,7 +7,7 @@
 <a href="SaltyHobo.github.io/freecodecamp/javascript-certification/">Javascript Certification Projects</a>
 <br/><br/>
 
-#### &#9745; My capstone project for Web Design for Everybody specialization can be found here: <br>
+#### &#9745; My capstone project for Web Design for Everybody specialization can be found here:
 <a href="https://saltyhobo.github.io/capstone/index.html">Capstone Web Design Project</a>
 <br/>
 This project includes responsive design, is dark-mode compatible, and places an emphasis on accessibility.
