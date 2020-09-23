@@ -8,7 +8,7 @@
 <br/>
 
 #### &#9745; My capstone project for Web Design for Everybody specialization can be found here: <br>
-<a href="https://saltyhobo.github.io/capstone/index.html">Capstone web design Project</a>
+<a href="https://saltyhobo.github.io/capstone/index.html">Capstone Web Design Project</a>
 <br/>
 <br/><br/>
 This project includes responsive design, is dark-mode compatible, and places an emphasis on accessibility.
