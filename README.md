@@ -2,9 +2,9 @@
 ### Test site for Web Design and Web Applications (Coursera, freeCodeCamp).
 
 #### &#9745; My attempts at using React, Redux, and Javascript:
-<a href="SaltyHobo.github.io/freecodecamp/front-end-lib/README.md">Front-End Libraries</a>
+<a href="https://saltyhobo.github.io/freecodecamp/front-end-lib/">Front-End Libraries</a>
 <br/>
-<cite> (https://saltyHobo.github.io/freecodecamp/front-end-lib/README.md)</cite>
+<cite> (https://saltyhobo.github.io/freecodecamp/front-end-lib/)</cite>
 
 #### &#9745; My capstone project for Web Design for Everybody specialization can be found here: <br>
 <a href="https://saltyhobo.github.io/capstone/index.html">Capstone web design Project</a>
