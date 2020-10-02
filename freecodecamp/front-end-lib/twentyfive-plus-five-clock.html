@@ -53,10 +53,7 @@ class Clock extends React.Component {
         () => console.log(this.state)
       );
     } else if (Number(this.state.timeLeftSec) <= 0) {
-      this.setState(/*{
-        timeLeftMin: this.state.timeLeftMin - 1,
-        timeLeftSec: 59
-        },*/
+      this.setState(
         () => console.log(this.state)
       );
       if (this.state.timeLeftMin <= 0) {
@@ -89,28 +86,8 @@ class Clock extends React.Component {
       }
     }
   }
-  /*timerSession() {
-    //document.getElementById('time-left').innerHTML = this.state.timeLeftMin + ':' + String("0" + this.state.timeLeftSec).slice(-2);
-    this.setState({
-      timeLeftSec: Number(this.state.timeLeftSec) - 1,
-      },
-      () => console.log(this.state)
-    );
-    if (Number(this.state.timeLeftSec) == 0) {
-      this.setState({
-        timeLeftMin: this.state.timeLeftMin - 1,
-        timeLeftSec: 59
-        },
-        () => console.log(this.state)
-      );
-      if (this.state.timeLeftMin == 0) {
-        this.timerBreak();
-      }
-    }
-  }*/
   timerBreak() {
     clearInterval(this.state.intervalID);
-    //document.getElementById('time-left').innerHTML = this.state.timeLeftMin + ':' + String("0" + this.state.timeLeftSec).slice(-2);
     this.setState({
       intervalID: setInterval(() => {
         this.decrementTimer();
@@ -129,7 +106,6 @@ class Clock extends React.Component {
         );
         this.timerSession();
       } else {
-        //clearTimeout(this.state.intervalID);
         clearInterval(this.state.intervalID);
         this.setState({
           clockOn: 'off'
@@ -196,7 +172,6 @@ class Clock extends React.Component {
   }
   resetClock() {
     document.getElementById('beep').load();
-    //clearTimeout(this.state.intervalID);
     clearInterval(this.state.intervalID);
     this.setState({
       timeLeft: 25,
@@ -216,7 +191,7 @@ class Clock extends React.Component {
     return (
       <div class="container" id="clock">
         <div id="timer-label">{this.state.sessionBreak}</div>
-        <div id="time-left">{/*this.state.timeLeftMin*/String("0" + this.state.timeLeftMin).slice(-2)}:{/*this.state.timeLeftSec*/String("0" + this.state.timeLeftSec).slice(-2)}</div>
+        <div id="time-left">{String("0" + this.state.timeLeftMin).slice(-2)}:{String("0" + this.state.timeLeftSec).slice(-2)}</div>
         <button id="start_stop" onClick={this.startStop}>start/stop</button>
         <button id="reset" onClick={this.resetClock}>reset</button>
         <div id="session-label">Session Length</div>
