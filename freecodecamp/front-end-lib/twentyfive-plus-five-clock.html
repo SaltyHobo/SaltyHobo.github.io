@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--load Babel-->
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+<!--load React and ReactDOM-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.13.1/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.13.1/umd/react-dom.production.min.js"></script>
+<!--run React-Javascript program to build Calculator app-->
+<script type="text/babel">
+//React:
+class Clock extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      timeLeft: 25,
+      timeLeftMin: 25,
+      timeLeftSec: '00',
+      countDecrement: 1000,
+      breakLength: 5,
+      sessionLength: 25,
+      sessionBreak: 'session',
+      clockOn: 'off',
+      intervalID: '',
+      //audioClip: 'https://actions.google.com/sounds/v1/foley/rake_swing_whoosh_close.ogg'
+    }
+    this.timerSession = this.timerSession.bind(this);
+    this.timerBreak = this.timerBreak.bind(this);
+    this.startStop = this.startStop.bind(this);
+    this.upSession = this.upSession.bind(this);
+    this.downSession = this.downSession.bind(this);
+    this.upBreak = this.upBreak.bind(this);
+    this.downBreak = this.downBreak.bind(this);
+    this.resetClock = this.resetClock.bind(this);
+  }
+  timerSession() {
+    clearInterval(this.state.intervalID);
+    this.setState({
+      intervalID: setInterval(() => {
+        this.decrementTimer();
+      }, 1000)
+    },
+      () => console.log(this.state)
+    );
+  }
+  decrementTimer() {
+    if (Number(this.state.timeLeftSec > 0)) {
+      this.setState({
+      timeLeftSec: this.state.timeLeftSec - 1
+      },
+        () => console.log(this.state)
+      );
+    } else if (Number(this.state.timeLeftSec) <= 0) {
+      this.setState(/*{
+        timeLeftMin: this.state.timeLeftMin - 1,
+        timeLeftSec: 59
+        },*/
+        () => console.log(this.state)
+      );
+      if (this.state.timeLeftMin <= 0) {
+        if (this.state.sessionBreak == 'session') {
+          this.setState({
+            sessionBreak: 'break',
+            timeLeftMin: this.state.breakLength,
+            timeLeftSec: '00'
+          });
+          //this.state.audioClip.play();
+          document.getElementById('beep').play();
+          this.timerBreak();
+        } else {
+          this.setState({
+            sessionBreak: 'session',
+            timeLeftMin: this.state.sessionLength,
+            timeLeftSec: '00'
+          });
+          //this.state.audioClip.play();
+          document.getElementById('beep').play();
+          this.timerSession();
+        }
+      } else {
+        this.setState({
+        timeLeftMin: this.state.timeLeftMin - 1,
+        timeLeftSec: 59
+        },
+        () => console.log(this.state)
+      );
+      }
+    }
+  }
+  /*timerSession() {
+    //document.getElementById('time-left').innerHTML = this.state.timeLeftMin + ':' + String("0" + this.state.timeLeftSec).slice(-2);
+    this.setState({
+      timeLeftSec: Number(this.state.timeLeftSec) - 1,
+      },
+      () => console.log(this.state)
+    );
+    if (Number(this.state.timeLeftSec) == 0) {
+      this.setState({
+        timeLeftMin: this.state.timeLeftMin - 1,
+        timeLeftSec: 59
+        },
+        () => console.log(this.state)
+      );
+      if (this.state.timeLeftMin == 0) {
+        this.timerBreak();
+      }
+    }
+  }*/
+  timerBreak() {
+    clearInterval(this.state.intervalID);
+    //document.getElementById('time-left').innerHTML = this.state.timeLeftMin + ':' + String("0" + this.state.timeLeftSec).slice(-2);
+    this.setState({
+      intervalID: setInterval(() => {
+        this.decrementTimer();
+      }, 1000)
+    },
+      () => console.log(this.state)
+    );
+  }
+  startStop() {
+    if (this.state.sessionBreak == 'session') {
+      if (this.state.clockOn == 'off') {
+        this.setState({
+          clockOn: 'on'
+        },
+          () => console.log('session: turned clock on, go to timerSession')
+        );
+        this.timerSession();
+      } else {
+        //clearTimeout(this.state.intervalID);
+        clearInterval(this.state.intervalID);
+        this.setState({
+          clockOn: 'off'
+        },
+          () => console.log('session: turned clock off')
+        );
+      }
+    } else {
+      if (this.state.sessionBreak == 'break') {
+        if (this.state.clockOn == 'off') {
+          this.setState({
+            clockOn: 'on'
+          },
+            () => console.log('break: turned clock on, go to timerBreak')
+          );
+        } else {
+          clearTimeout(this.state.intervalID);
+          this.setState({
+            clockOn: 'off'
+          },
+            () => console.log('break: turned clock off')
+          );
+        }
+      }
+    }
+  }
+  upSession() {
+    if (this.state.sessionLength < 60) {
+      this.setState({
+        sessionLength: this.state.sessionLength + 1,
+        timeLeftMin: this.state.timeLeftMin + 1
+      },
+      () => console.log(this.state.sessionLength)
+      );
+    }
+  }
+  downSession() {
+    if (this.state.sessionLength > 1) {
+      this.setState({
+        sessionLength: this.state.sessionLength - 1,
+        timeLeftMin: this.state.timeLeftMin - 1
+      },
+      () => console.log(this.state.sessionLength)
+      );
+    }
+  }
+  upBreak() {
+    if (this.state.breakLength < 60) {
+      this.setState({
+        breakLength: this.state.breakLength + 1
+      },
+      () => console.log(this.state.breakLength)
+      );
+    }
+  }
+  downBreak() {
+    if (this.state.breakLength > 1) {
+      this.setState({
+        breakLength: this.state.breakLength - 1
+      },
+      () => console.log(this.state.breakLength)
+      );
+    }
+  }
+  resetClock() {
+    document.getElementById('beep').load();
+    //clearTimeout(this.state.intervalID);
+    clearInterval(this.state.intervalID);
+    this.setState({
+      timeLeft: 25,
+      timeLeftMin: 25,
+      timeLeftSec: '00',
+      countDecrement: 1000,
+      breakLength: 5,
+      sessionLength: 25,
+      sessionBreak: 'session',
+      clockOn: 'off',
+      intervalID: ''
+    },
+    () => console.log(this.state)
+    );
+  }
+  render() {
+    return (
+      <div class="container" id="clock">
+        <div id="timer-label">{this.state.sessionBreak}</div>
+        <div id="time-left">{/*this.state.timeLeftMin*/String("0" + this.state.timeLeftMin).slice(-2)}:{/*this.state.timeLeftSec*/String("0" + this.state.timeLeftSec).slice(-2)}</div>
+        <button id="start_stop" onClick={this.startStop}>start/stop</button>
+        <button id="reset" onClick={this.resetClock}>reset</button>
+        <div id="session-label">Session Length</div>
+        <div id="session-decrement" onClick={this.downSession}>-1</div>
+        <div id="session-increment" onClick={this.upSession}>+1</div>
+        <div id="session-length">{this.state.sessionLength}</div>
+        <div id="break-label">Break Length</div>
+        <div id="break-decrement" onClick={this.downBreak}>-1</div>
+        <div id="break-increment" onClick={this.upBreak}>+1</div>
+        <div id="break-length">{this.state.breakLength}</div>
+        <audio class="audio" id="beep">
+          {/*<!--<source src="https://actions.google.com/sounds/v1/foley/rake_swing_whoosh_close.ogg" type="audio/ogg" />-->*/}
+          <source src="https://actions.google.com/sounds/v1/alarms/beep_short.ogg" type="audio/ogg" />
+        </audio>
+      </div>
+    )
+  }
+}
+ReactDOM.render(<Clock />, document.getElementById('root'));
+</script>
+<style>
+body{
+  background-color: grey;
+}
+#clock{
+  background-color: #001437;
+  text-align: center;
+  display: grid;
+  grid-gap: 10px;
+  grid-template-areas:
+    "timer-label timer-label timer-label timer-label"
+    "time-left time-left time-left time-left"
+    "start_stop start_stop reset reset"
+    "session-label session-label break-label break-label"
+    "session-length session-length break-length break-length"
+    "session-decrement session-increment break-decrement break-increment"
+}
+#timer-label{
+  background-color: #B8FB3C;
+  color: #001437;
+  text-align: center;
+  grid-area: timer-label;
+}
+#time-left{
+  background-color: #B8FB3C;
+  color: #001437;
+  font-size: 2rem;
+  font-weight: bold;
+  padding-left: 1.5vw;
+  grid-area: time-left;
+}
+#start_stop{
+  background-color: #7898FB;
+  color: #001437;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  border-style: none;
+  grid-area: start_stop;
+}
+#reset{
+  background-color: #7898FB;
+  color: #001437;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  border-style: none;
+  grid-area: reset;
+}
+#session-label{
+  background-color: red;
+  color: #001437;
+  font-weight: bold;
+  grid-area: session-label;
+}
+#session-decrement{
+  background-color: yellow;
+  color: #001437;
+  font-weight: bold;
+  margin-bottom: 5vh;
+  grid-area: session-decrement;
+}
+#session-increment{
+  background-color: white;
+  color: #001437;
+  font-weight: bold;
+  margin-bottom: 5vh;
+  grid-area: session-increment;
+}
+#session-length{
+  background-color: #B8FB3C;
+  color: #001437;
+  font-weight: bold;
+  grid-area: session-length;
+}
+#break-label{
+  background-color: red;
+  color: #001437;
+  font-weight: bold;
+  grid-area: break-label;
+}
+#break-decrement{
+  background-color: yellow;
+  color: #001437;
+  font-weight: bold;
+  margin-bottom: 5vh;
+  grid-area: break-decrement;
+}
+#break-increment{
+  background-color: white;
+  color: #001437;
+  font-weight: bold;
+  margin-bottom: 5vh;
+  grid-area: break-increment;
+}
+#break-length{
+  background-color: #B8FB3C;
+  color: #001437;
+  font-weight: bold;
+  grid-area: break-length;
+}
+@media only screen and (min-width: 485px){
+  body{
+    background-color: black;
+  }
+  #clock{
+    background-color: #070234;
+    border-radius: 15%;
+    overflow: hidden;
+    text-align: center;
+    display: grid;
+    grid-gap: 10px;
+    grid-template-areas:
+      "timer-label timer-label session-label session-label break-label break-label"
+      "time-left time-left session-length session-length break-length break-length"
+      "start_stop reset session-decrement session-increment break-decrement break-increment"
+  }
+  #timer-label{
+    background-color: #83C6DD;
+    color: #001437;
+    font-weight: bold;
+    margin-left: 2vw;
+    grid-area: timer-label;
+  }
+  #time-left{
+    background-color: #83C6DD;
+    color: #001437;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-left: 2vw;
+    padding-right: 1vw;
+    grid-area: time-left;
+  }
+  #start_stop{
+    background-color: #5DB1D1;
+    color: #001437;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    margin-left: 2vw;
+    margin-bottom: 5vh;
+    border-style: none;
+    grid-area: start_stop;
+  }
+  #reset{
+    background-color: #5DB1D1;
+    color: #001437;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    border-style: none;
+    margin-bottom: 5vh;
+    grid-area: reset;
+  }
+  #session-label{
+    background-color: #ACECD5;
+    color: #001437;
+    font-weight: bold;
+    grid-area: session-label;
+  }
+  #session-decrement{
+    background-color: #90C978;
+    color: #001437;
+    font-weight: bold;
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+    margin-bottom: 5vh;
+    grid-area: session-decrement;
+  }
+  #session-increment{
+    background-color: #90C978;
+    color: #001437;
+    font-weight: bold;
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+    margin-bottom: 5vh;
+    grid-area: session-increment;
+  }
+  #session-length{
+    background-color: #ACECD5;
+    color: #001437;
+    font-weight: bold;
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+    grid-area: session-length;
+  }
+  #break-label{
+    background-color: #ACECD5;
+    color: #001437;
+    font-weight: bold;
+    margin-right: 2vw;
+    grid-area: break-label;
+  }
+  #break-decrement{
+    background-color: #90C978;
+    color: #001437;
+    font-weight: bold;
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+    margin-bottom: 5vh;
+    grid-area: break-decrement;
+  }
+  #break-increment{
+    background-color: #90C978;
+    color: #001437;
+    font-weight: bold;
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+    margin-bottom: 5vh;
+    margin-right: 2vw;
+    grid-area: break-increment;
+  }
+  #break-length{
+    background-color: #ACECD5;
+    color: #001437;
+    font-weight: bold;
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+    margin-right: 2vw;
+    grid-area: break-length;
+  }
+}
+@media only screen and (min-width: 775px){
+  #root::before{
+    display: block;
+    content: '25 + 5 Clock';
+    color: #83C6DD;
+    background-color: #070234;
+    text-align: center;
+    font-weight: bold;
+    margin: auto;
+    width: 50%;
+    font-size: 2.5rem;
+    margin-top: 2vh;
+    margin-bottom: 10vh;
+    border-radius: 25%;
+  }
+}
+</style>
+</head>
+<body>
+<div class="container" id="root">JS didn't load</div>
+<!--audio file provided by Google Assistant Sound Library-->
+</body>
+</html>
