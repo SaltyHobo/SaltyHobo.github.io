@@ -10,6 +10,7 @@
 #### &#9745; My capstone project for Web Design for Everybody specialization can be found here:
 <a href="https://saltyhobo.github.io/capstone/index.html">Capstone Web Design Project</a>
 <br/>
+The colors need to be changed since the current color setup is not appealing, but other than that:
 This project includes responsive design, is dark-mode compatible, and places an emphasis on accessibility.
 - [x] [WCAG AAA color contrast compliant](https://webaim.org/resources/contrastchecker/).
 - [x] [Markup validated](https://validator.w3.org/).
