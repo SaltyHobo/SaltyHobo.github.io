@@ -2,6 +2,8 @@
 ### Test site for Web Design and Web Applications (Coursera, freeCodeCamp).
 
 #### &#9745; My attempts at using Javascript, React, and Redux:
+<a href="https://saltyhobo.github.io/freecodecamp/data-visualization/">Data Visualization Projects</a>
+<br/>
 <a href="https://saltyhobo.github.io/freecodecamp/front-end-lib/">Front-End Libraries Projects</a>
 <br/>
 <a href="SaltyHobo.github.io/freecodecamp/javascript-certification/">Javascript Certification Projects</a>
