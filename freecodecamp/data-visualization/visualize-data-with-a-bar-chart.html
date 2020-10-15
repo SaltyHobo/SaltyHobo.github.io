@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--load D3.js-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/6.2.0/d3.min.js"></script>
+<!--run D3-->
+<script type="text/javascript">
+/* global d3 */
+
+//Notes on d3 version migration:
+//d3 v 5.7 works with d3.event.pageX: https://cdnjs.cloudflare.com/ajax/libs/d3/5.7.0/d3.min.js
+//d3 v 6.2 causes error Cannot read property 'pageX' of undefined: https://cdnjs.cloudflare.com/ajax/libs/d3/6.2.0/d3.min.js
+//d3 v 6.2 migration, use: ...  .on('mouseover', function(event, d) {... .style('left', d3.select(this).attr("x") + 'px') ...}
+
+const projectName = 'Visualize Data with a Bar Chart';
+var projectTitle = d3.select('#main-container').append('h1').text(projectName).attr('class','header').attr('id','title');
+
+const dataURL = 'https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/master/GDP-data.json';
+
+const req = new XMLHttpRequest();
+      req.open("GET",dataURL, true);
+      req.send();
+      req.onload=function(){
+        const json = JSON.parse(req.responseText);
+        let html = "";
+        let dataset = json.data;
+        
+        const w = 1000;
+        const h = 500;
+        
+        const padding = 1;
+        const barWidth = 3;
+        //const barGap = 1;
+        
+        const minDate = new Date(dataset[0][0]);
+        const maxDate = new Date(dataset[dataset.length-1][0]);
+        const minGDP = d3.min(dataset, (d) => d[1]);
+        const maxGDP = d3.max(dataset, (d) => d[1]);
+        
+        const xScale = d3.scaleTime().domain([minDate, maxDate]).range([padding, w - padding]);
+        const yScale = d3.scaleLinear().domain([/*minGDP*/0, maxGDP]).range([h, 0]);
+        const iScale = d3.scaleLinear().domain([0, dataset.length]).range([padding, w - padding]);
+        
+        const svg = d3.select('#main-container').append('svg').attr('width', w).attr('height', h).style('background-color', '#3e4444').attr('overflow', 'visible')
+        .attr("transform", "translate(" + (padding+50) + "," + padding + ")");        
+        
+        let tooltip = d3.select('body').append('div').attr('class','tooltip').attr('id','tooltip').style('opacity', 0);
+        
+        const rectangles = svg.selectAll('rect').data(dataset).enter().append('rect')
+                              .attr('x', (d,i) => xScale(new Date(d[0])))
+                              .attr('y', (d, i)=>{return yScale(d[1])-padding})
+                              .attr('width', barWidth)
+                              .attr('height', (d,i)=>{return h-yScale(d[1])})
+                              .attr('class','bar')
+                              .attr('data-date',((d)=>(d[0])))
+                              .attr('data-gdp', (d)=>d[1])
+                              .attr('fill','#b5e7a0')
+        ////tooltip using <title> works with Chrome, but does not pass FCC tests, use this instead for FCC:
+                              .on('mouseover', function(event, d) {
+                                tooltip
+                                  .transition()
+                                  .duration(200)
+                                  .style('opacity', 1);
+                                tooltip
+                                  .html('Date: '+d[0]+'<br>'+'GDP: $'+d[1]+' billions')
+                                  .style('left', d3.select(this).attr("x") + 'px')
+                                  .style('top', d3.select(this).attr("y") + 'px');
+                                tooltip.attr('data-date', d[0]);
+                              })
+                              .on('mouseout', function(d) {
+                                tooltip
+                                  .transition()
+                                  .duration(400)
+                                  .style('opacity', 0)
+                              });
+        
+        //tooltip using <title> works with Chrome, but does not pass FCC tests.
+        /*const tooltips = rectangles.append('title').attr("dy", "0em").text((d,i)=>'Date: '+d[0]+', '+'GDP: $'+d[1]+' billions')
+                                   .attr('id','tooltip').attr('data-date',(d)=>d[0]).attr('data-gdp',(d)=>d[1]);*/
+ 
+        const xAxis = d3.axisBottom(xScale);
+        const yAxis = d3.axisLeft(yScale);
+        svg.append("g").attr('transform', 'translate(0,'+(h-padding)+')').call(xAxis).attr('id','x-axis');
+        svg.append('g').attr('transform', 'translate('+ padding+', 0)').call(yAxis).attr('id','y-axis');
+        
+        const labelX = svg.append('text').attr('transform', 'translate('+w/2+','+(h+padding+30)+')').style('text-anchor', 'middle').text('date');
+        const labelY = svg.append('text').attr('transform', 'rotate(-90)').attr('y',0-padding-55).attr('x', 0-(h/2)).attr('dy', '1em').style('text-anchor', 'middle').text('GDP')
+      }
+</script>
+
+<style>
+.bar:hover{
+  fill: #c1946a;
+}
+.tooltip
+{
+    position: absolute;
+    text-align: center;
+    width: 150px;
+    height: auto;
+    padding: 2px;
+    font: 12px arial;
+    /*background: lavender;*/
+    background: #bdcebe;
+    border: 0px;
+    border-radius: 6px;
+    pointer-events: none;
+}
+</style>
+
+</head>
+<body>
+<div class="container" id="main-container">JavaScript didn't load</div>
+</body>
+</html>
