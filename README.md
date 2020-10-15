@@ -6,7 +6,7 @@
 <br/>
 <a href="https://saltyhobo.github.io/freecodecamp/front-end-lib/">Front-End Libraries Projects</a>
 <br/>
-<a href="SaltyHobo.github.io/freecodecamp/javascript-certification/">Javascript Certification Projects</a>
+<a href="https://SaltyHobo.github.io/freecodecamp/javascript-certification/">Javascript Certification Projects</a>
 <br/><br/>
 
 #### &#9745; My capstone project for Web Design for Everybody specialization can be found here:
