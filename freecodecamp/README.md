@@ -5,7 +5,7 @@
 
 Jump to:
 
-* <a href="https://github.com/SaltyHobo.github.io/freecodecamp/data-visualization/">Data Visualization Projects</a>
+* <a href="https://github.com/SaltyHobo/SaltyHobo.github.io/tree/master/freecodecamp/data-visualization">Data Visualization Projects</a>
 * <a href="https://github.com/SaltyHobo/SaltyHobo.github.io/tree/master/freecodecamp/front-end-lib">Front-End Library Projects</a>
 * <a href="https://github.com/SaltyHobo/SaltyHobo.github.io/tree/master/freecodecamp/javascript-certification">Javascript Projects</a>
 
