@@ -4,6 +4,8 @@
 <p>Also included: Responsive web design, accessibility, CSS Flexbox, CSS Grid, Bootstrap, ES6, data structures, object-oriented programming, functional programming, algorithm scripting.</p>
 
 Jump to:
+
+* <a href="https://github.com/SaltyHobo.github.io/freecodecamp/data-visualization/">Data Visualization Projects</a>
 * <a href="https://github.com/SaltyHobo/SaltyHobo.github.io/tree/master/freecodecamp/front-end-lib">Front-End Library Projects</a>
 * <a href="https://github.com/SaltyHobo/SaltyHobo.github.io/tree/master/freecodecamp/javascript-certification">Javascript Projects</a>
 
