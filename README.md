@@ -3,7 +3,7 @@
 
 #### &#9745; Some D3 Data Visualization:
 <a href="https://saltyhobo.github.io/freecodecamp/data-visualization/">Data Visualization Projects</a>
-<br/>
+<br/><br/>
 
 #### &#9745; My attempts at using Javascript, React, and Redux:
 <a href="https://saltyhobo.github.io/freecodecamp/front-end-lib/">Front-End Libraries Projects</a>
