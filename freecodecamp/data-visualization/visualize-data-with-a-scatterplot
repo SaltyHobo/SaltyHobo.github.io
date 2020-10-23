@@ -1,0 +1,156 @@
+<!--This D3 project has only been tested in Google Chrome-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--load D3.js-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/6.2.0/d3.min.js"></script>
+
+<style>
+body{
+  /*background-color: red;*/
+}
+#svg{
+  /*background: blue;*/
+}
+.dot:hover{
+  fill: red;
+}
+.tooltip{
+  position: absolute;
+  text-align: left;
+  width: 150px;
+  height: auto;
+  padding: 2px;
+  font: 12px arial;
+  background: #bdcebe;
+  border: 0px;
+  border-radius: 6px;
+  pointer-events: none;
+}
+</style>
+</head>
+<body>   
+<!--run D3-->
+<script type="text/javascript">
+/* global d3 */
+
+//FCC - Visualize Data with a Scatterplot Graph
+//D3 Project
+//Unix Epoch aka Unix time: "the number of seconds that have elapsed since the Unix epoch, minus leap seconds; the Unix epoch is 00:00:00 UTC on 1 January 1970 (an arbitrary date); leap seconds are ignored, with a leap second having the same Unix time as the second before it, and every day is treated as if it contains exactly 86400 seconds. Due to this treatment Unix time is not a true representation of UTC." - Wikipedia.
+
+const projectName = 'Visualize Data with a Scatterplot Graph';
+const dataURL = 'https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/master/cyclist-data.json';
+//const addProjectName = d3.select('body').append('h1').text(projectName).attr('x',0).attr('y',0).attr('class','header').attr('id','title');
+
+fetch(dataURL)
+  .then(response => {if (response.ok) {return response.json()}})
+  .then(data => {
+    const width = 750;
+    const height = 500;
+    const padding = 75;
+  
+    const times = [];
+    for(var i = 0; i < data.length; i++) {
+          times.push(data[i].Time);
+        }
+
+    //earliest year:
+    const minYear = d3.min(data, (d)=>d.Year);
+    //latest year:
+    const maxYear = d3.max(data, (d)=>d.Year);
+    //fastest run time in seconds:
+    const minSec = d3.min(data, (d)=>d.Seconds);
+    //slowest run time in seconds:
+    const maxSec = d3.max(data, (d)=>d.Seconds);
+    //format time for y axis (specifier):
+    const formatTime = d3.timeFormat('%M:%S');
+    //parse data.Time:
+    const parsedData = times.map(function(d) {
+      return d3.timeParse(formatTime)(d);
+    });
+    //fastest run time in minutes:seconds :
+    const minMinsSec = d3.min(data, (d)=>d.Time);
+    //slowest run time in minutes:seconds :
+    const maxMinsSec = d3.max(data, (d)=>d.Time);    
+
+    //set scales: (with padding)
+  /*
+    const xScale = d3.scaleLinear().domain([minYear-2, maxYear+1]).range([padding, width-padding]);
+    const yScaleSec = d3.scaleLinear().domain([maxSec+10, minSec-10]).range([height-padding, padding]);
+    const yScaleMinsSec = d3. scaleTime().domain(d3.extent(parsedData)).range([padding, height-padding]);
+  */
+  
+    //set scales: (without padding)
+    const xScale = d3.scaleLinear().domain([minYear, maxYear]).range([padding, width-padding]);
+    const yScaleSec = d3.scaleLinear().domain([maxSec, minSec]).range([height-padding, padding]);
+    const yScaleMinsSec = d3. scaleTime().domain(d3.extent(parsedData)).range([padding, height-padding]);
+  
+    //create tooltip:
+    let tooltip = d3.select('body').append('div').attr('class', 'tooltip').attr('id', 'tooltip').style('opacity', 0);
+  
+    //add svg:
+    const svg = d3.select('body').append('svg').attr('width', width).attr('height', height).attr('id','svg');
+  
+    //add data:
+    const circles = svg.selectAll('circle').data(data).enter().append('circle')
+                       .attr('cx', (d)=>xScale(d.Year)).attr('cy', function(d,i){return yScaleMinsSec(parsedData[i])}).attr('r', 5).attr('class', 'dot').attr('data-xvalue',(d)=>d.Year).attr('data-yvalue', /*(d)=>d.Time*/ (d) => new Date(1970,0,1,0,d.Time.substring(0,2),d.Time.substring(3,5),0))
+                       .attr('fill', (function(d) {
+                         if (d.Doping) {
+                           return 'orange';
+                         } else {
+                           return 'green';
+                         }
+                       }))
+    //tooltip using <title> works with Chrome, but does not pass FCC tests, use this instead for FCC:
+                       .on('mouseover', function(event, d) {
+                         tooltip
+                          .transition()
+                          .duration(200)
+                          .style('opacity', 1);
+                         tooltip
+                          .html('Name: '+d.Name+'<br>'+'Year: '+d.Year+'<br>'+'Time: '+d.Time)
+                          .style('left', d3.select(this).attr('cx')+'px')
+                          .style('top', d3.select(this).attr('cy')+'px');
+                         tooltip.attr('data-year', d.Year);
+                       })
+                       .on('mouseout', function(d) {
+                         tooltip
+                          .transition()
+                          .duration(400)
+                          .style('opacity', 0);
+                       });
+    
+    /*const labels = svg.selectAll('text').data(data).enter().append('text').text((d)=>d.Year)
+                      .attr('x',(d)=>xScale(d.Year))
+                      .attr('y', (d)=>yScaleSec(d.Seconds));*/
+    
+    const xAxis = d3.axisBottom(xScale).tickFormat(d3.format('d'));
+    //const yAxis = d3.axisLeft(yScaleSec);
+    const yAxis = d3.axisLeft(yScaleMinsSec)
+                    .tickFormat((d,i)=> {return parsedData[i]})
+                    .tickFormat(formatTime);
+    const xAxisPlaced = svg.append('g').attr('transform', 'translate('+0+','+(height-padding)+')').call(xAxis).attr('class','axis').attr('id','x-axis');
+    const yAxisPlaced = svg.append('g').attr('transform', 'translate('+padding+','+0+')').call(yAxis).attr('class','axis').attr('id','y-axis');    
+  
+    //legend:
+    const legendBackground = svg.append('rect').attr('x',(width*0.7)).attr('y', (height*0.2)).attr('width',200).attr('height', 100).attr('stroke','blue').attr('fill','pink').attr('class', 'legend').attr('id','legend-background-rect');
+    const legendBox = svg.append('g').attr('class', 'legend').attr('id', 'legend');
+    const dopingText = legendBox.append('text').text('accused of doping').attr('x',(width*0.71)).attr('y', (height*0.27)).attr('class','legend').attr('id', 'doping-text');
+    const noDopingText = legendBox.append('text').text('no doping accusations').attr('x', (width*0.71)).attr('y', (height*0.35)).attr('class', 'legend').attr('id', 'no-doping-text');
+    const dopingRect = legendBox.append('rect').attr('x', (width*0.91)).attr('y', (height*0.23)).attr('width', 25).attr('height', 25).attr('fill', 'orange');
+    const noDopingRect = svg.append('rect').attr('x', (width*0.91)).attr('y', (height*0.31)).attr('width',25).attr('height', 25).attr('fill', 'green');
+    
+    //graph titles:
+    const graphTitle = svg.append('text').text(projectName+':').attr('x', (width / 2)).attr('y', (height*0.05)).attr('text-anchor', 'middle').attr('class','label').attr('id','graph-title');
+    const subTitle = svg.append('text').text("Doping in Professional Cycling - Fastest times up Alpe d'Huez").attr('x',(width/2)).attr('y',(height*0.09)).attr('text-anchor','middle').attr('class','label').attr('id','graph-subtitle');
+    const pageTitle = d3.select('head').append('title').text('d3 - Scatterplot - Visualize Data').attr('id','title');
+  
+    //labels:
+    const xLabel = svg.append('text').attr('transform','translate('+(width/2)+','+(height-15)+')').style('text-anchor', 'middle').text(Object.keys(data[0])[4]);
+    const yLabel = svg.append('text').attr('x', (0-(height/2))).attr('y', 11).attr('transform', 'rotate(-90)').style('text-anchor', 'middle').text(Object.keys(data[0])[0]+' (mins:secs)');
+  });
+</script>
+</body>
+</html>
