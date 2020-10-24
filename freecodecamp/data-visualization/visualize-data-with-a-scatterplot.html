@@ -56,7 +56,6 @@ body{
 <!--run D3-->
 <script type="text/javascript">
 /* global d3 */
-
 //FCC - Visualize Data with a Scatterplot Graph
 //D3 Project
 //Unix Epoch aka Unix time: "the number of seconds that have elapsed since the Unix epoch, minus leap seconds; the Unix epoch is 00:00:00 UTC on 1 January 1970 (an arbitrary date); leap seconds are ignored, with a leap second having the same Unix time as the second before it, and every day is treated as if it contains exactly 86400 seconds. Due to this treatment Unix time is not a true representation of UTC." - Wikipedia.
@@ -105,7 +104,7 @@ fetch(dataURL)
     //set scales: (without padding)
   /*
     const xScale = d3.scaleLinear().domain([minYear, maxYear]).range([padding, width-padding]);
-    const yScaleSec = d3.scaleLinear().domain([maxSec, minSec]).range([height-padding, padding]);
+    //const yScaleSec = d3.scaleLinear().domain([maxSec, minSec]).range([height-padding, padding]);
     const yScaleMinsSec = d3. scaleTime().domain(d3.extent(parsedData)).range([padding, height-padding]);
   */
     //create tooltip:
