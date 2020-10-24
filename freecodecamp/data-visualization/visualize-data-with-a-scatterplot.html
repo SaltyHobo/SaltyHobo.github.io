@@ -9,25 +9,46 @@
 
 <style>
 body{
-  /*background-color: red;*/
+  background-color: #f9d5e5;
 }
 #svg{
-  /*background: blue;*/
+  background: #f9d5e5;
+}
+#graph-title{
+  font-size: 1.9rem;
+}
+#graph-subtitle{
+  font-size: 1.1rem;
+}
+#legend-background-rect{
+  stroke: #b8a9c9;
+  fill: #eeac99;
+}
+#doping-rect{
+  fill: #622569;
+}
+#no-doping-rect{
+  fill: #5b9aa0;
+}
+.dot{
+  r: 8px;
+  stroke: #d6d4e0;
 }
 .dot:hover{
   fill: red;
 }
-.tooltip{
-  position: absolute;
-  text-align: left;
-  width: 150px;
-  height: auto;
-  padding: 2px;
-  font: 12px arial;
-  background: #bdcebe;
-  border: 0px;
-  border-radius: 6px;
-  pointer-events: none;
+.tooltip
+{
+    position: absolute;
+    text-align: left;
+    width: 150px;
+    height: auto;
+    padding: 2px;
+    font: 12px arial;
+    background: #b8a9c9;
+    border: 0px;
+    border-radius: 6px;
+    pointer-events: none;
 }
 </style>
 </head>
@@ -76,17 +97,17 @@ fetch(dataURL)
     const maxMinsSec = d3.max(data, (d)=>d.Time);    
 
     //set scales: (with padding)
-  /*
     const xScale = d3.scaleLinear().domain([minYear-2, maxYear+1]).range([padding, width-padding]);
-    const yScaleSec = d3.scaleLinear().domain([maxSec+10, minSec-10]).range([height-padding, padding]);
+    //const yScaleSec = d3.scaleLinear().domain([maxSec+10, minSec-10]).range([height-padding, padding]);
     const yScaleMinsSec = d3. scaleTime().domain(d3.extent(parsedData)).range([padding, height-padding]);
-  */
+  
   
     //set scales: (without padding)
+  /*
     const xScale = d3.scaleLinear().domain([minYear, maxYear]).range([padding, width-padding]);
     const yScaleSec = d3.scaleLinear().domain([maxSec, minSec]).range([height-padding, padding]);
     const yScaleMinsSec = d3. scaleTime().domain(d3.extent(parsedData)).range([padding, height-padding]);
-  
+  */
     //create tooltip:
     let tooltip = d3.select('body').append('div').attr('class', 'tooltip').attr('id', 'tooltip').style('opacity', 0);
   
