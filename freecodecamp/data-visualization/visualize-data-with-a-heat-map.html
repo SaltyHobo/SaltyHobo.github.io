@@ -1,0 +1,174 @@
+<!--This D3 project has only been tested in Google Chrome-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--load D3.js-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/6.2.0/d3.min.js"></script>
+
+<style>
+body{
+  background-color: #f9f9f9;
+  font-family: Arial, Helvetica, sans-serif;
+}
+#legend{
+  fill: grey;
+}
+#tooltip {
+  position: absolute;
+  margin-left: 50px;
+  color: #801738;
+  background-color: #6C98D9;
+  padding: 3px 15px 3px 5px;
+  font: 12px arial;
+  font-weight: bold;
+  border: 0px;
+  border-radius: 5px 15px 15px 5px; 
+}
+#y-axis path {
+  stroke: none;
+}
+.cell:hover {
+  width: 1;
+  /*stroke: #801738;
+  stroke-width: 4;*/
+  fill: #801738;
+}
+</style>
+</head>
+<body>   
+<!--run D3-->
+<script type="text/javascript">
+//FC - Data Visualization Projects - Visualize Data with a Heat Map
+//D3 Project
+//Unix Epoch aka Unix time: "the number of seconds that have elapsed since the Unix epoch, minus leap seconds; the Unix epoch is 00:00:00 UTC on 1 January 1970 (an arbitrary date); leap seconds are ignored, with a leap second having the same Unix time as the second before it, and every day is treated as if it contains exactly 86400 seconds. Due to this treatment Unix time is not a true representation of UTC." - Wikipedia.
+
+const projectName = 'Visualize Data with a Heat Map';
+const dataURL = 'https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/master/global-temperature.json';
+
+fetch(dataURL)
+  .then(response => {if (response.ok) {return response.json()}})
+  .then(data => {
+    const width = 1000;
+    const height = 500;
+    const paddingTop = 75;
+    const paddingRight = 75;
+    const paddingBottom = 75;
+    const paddingLeft = 75;
+  
+    const svg = d3.select('body').append('svg').attr('width', width).attr('height', height).attr('id', 'svg');
+    
+    let years = [];
+    for (const [key, value] of Object.entries(data.monthlyVariance)) {
+      years.push(value.year);
+    }
+    const minYear = d3.min(years);
+    const maxYear = d3.max(years);
+  
+    const title = svg.append('text').text(projectName).attr('class', 'header').attr('id','title').attr('x', (width/2)).attr('y', 40).attr('text-anchor', 'middle').attr('font-size', '32px');
+    const description = svg.append('text').text('Monthly surface temperature variance from base temperature '+data.baseTemperature+' degrees Celsius, from '+minYear+' to '+maxYear+'.').attr('class', 'description').attr('id', 'description').attr('x', (width/2)).attr('y', 65).attr('text-anchor', 'middle').attr('font-size', '16px');
+  
+    //create axis:
+    const xScale = d3.scaleLinear().domain([minYear-0.5, maxYear+0.5]).range([0, width-paddingLeft-paddingRight]);
+    const tickValuesForAxis = [];
+    for (const element of years) {
+        if (element % 10 == 0 && ! tickValuesForAxis.includes(element)) {
+          tickValuesForAxis.push(element);
+        }
+    }
+    const xAxis = d3.axisBottom(xScale).tickValues(tickValuesForAxis).tickFormat(d3.format('d'));
+    const xAxisPlaced = svg.append('g').attr('transform', 'translate('+paddingLeft+','+(height-paddingTop)+')').call(xAxis).attr('class', 'axis').attr('id', 'x-axis');
+    const monthLabels = ['January','February', 'March','April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    const yScale = d3.scaleLinear().domain([0, 11]).range([paddingTop, height - paddingBottom-30]);
+    const yAxis = d3.axisLeft(yScale).tickSize(0).tickFormat((d,i) => monthLabels[i]);
+    const yAxisPlaced = svg.append('g').attr('transform', 'translate('+paddingBottom+','+0+')').call(yAxis).attr('class', 'axis').attr('id', 'y-axis').selectAll('text').style('text-anchor', 'endstart').attr('transform', 'translate('+0+','+14+')');
+  
+    //graph labels:
+    const xLabel = svg.append('text').text(Object.keys(data.monthlyVariance[1])[0]).attr('transform', 'translate('+(width*0.9)+','+(height-40)+')').style('text-anchor', 'middle').attr('class', 'label').attr('id', 'x-label');
+    const yLabel = svg.append('text').attr('x', (0-(height/5))).attr('y', 15).text(Object.keys(data.monthlyVariance[1])[1]).attr('transform', 'rotate(-90)').style('text-anchor', 'middle').attr('class','label').attr('id', 'y-label');
+  
+    //Tooltip:
+    let tooltip = d3.select('body').append('div').attr('class', 'tooltip').attr('id', 'tooltip').style('opacity', 0);
+  
+    function getMonth(x) {
+      return monthLabels[x-1];
+    }
+  
+    //fill in data:
+    const rectangles = svg.selectAll('rect').data(data.monthlyVariance).enter().append('rect')
+                          .attr('x', (d)=>xScale(d.year)+paddingLeft)
+                          .attr('y', (d)=>yScale(d.month-1))
+                          .attr('data-year', (d)=>d.year)
+                          .attr('data-month', (d)=>d.month-1)
+                          .attr('data-temp', (d)=>(data.baseTemperature+d.variance).toFixed(3))
+                          .attr('width', 4)
+                          .attr('height', (Math.round((height-paddingTop-paddingBottom)/12)))
+                          .attr('fill', function(d,i){
+                            if (d.variance>=1){
+                              return "#FF0010"
+                            } else if (d.variance>=0 && d.variance<1) {
+                              return "#FFa000"
+                            }else if (d.variance<0 && d.variance>-0.25){
+                              return "#FFfa00"
+                            }else if (d.variance<=-0.25 && d.variance>-1){
+                              return "#65ff00"
+                            }else if (d.variance<=-1) {
+                              return "#00d4ff"
+                            }
+                          })
+                          .attr('class', 'cell')
+                    //tooltip using <title> works with Chrome, but does not pass FCC tests, use this instead for FCC:
+                          .on('mouseover', function(event, d) {
+                            tooltip
+                              .transition()
+                              .duration(200)
+                              .style('opacity', 0.9);
+                            tooltip
+                              .html('Month: '+getMonth(d.month)+'<br>'+'Year: '+d.year+'<br>'+'Temp (C): '+(data.baseTemperature+d.variance).toFixed(3))
+                              .style('left', d3.select(this).attr('x')+'px')
+                              .style('top', d3.select(this).attr('y')+'px')
+                              ;
+                            tooltip
+                              .attr('data-year', d.year);
+                          })
+                          .on('mouseout', function(d) {
+                            tooltip
+                              .transition()
+                              .duration(400)
+                              .style('opacity', 0);
+                          });
+    //create legend:
+    const legendContainer = svg.append('g').attr('x', paddingLeft).attr('y', height-paddingTop+25).attr('width', 500).attr('height', 50).attr('class', 'legend').attr('id', 'legend').style('background-color', 'blue');
+    const legendScale = d3.scaleLinear().domain([-3, 3]).range([paddingLeft+25, paddingLeft+475]).nice();
+    const legendAxis = d3.axisBottom(legendScale);
+    const legeldScalePlaced = legendContainer.append('g').attr('transform', 'translate('+0+','+(height-(paddingTop/4))+')').call(legendAxis).attr('class', 'axis').attr('id', 'legend-axis');
+    const legendData = [];
+    var legendCounter = -3;
+    while (legendCounter < 3) {
+      legendData.push(legendCounter);
+      legendCounter+=0.1;
+    }
+    const legendSquares = legendContainer.selectAll('rect').data(legendData).enter().append('rect')
+                             .attr('x', (d)=>legendScale(d))
+                             .attr('y', height-(paddingTop/4)-25)
+                             .attr('width', 7)
+                             .attr('height', 25)
+                             .attr('fill', function(d,i){
+                                if (d>=1){
+                                  return "#FF0010"
+                                } else if (d>=0 && d<1) {
+                                  return "#FFa000"
+                                }else if (d<0 && d>-0.25){
+                                  return "#FFfa00"
+                                }else if (d<=-0.25 && d>-1.5){
+                                  return "#65ff00"
+                                }else if (d<=-1.5) {
+                                  return "#00d4ff"
+                                }
+                              })
+                             .attr('class', 'legendSquares');
+});
+</script>
+</body>
+</html>
