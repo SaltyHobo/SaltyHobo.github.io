@@ -67,7 +67,7 @@ fetch(dataURL)
     const maxYear = d3.max(years);
   
     const title = svg.append('text').text(projectName).attr('class', 'header').attr('id','title').attr('x', (width/2)).attr('y', 40).attr('text-anchor', 'middle').attr('font-size', '32px');
-    const description = svg.append('text').text('Monthly surface temperature variance from base temperature '+data.baseTemperature+' degrees Celsius, from '+minYear+' to '+maxYear+'.').attr('class', 'description').attr('id', 'description').attr('x', (width/2)).attr('y', 65).attr('text-anchor', 'middle').attr('font-size', '16px');
+    const description = svg.append('text').text('Monthly surface temperature, from '+minYear+' to '+maxYear+'.').attr('class', 'description').attr('id', 'description').attr('x', (width/2)).attr('y', 65).attr('text-anchor', 'middle').attr('font-size', '16px');
   
     //create axis:
     const xScale = d3.scaleLinear().domain([minYear-0.5, maxYear+0.5]).range([0, width-paddingLeft-paddingRight]);
