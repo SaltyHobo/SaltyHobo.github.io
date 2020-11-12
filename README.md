@@ -7,7 +7,7 @@
 <a href="https://saltyhobo.github.io/freecodecamp/data-visualization/">Data Visualization Projects</a>
   </li>
 </ul>  
-<br/><br/>
+<br/>
 
 #### &#9745; My attempts at using Javascript, React, and Redux:
 <ul>
@@ -19,7 +19,7 @@
 <a href="https://SaltyHobo.github.io/freecodecamp/javascript-certification/">Javascript Certification Projects</a>
   </li>
 </ul>
-<br/><br/>
+<br/>
 
 #### &#9745; My capstone project for Web Design for Everybody specialization can be found here:
 <ul>
@@ -41,6 +41,6 @@ The colors need to be changed since the current color setup is not appealing, bu
 <a href="https://saltyhobo.github.io/freecodecamp/portfolio/index.html">Responsive Web Design Project</a>
   </li>
 </ul>
-<br/><br/>
+<br/>
 Open to new connections.
 - [ ] SaltyHobo:bowtie:
