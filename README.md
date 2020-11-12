@@ -30,9 +30,11 @@
 The colors need to be changed since the current color setup is not appealing, but other than that:
 <br/>
 &nbsp; This project includes responsive design, is dark-mode compatible, and places an emphasis on accessibility.
-- [x] [WCAG AAA color contrast compliant](https://webaim.org/resources/contrastchecker/).
-- [x] [Markup validated](https://validator.w3.org/).
-- [x] [Web accessible](http://wave.webaim.org/).
+<ul>
+<li> - [x] [WCAG AAA color contrast compliant](https://webaim.org/resources/contrastchecker/). </li>
+<li> - [x] [Markup validated](https://validator.w3.org/). </li>
+<li> - [x] [Web accessible](http://wave.webaim.org/).</li>
+</ul>
 <br/><br/>
 #### &#9745; My Responsive Web Design project for freeCodeCamp certification can be found here: <br>
 <ul>
