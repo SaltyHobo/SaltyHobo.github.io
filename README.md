@@ -27,7 +27,6 @@
 <a href="https://saltyhobo.github.io/capstone/index.html">Capstone Web Design Project</a>
   </li>
 </ul>
-<br/>
 The colors need to be changed since the current color setup is not appealing, but other than that:
 <br/>
 &nbsp; This project includes responsive design, is dark-mode compatible, and places an emphasis on accessibility.
