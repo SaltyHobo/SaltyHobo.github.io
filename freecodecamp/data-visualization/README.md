@@ -4,8 +4,11 @@
 
 </div>
 
-<ul><li>- [x]  <a href="https://saltyhobo.github.io/freecodecamp/data-visualization/visualize-data-with-a-scatterplot.html">Visualize Data with a Scatter-Plot Chart</a></li></ul>
-<ul><li>- [x]  <a href="https://saltyhobo.github.io/freecodecamp/data-visualization/visualize-data-with-a-bar-chart.html">Visualize Data with a Bar Chart</a></li></ul>
+
+
+<ul><li>- [x]  <a href="https://saltyhobo.github.io/freecodecamp/data-visualization/visualize-data-with-a-heat-map.html">Visualize Data with a Heat Map</a></li>
+  <li>- [x]  <a href="https://saltyhobo.github.io/freecodecamp/data-visualization/visualize-data-with-a-scatterplot.html">Visualize Data with a Scatter-Plot Chart</a></li>
+  <li>- [x]  <a href="https://saltyhobo.github.io/freecodecamp/data-visualization/visualize-data-with-a-bar-chart.html">Visualize Data with a Bar Chart</a></li></ul>
 
 
 
