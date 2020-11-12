@@ -36,7 +36,8 @@ The colors need to be changed since the current color setup is not appealing, bu
 <li> - [x] [Web accessible](http://wave.webaim.org/).</li>
 </ul>
 <br/><br/>
-#### &#9745; My Responsive Web Design project for freeCodeCamp certification can be found here: <br>
+#### &#9745; My Responsive Web Design project for freeCodeCamp certification can be found here:
+<br>
 <ul>
   <li>
 <a href="https://saltyhobo.github.io/freecodecamp/portfolio/index.html">Responsive Web Design Project</a>
