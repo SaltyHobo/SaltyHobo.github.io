@@ -191,145 +191,187 @@ class Tictactoe extends React.Component {
 ReactDOM.render(<Tictactoe />, document.getElementById('root'));
 </script>
 <style>
-    body{
-  background-color: #90EE90;
-}
-#board{
-  margin: auto;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  grid-gap: 0px;
-  min-width: 10vw;
-  max-width: 400px;
-  min-height: 10vh;
-  max-height: 75vh;
-  padding-left:10vw;
-  padding-right: 10vw;
-}
-.button{
-  aspect-ratio: 1;
-  font-size: 6vw;
-  border: none;
-  background-color: #90EE90;
-}
-#game-text{
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  padding: 1.5em;
-}
-.player-indicator{
-  color: #780000;
-  font-family: 'Roboto', arial;
-  font-weight: 900;
-}
-/*individual buttons*/
-#player-text{
-  display: inline;
-  text-align: right;
-}
-#player-number{
-  display: inline;
-  text-align:center;
-  animation: bounce 5s infinite linear;
- position:relative;
-}
-#turn-text{
-  display: inline;
-  text-align: left;
-}
-@keyframes bounce {
-  25%  {transform: rotate(10deg);}
-  50%  {transform: rotate(-5deg);}
-  75%  {transform: rotate(5deg);}
-  100% {transform: rotate(0deg);}
-}
-[data-id=sq1]{
-  border-bottom: 5px solid #A00000;
-  border-right: 5px solid #A00000;
-}
-[data-id=sq2]{
-  border-bottom: 5px solid #A00000;
-  border-right: 5px solid #A00000;
-  border-left: 5px solid coral;
-}
-[data-id=sq3]{
-  border-bottom: 5px solid #A00000;
-  border-left: 5px solid coral;
-}
-[data-id=sq4]{
-  border-bottom: 5px solid #A00000;
-  border-top: 5px solid coral;
-  border-right: 5px solid #A00000;
-}
-[data-id=sq5]{
-  border-bottom: 5px solid #A00000;
-  border-top: 5px solid coral;
-  border-right: 5px solid #A00000;
-  border-left: 5px solid coral;
-}
-[data-id=sq6]{
-  border-bottom: 5px solid #A00000;
-  border-top: 5px solid coral;
-  border-left: 5px solid coral;
-}
-[data-id=sq7]{
-  border-top: 5px solid coral;
-  border-right: 5px solid #A00000;
-}
-[data-id=sq8]{
-  border-top: 5px solid coral;
-  border-right: 5px solid #A00000;
-  border-left: 5px solid coral;
-}
-[data-id=sq9]{
-  border-top: 5px solid coral;
-  border-left: 5px solid coral;
-}
-#reset-button{
-  display: inline-block;
-  float: right;
-  margin: 25px;
-  width: 15vw;
-  max-width: 175px;
-  /*position: absolute;
-  top: 70vh;
-  left: 70vw;*/
-  border-radius: 50%;
-  border: none;
-  background-color: coral;
-  font-color: #780000;
-  font-size: 2vw;
-  text-align: center;
-}
-/*smaller screens aka phones*/
-@media only screen and (max-width: 400px) {
-  #game-text{
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: repeat(3, 1fr);
-  }
-  #player-text{
-    display: inline;
-    text-align: center;
-  }
-  #player-number{
-    display: inline;
-    text-align:center;
-  }
-  #turn-text{
-    display: inline;
-    text-align: center;
-  }
-  #reset-button{
-    display: block;
-    float: inherit;
-    margin: auto;
-    margin-top: 15px;
-    width: 25vw;
-    font-size: 4vw;
-  }
-}
+  body{
+    background-color: #90EE90;
+    }
+    #board{
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      grid-gap: 0px;
+      min-width: 10vw;
+      max-width: 400px;
+      min-height: 10vh;
+      max-height: 75vh;
+      padding-left:10vw;
+      padding-right: 10vw;
+    }
+    .button{
+      aspect-ratio: 1;
+      font-size: 6vw;
+      border: none;
+      background-color: #90EE90;
+    }
+    .button:disabled, button[disabled]{
+      aspect-ratio: 1;
+      font-size: 6vw;
+      border: none;
+      background-color: #90EE90;
+    }
+    #game-text{
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      padding: 1.5em;
+    }
+    .player-indicator{
+      color: #780000;
+      font-family: 'Roboto', arial;
+      font-weight: 900;
+    }
+    /*individual buttons*/
+    #player-text{
+      display: inline;
+      text-align: right;
+    }
+    #player-number{
+      display: inline;
+      text-align:center;
+      animation: bounce 5s infinite linear;
+     position:relative;
+    }
+    #turn-text{
+      display: inline;
+      text-align: left;
+    }
+    @keyframes bounce {
+      25%  {transform: rotate(10deg);}
+      50%  {transform: rotate(-5deg);}
+      75%  {transform: rotate(5deg);}
+      100% {transform: rotate(0deg);}
+    }
+    [data-id=sq1]{
+      border-bottom: 5px solid #A00000;
+      border-right: 5px solid #A00000;
+    }
+    [data-id=sq1]:disabled, [data-id=sq1][disabled]{
+      border-bottom: 5px solid #A00000;
+      border-right: 5px solid #A00000;
+    }
+    [data-id=sq2]{
+      border-bottom: 5px solid #A00000;
+      border-right: 5px solid #A00000;
+      border-left: 5px solid coral;
+    }
+    [data-id=sq2]:disabled, [data-id=sq2][disabled]{
+      border-bottom: 5px solid #A00000;
+      border-right: 5px solid #A00000;
+    }
+    [data-id=sq3]{
+      border-bottom: 5px solid #A00000;
+      border-left: 5px solid coral;
+    }
+    [data-id=sq3]:disabled, [data-id=sq3][disabled]{
+      border-bottom: 5px solid #A00000;
+      border-right: 5px solid #A00000;
+    }
+    [data-id=sq4]{
+      border-bottom: 5px solid #A00000;
+      border-top: 5px solid coral;
+      border-right: 5px solid #A00000;
+    }
+    [data-id=sq4]:disabled, [data-id=sq4][disabled]{
+      border-bottom: 5px solid #A00000;
+      border-right: 5px solid #A00000;
+    }
+    [data-id=sq5]{
+      border-bottom: 5px solid #A00000;
+      border-top: 5px solid coral;
+      border-right: 5px solid #A00000;
+      border-left: 5px solid coral;
+    }
+    [data-id=sq5]:disabled, [data-id=sq5][disabled]{
+      border-bottom: 5px solid #A00000;
+      border-right: 5px solid #A00000;
+    }
+    [data-id=sq6]{
+      border-bottom: 5px solid #A00000;
+      border-top: 5px solid coral;
+      border-left: 5px solid coral;
+    }
+    [data-id=sq6]:disabled, [data-id=sq6][disabled]{
+      border-bottom: 5px solid #A00000;
+      border-right: 5px solid #A00000;
+    }
+    [data-id=sq7]{
+      border-top: 5px solid coral;
+      border-right: 5px solid #A00000;
+    }
+    [data-id=sq7]:disabled, [data-id=sq7][disabled]{
+      border-bottom: 5px solid #A00000;
+      border-right: 5px solid #A00000;
+    }
+    [data-id=sq8]{
+      border-top: 5px solid coral;
+      border-right: 5px solid #A00000;
+      border-left: 5px solid coral;
+    }
+    [data-id=sq8]:disabled, [data-id=sq8][disabled]{
+      border-bottom: 5px solid #A00000;
+      border-right: 5px solid #A00000;
+    }
+    [data-id=sq9]{
+      border-top: 5px solid coral;
+      border-left: 5px solid coral;
+    }
+    [data-id=sq9]:disabled, [data-id=sq9][disabled]{
+      border-bottom: 5px solid #A00000;
+      border-right: 5px solid #A00000;
+    }
+    #reset-button{
+      display: inline-block;
+      float: right;
+      margin: 25px;
+      width: 15vw;
+      max-width: 175px;
+      /*position: absolute;
+      top: 70vh;
+      left: 70vw;*/
+      border-radius: 50%;
+      border: none;
+      background-color: coral;
+      font-color: #780000;
+      font-size: 2vw;
+      text-align: center;
+    }
+    /*smaller screens aka phones*/
+    @media only screen and (max-width: 400px) {
+      #game-text{
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(3, 1fr);
+      }
+      #player-text{
+        display: inline;
+        text-align: center;
+      }
+      #player-number{
+        display: inline;
+        text-align:center;
+      }
+      #turn-text{
+        display: inline;
+        text-align: center;
+      }
+      #reset-button{
+        display: block;
+        float: inherit;
+        margin: auto;
+        margin-top: 15px;
+        width: 25vw;
+        font-size: 4vw;
+      }
+    }
 </style>
 </head>
 <body>
