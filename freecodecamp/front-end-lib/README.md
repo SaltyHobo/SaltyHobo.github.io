@@ -4,7 +4,7 @@
 
 </div>
 <ul><li>- [x]  <a href="https://saltyhobo.github.io/freecodecamp/front-end-lib/tic-tac-toe.html">Extra: Tic Take Toe 2 Player Game</a></li></ul>
-<ul><li>- [x]  <a href="https://saltyhobo.github.io/freecodecamp/front-end-lib/random-quote-machine.html">Random Quote Machine</a></li></ul>
+<ul><li>- [x]  <a href="https://saltyhobo.github.io/freecodecamp/front-end-lib/random-quote-machine.html">Random Quote Machine (reload page if just yellow screen)</a></li></ul>
 <ul><li>- [x] <a href="https://saltyhobo.github.io/freecodecamp/front-end-lib/markdown-previewer.html">Markdown Previewer</a></li></ul>
 <ul><li>- [x] <a href="https://saltyHobo.github.io/freecodecamp/front-end-lib/drum-machine.html">Drum Machine</a></li></ul>
 <ul><li>- [x] <a href="https://SaltyHobo.github.io/freecodecamp/front-end-lib/javascript-calculator.html">Javascript Calculator</a></li></ul>
