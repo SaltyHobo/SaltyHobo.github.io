@@ -3,8 +3,6 @@
 <p>The content and styling are very simple. The purpose of these projects is to utilize front-end libraries.</p>
 
 </div>
-(  SaltyHobo.github.io/freecodecamp/front-end-lib/tic-tac-toe.html  )
-((    ))
 <ul><li>- [x]  <a href="https://saltyhobo.github.io/freecodecamp/front-end-lib/tic-tac-toe.html">Extra: Tic Take Toe 2 Player Game</a></li></ul>
 <ul><li>- [x]  <a href="https://saltyhobo.github.io/freecodecamp/front-end-lib/random-quote-machine.html">Random Quote Machine</a></li></ul>
 <ul><li>- [x] <a href="https://saltyhobo.github.io/freecodecamp/front-end-lib/markdown-previewer.html">Markdown Previewer</a></li></ul>
