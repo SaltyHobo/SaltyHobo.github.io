@@ -15,3 +15,11 @@
 
 <p>(note 1: While I normally prefer to maintain styling and scripts in separate files, for these projects I included everything in the HTML file for the sake of keeping everything in one place.)</p>
 <p>(note 2: On my machine (running Google Chrome) these files are working just fine, but you are having trouble loading the scripts, please try opening them on CodePen.)</p>
+
+
+<p>
+<details>
+<summary>See HTML5 projects and more here</summary>
+  <a href="https://github.com/SaltyHobo/SaltyHobo.github.io">SaltyHobo's Homepage</a>
+</details>
+  </p>
