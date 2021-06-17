@@ -55,32 +55,28 @@ class Tictactoe extends React.Component {
         } else {
           [...document.getElementsByTagName('button')].forEach((el)=>el.disabled = true);
         }
-      }
-      if (this.state.sq1 == "o") {
+      } else if (this.state.sq1 == "o") {
         if (confirm("Player 2 win! Play again?")) {
           this.newGame()
         } else {
           [...document.getElementsByTagName('button')].forEach((el)=>el.disabled = true);
         }
       }
-    }
-    if (this.state.sq2 == this.state.sq5 && this.state.sq2 == this.state.sq8) {
+    } else if (this.state.sq2 == this.state.sq5 && this.state.sq2 == this.state.sq8) {
       if (this.state.sq2 == "x") {
         if (confirm("Player 1 wins! Play again?")) {
           this.newGame()
         } else {
           [...document.getElementsByTagName('button')].forEach((el)=>el.disabled = true);
         }
-      }
-      if (this.state.sq2 == "o") {
+      } else if (this.state.sq2 == "o") {
         if (confirm("Player 2 win! Play again?")) {
           this.newGame()
         } else {
           [...document.getElementsByTagName('button')].forEach((el)=>el.disabled = true);
         }
       }
-    }
-    if ((this.state.sq3 == this.state.sq6 && this.state.sq3 == this.state.sq9) ||
+    } else if ((this.state.sq3 == this.state.sq6 && this.state.sq3 == this.state.sq9) ||
         (this.state.sq3 == this.state.sq5 && this.state.sq3 == this.state.sq7)) {
       if (this.state.sq3 == "x") {
         if (confirm("Player 1 wins! Play again?")) {
@@ -88,40 +84,35 @@ class Tictactoe extends React.Component {
         } else {
           [...document.getElementsByTagName('button')].forEach((el)=>el.disabled = true);
         }
-      }
-      if (this.state.sq3 == "o") {
+      } else if (this.state.sq3 == "o") {
         if (confirm("Player 2 win! Play again?")) {
           this.newGame()
         } else {
           [...document.getElementsByTagName('button')].forEach((el)=>el.disabled = true);
         }
       }
-    }
-    if (this.state.sq4 == this.state.sq5 && this.state.sq4 === this.state.sq6) {
+    } else if (this.state.sq4 == this.state.sq5 && this.state.sq4 === this.state.sq6) {
       if (this.state.sq4 == "x") {
         if (confirm("Player 1 wins! Play again?")) {
           this.newGame()
         } else {
           [...document.getElementsByTagName('button')].forEach((el)=>el.disabled = true);
         }
-      }
-      if (this.state.sq4 == "o") {
+      } else if (this.state.sq4 == "o") {
         if (confirm("Player 2 win! Play again?")) {
           this.newGame()
         } else {
           [...document.getElementsByTagName('button')].forEach((el)=>el.disabled = true);
         }
       }
-    }
-    if (this.state.sq7 == this.state.sq8 && this.state.sq7 == this.state.sq9) {
+    } else if (this.state.sq7 == this.state.sq8 && this.state.sq7 == this.state.sq9) {
       if (this.state.sq7 == "x") {
         if (confirm("Player 1 wins! Play again?")) {
           this.newGame()
         } else {
           [...document.getElementsByTagName('button')].forEach((el)=>el.disabled = true);
         }
-      }
-      if (this.state.sq7 == "o") {
+      } else if (this.state.sq7 == "o") {
         if (confirm("Player 2 win! Play again?")) {
           this.newGame()
         } else {
