@@ -134,25 +134,25 @@ class Tictactoe extends React.Component {
     const sqId = event.target.getAttribute("data-id");
     if (this.state.player == 1) {
       if (sqId == "sq1") {this.setState({sq1: this.state.player1});}
-      if (sqId == "sq2") {this.setState({sq2: this.state.player1});}
-      if (sqId == "sq3") {this.setState({sq3: this.state.player1});}
-      if (sqId == "sq4") {this.setState({sq4: this.state.player1});}
-      if (sqId == "sq5") {this.setState({sq5: this.state.player1});}
-      if (sqId == "sq6") {this.setState({sq6: this.state.player1});}
-      if (sqId == "sq7") {this.setState({sq7: this.state.player1});}
-      if (sqId == "sq8") {this.setState({sq8: this.state.player1});}
-      if (sqId == "sq9") {this.setState({sq9: this.state.player1});}
+      else if (sqId == "sq2") {this.setState({sq2: this.state.player1});}
+      else if (sqId == "sq3") {this.setState({sq3: this.state.player1});}
+      else if (sqId == "sq4") {this.setState({sq4: this.state.player1});}
+      else if (sqId == "sq5") {this.setState({sq5: this.state.player1});}
+      else if (sqId == "sq6") {this.setState({sq6: this.state.player1});}
+      else if (sqId == "sq7") {this.setState({sq7: this.state.player1});}
+      else if (sqId == "sq8") {this.setState({sq8: this.state.player1});}
+      else if (sqId == "sq9") {this.setState({sq9: this.state.player1});}
     }
     if (this.state.player == 2) {
       if (sqId == "sq1") {this.setState({sq1: this.state.player2});}
-      if (sqId == "sq2") {this.setState({sq2: this.state.player2});}
-      if (sqId == "sq3") {this.setState({sq3: this.state.player2});}
-      if (sqId == "sq4") {this.setState({sq4: this.state.player2});}
-      if (sqId == "sq5") {this.setState({sq5: this.state.player2});}
-      if (sqId == "sq6") {this.setState({sq6: this.state.player2});}
-      if (sqId == "sq7") {this.setState({sq7: this.state.player2});}
-      if (sqId == "sq8") {this.setState({sq8: this.state.player2});}
-      if (sqId == "sq9") {this.setState({sq9: this.state.player2});}
+      else if (sqId == "sq2") {this.setState({sq2: this.state.player2});}
+      else if (sqId == "sq3") {this.setState({sq3: this.state.player2});}
+      else if (sqId == "sq4") {this.setState({sq4: this.state.player2});}
+      else if (sqId == "sq5") {this.setState({sq5: this.state.player2});}
+      else if (sqId == "sq6") {this.setState({sq6: this.state.player2});}
+      else if (sqId == "sq7") {this.setState({sq7: this.state.player2});}
+      else if (sqId == "sq8") {this.setState({sq8: this.state.player2});}
+      else if (sqId == "sq9") {this.setState({sq9: this.state.player2});}
     }
     if (this.state.player == 1) {
       this.setState({player: 2}, () => {console.log('player state updated'), this.checkWinner()});
