@@ -4,7 +4,7 @@
 </div>
 
 
-<ul><li>- [x]  <a href="https://saltyHobo.github.io/extra-js-react-projects/tic-tac-toe.html">Tic Tac Toe 2 Player</a></li></ul>
+<ul><li>- [x]  <a href="https://saltyHobo.github.io/extra-js-react-projects/tic-tac-toe-two-player.html">Tic Tac Toe 2 Player</a></li></ul>
 
 
 
