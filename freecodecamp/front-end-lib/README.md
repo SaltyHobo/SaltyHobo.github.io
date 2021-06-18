@@ -1,8 +1,8 @@
 # Folder for FCC Front End Libraries challenges.
 <div>
 <p>The content and styling are very simple. The purpose of these projects is to utilize front-end libraries.</p>
-
 </div>
+
 <ul><li>- [x]  <a href="https://saltyhobo.github.io/freecodecamp/front-end-lib/random-quote-machine.html">Random Quote Machine (reload page if just yellow screen)</a></li></ul>
 <ul><li>- [x] <a href="https://saltyhobo.github.io/freecodecamp/front-end-lib/markdown-previewer.html">Markdown Previewer</a></li></ul>
 <ul><li>- [x] <a href="https://saltyHobo.github.io/freecodecamp/front-end-lib/drum-machine.html">Drum Machine</a></li></ul>
