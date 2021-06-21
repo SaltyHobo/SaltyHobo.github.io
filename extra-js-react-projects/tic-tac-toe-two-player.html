@@ -10,176 +10,176 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.13.1/umd/react-dom.production.min.js"></script>
   <!--run React-Javascript program to build Tic Tac Toe app-->
   <script type="text/babel">
-  //build State:
-  const buildState = () => ({
-    player: '1',
-    player1: 'x',
-    player2: 'o',
-    sq1: false,
-    sq2: false,
-    sq3: false,
-    sq4: false,
-    sq5: false,
-    sq6: false,
-    sq7: false,
-    sq8: false,
-    sq9: false,
-  });
-  //React - Tic Tac Toe 2 Player app:
-  class Tictactoe extends React.Component {
-    constructor(props) {
-      super(props);
-      this.state = { ...buildState() }
-      this.checkWinner = this.checkWinner.bind(this);
-      this.makeMove = this.makeMove.bind(this);
-      this.newGame = this.newGame.bind(this);
-      this.resetGame = this.resetGame.bind(this);
-    }
+    //build State:
+    const buildState = () => ({
+      player: '1',
+      player1: 'x',
+      player2: 'o',
+      sq1: false,
+      sq2: false,
+      sq3: false,
+      sq4: false,
+      sq5: false,
+      sq6: false,
+      sq7: false,
+      sq8: false,
+      sq9: false,
+    });
+    //React - Tic Tac Toe 2 Player app:
+    class Tictactoe extends React.Component {
+      constructor(props) {
+        super(props);
+        this.state = { ...buildState() }
+        this.checkWinner = this.checkWinner.bind(this);
+        this.makeMove = this.makeMove.bind(this);
+        this.newGame = this.newGame.bind(this);
+        this.resetGame = this.resetGame.bind(this);
+      }
 
-    //reset the board:
-    resetGame = () => {
-      this.setState({...buildState()});
-      [...document.getElementByTagName('button')].forEach((el)=>el.disabled=false);
-    }
+      //reset the board:
+      resetGame = () => {
+        this.setState({...buildState()});
+        [...document.getElementByTagName('button')].forEach((el)=>el.disabled=false);
+      }
 
-    //start a new game:
-    newGame = () => {this.setState({...buildState()})}
+      //start a new game:
+      newGame = () => {this.setState({...buildState()})}
 
-    //check if move creates a winning combo:
-    checkWinner() {
-      if ((this.state.sq1 == this.state.sq2 && this.state.sq1 == this.state.sq3) ||
-          (this.state.sq1 == this.state.sq4 && this.state.sq1 == this.state.sq7) ||
-          (this.state.sq1 == this.state.sq5 && this.state.sq1 == this.state.sq9)) {
-        if (this.state.sq1 == "x") {
-          if (confirm("Player 1 wins! Play again?")) {
-            this.newGame()
-          } else {
-            [...document.getElementsByTagName('button')].forEach((el)=>el.disabled = true);
+      //check if move creates a winning combo:
+      checkWinner() {
+        if ((this.state.sq1 == this.state.sq2 && this.state.sq1 == this.state.sq3) ||
+            (this.state.sq1 == this.state.sq4 && this.state.sq1 == this.state.sq7) ||
+            (this.state.sq1 == this.state.sq5 && this.state.sq1 == this.state.sq9)) {
+          if (this.state.sq1 == "x") {
+            if (confirm("Player 1 wins! Play again?")) {
+              this.newGame()
+            } else {
+              [...document.getElementsByTagName('button')].forEach((el)=>el.disabled = true);
+            }
+          } else if (this.state.sq1 == "o") {
+            if (confirm("Player 2 win! Play again?")) {
+              this.newGame()
+            } else {
+              [...document.getElementsByTagName('button')].forEach((el)=>el.disabled = true);
+            }
           }
-        } else if (this.state.sq1 == "o") {
-          if (confirm("Player 2 win! Play again?")) {
-            this.newGame()
-          } else {
-            [...document.getElementsByTagName('button')].forEach((el)=>el.disabled = true);
+        } else if (this.state.sq2 == this.state.sq5 && this.state.sq2 == this.state.sq8) {
+          if (this.state.sq2 == "x") {
+            if (confirm("Player 1 wins! Play again?")) {
+              this.newGame()
+            } else {
+              [...document.getElementsByTagName('button')].forEach((el)=>el.disabled = true);
+            }
+          } else if (this.state.sq2 == "o") {
+            if (confirm("Player 2 win! Play again?")) {
+              this.newGame()
+            } else {
+              [...document.getElementsByTagName('button')].forEach((el)=>el.disabled = true);
+            }
           }
-        }
-      } else if (this.state.sq2 == this.state.sq5 && this.state.sq2 == this.state.sq8) {
-        if (this.state.sq2 == "x") {
-          if (confirm("Player 1 wins! Play again?")) {
-            this.newGame()
-          } else {
-            [...document.getElementsByTagName('button')].forEach((el)=>el.disabled = true);
+        } else if ((this.state.sq3 == this.state.sq6 && this.state.sq3 == this.state.sq9) ||
+            (this.state.sq3 == this.state.sq5 && this.state.sq3 == this.state.sq7)) {
+          if (this.state.sq3 == "x") {
+            if (confirm("Player 1 wins! Play again?")) {
+              this.newGame()
+            } else {
+              [...document.getElementsByTagName('button')].forEach((el)=>el.disabled = true);
+            }
+          } else if (this.state.sq3 == "o") {
+            if (confirm("Player 2 win! Play again?")) {
+              this.newGame()
+            } else {
+              [...document.getElementsByTagName('button')].forEach((el)=>el.disabled = true);
+            }
           }
-        } else if (this.state.sq2 == "o") {
-          if (confirm("Player 2 win! Play again?")) {
-            this.newGame()
-          } else {
-            [...document.getElementsByTagName('button')].forEach((el)=>el.disabled = true);
+        } else if (this.state.sq4 == this.state.sq5 && this.state.sq4 === this.state.sq6) {
+          if (this.state.sq4 == "x") {
+            if (confirm("Player 1 wins! Play again?")) {
+              this.newGame()
+            } else {
+              [...document.getElementsByTagName('button')].forEach((el)=>el.disabled = true);
+            }
+          } else if (this.state.sq4 == "o") {
+            if (confirm("Player 2 win! Play again?")) {
+              this.newGame()
+            } else {
+              [...document.getElementsByTagName('button')].forEach((el)=>el.disabled = true);
+            }
           }
-        }
-      } else if ((this.state.sq3 == this.state.sq6 && this.state.sq3 == this.state.sq9) ||
-          (this.state.sq3 == this.state.sq5 && this.state.sq3 == this.state.sq7)) {
-        if (this.state.sq3 == "x") {
-          if (confirm("Player 1 wins! Play again?")) {
-            this.newGame()
-          } else {
-            [...document.getElementsByTagName('button')].forEach((el)=>el.disabled = true);
-          }
-        } else if (this.state.sq3 == "o") {
-          if (confirm("Player 2 win! Play again?")) {
-            this.newGame()
-          } else {
-            [...document.getElementsByTagName('button')].forEach((el)=>el.disabled = true);
-          }
-        }
-      } else if (this.state.sq4 == this.state.sq5 && this.state.sq4 === this.state.sq6) {
-        if (this.state.sq4 == "x") {
-          if (confirm("Player 1 wins! Play again?")) {
-            this.newGame()
-          } else {
-            [...document.getElementsByTagName('button')].forEach((el)=>el.disabled = true);
-          }
-        } else if (this.state.sq4 == "o") {
-          if (confirm("Player 2 win! Play again?")) {
-            this.newGame()
-          } else {
-            [...document.getElementsByTagName('button')].forEach((el)=>el.disabled = true);
-          }
-        }
-      } else if (this.state.sq7 == this.state.sq8 && this.state.sq7 == this.state.sq9) {
-        if (this.state.sq7 == "x") {
-          if (confirm("Player 1 wins! Play again?")) {
-            this.newGame()
-          } else {
-            [...document.getElementsByTagName('button')].forEach((el)=>el.disabled = true);
-          }
-        } else if (this.state.sq7 == "o") {
-          if (confirm("Player 2 win! Play again?")) {
-            this.newGame()
-          } else {
-            [...document.getElementsByTagName('button')].forEach((el)=>el.disabled = true);
+        } else if (this.state.sq7 == this.state.sq8 && this.state.sq7 == this.state.sq9) {
+          if (this.state.sq7 == "x") {
+            if (confirm("Player 1 wins! Play again?")) {
+              this.newGame()
+            } else {
+              [...document.getElementsByTagName('button')].forEach((el)=>el.disabled = true);
+            }
+          } else if (this.state.sq7 == "o") {
+            if (confirm("Player 2 win! Play again?")) {
+              this.newGame()
+            } else {
+              [...document.getElementsByTagName('button')].forEach((el)=>el.disabled = true);
+            }
           }
         }
       }
-    }
-    makeMove = event => {
-      const sqId = event.target.getAttribute("data-id");
-      if (this.state.player == 1) {
-        if (sqId == "sq1") {this.setState({sq1: this.state.player1});}
-        else if (sqId == "sq2") {this.setState({sq2: this.state.player1});}
-        else if (sqId == "sq3") {this.setState({sq3: this.state.player1});}
-        else if (sqId == "sq4") {this.setState({sq4: this.state.player1});}
-        else if (sqId == "sq5") {this.setState({sq5: this.state.player1});}
-        else if (sqId == "sq6") {this.setState({sq6: this.state.player1});}
-        else if (sqId == "sq7") {this.setState({sq7: this.state.player1});}
-        else if (sqId == "sq8") {this.setState({sq8: this.state.player1});}
-        else if (sqId == "sq9") {this.setState({sq9: this.state.player1});}
+      makeMove = event => {
+        const sqId = event.target.getAttribute("data-id");
+        if (this.state.player == 1) {
+          if (sqId == "sq1") {this.setState({sq1: this.state.player1});}
+          else if (sqId == "sq2") {this.setState({sq2: this.state.player1});}
+          else if (sqId == "sq3") {this.setState({sq3: this.state.player1});}
+          else if (sqId == "sq4") {this.setState({sq4: this.state.player1});}
+          else if (sqId == "sq5") {this.setState({sq5: this.state.player1});}
+          else if (sqId == "sq6") {this.setState({sq6: this.state.player1});}
+          else if (sqId == "sq7") {this.setState({sq7: this.state.player1});}
+          else if (sqId == "sq8") {this.setState({sq8: this.state.player1});}
+          else if (sqId == "sq9") {this.setState({sq9: this.state.player1});}
+        }
+        if (this.state.player == 2) {
+          if (sqId == "sq1") {this.setState({sq1: this.state.player2});}
+          else if (sqId == "sq2") {this.setState({sq2: this.state.player2});}
+          else if (sqId == "sq3") {this.setState({sq3: this.state.player2});}
+          else if (sqId == "sq4") {this.setState({sq4: this.state.player2});}
+          else if (sqId == "sq5") {this.setState({sq5: this.state.player2});}
+          else if (sqId == "sq6") {this.setState({sq6: this.state.player2});}
+          else if (sqId == "sq7") {this.setState({sq7: this.state.player2});}
+          else if (sqId == "sq8") {this.setState({sq8: this.state.player2});}
+          else if (sqId == "sq9") {this.setState({sq9: this.state.player2});}
+        }
+        if (this.state.player == 1) {
+          this.setState({player: 2}, () => {console.log('player state updated'), this.checkWinner()});
+        } else if (this.state.player == 2) {
+          this.setState({player: 1}, () => {console.log('player state updated'), this.checkWinner()});
+        }    
       }
-      if (this.state.player == 2) {
-        if (sqId == "sq1") {this.setState({sq1: this.state.player2});}
-        else if (sqId == "sq2") {this.setState({sq2: this.state.player2});}
-        else if (sqId == "sq3") {this.setState({sq3: this.state.player2});}
-        else if (sqId == "sq4") {this.setState({sq4: this.state.player2});}
-        else if (sqId == "sq5") {this.setState({sq5: this.state.player2});}
-        else if (sqId == "sq6") {this.setState({sq6: this.state.player2});}
-        else if (sqId == "sq7") {this.setState({sq7: this.state.player2});}
-        else if (sqId == "sq8") {this.setState({sq8: this.state.player2});}
-        else if (sqId == "sq9") {this.setState({sq9: this.state.player2});}
-      }
-      if (this.state.player == 1) {
-        this.setState({player: 2}, () => {console.log('player state updated'), this.checkWinner()});
-      } else if (this.state.player == 2) {
-        this.setState({player: 1}, () => {console.log('player state updated'), this.checkWinner()});
-      }    
-    }
 
-    render() {
-      return (
-        <div class="container" id="game">
-          <div class="container" id="game-text">
-            <p id="player-text" class="player-indicator">PLAYER</p>
-            <p id="player-number" class="bouncy player-indicator">{this.state.player} 'S</p>
-            <p id="turn-text" class="player-indicator">TURN</p>
+      render() {
+        return (
+          <div class="container" id="game">
+            <div class="container" id="game-text">
+              <p id="player-text" class="player-indicator">PLAYER</p>
+              <p id="player-number" class="bouncy player-indicator">{this.state.player} 'S</p>
+              <p id="turn-text" class="player-indicator">TURN</p>
+            </div>
+            <div class="container" id="board">
+              <button class="button" data-id="sq1" value="0" disabled={this.state.sq1} onClick={this.makeMove}>{this.state.sq1}</button>
+              <button class="button" data-id="sq2" value="0" disabled={this.state.sq2} onClick={this.makeMove}>{this.state.sq2}</button>
+              <button class="button" data-id="sq3" value="0" disabled={this.state.sq3} onClick={this.makeMove}>{this.state.sq3}</button>
+              <button class="button" data-id="sq4" value="0" disabled={this.state.sq4} onClick={this.makeMove}>{this.state.sq4}</button>
+              <button class="button" data-id="sq5" value="0" disabled={this.state.sq5} onClick={this.makeMove}>{this.state.sq5}</button>
+              <button class="button" data-id="sq6" value="0" disabled={this.state.sq6} onClick={this.makeMove}>{this.state.sq6}</button>
+              <button class="button" data-id="sq7" value="0" disabled={this.state.sq7} onClick={this.makeMove}>{this.state.sq7}</button>
+              <button class="button" data-id="sq8" value="0" disabled={this.state.sq8} onClick={this.makeMove}>{this.state.sq8}</button>
+              <button class="button" data-id="sq9" value="0" disabled={this.state.sq9} onClick={this.makeMove}>{this.state.sq9}</button>
+            </div>
+            <div class="container" id="reset-container">
+              <input type="button" class="button" id="reset-button" value="new game" onClick={this.resetGame}/>
+            </div>
           </div>
-          <div class="container" id="board">
-            <button class="button" data-id="sq1" value="0" disabled={this.state.sq1} onClick={this.makeMove}>{this.state.sq1}</button>
-            <button class="button" data-id="sq2" value="0" disabled={this.state.sq2} onClick={this.makeMove}>{this.state.sq2}</button>
-            <button class="button" data-id="sq3" value="0" disabled={this.state.sq3} onClick={this.makeMove}>{this.state.sq3}</button>
-            <button class="button" data-id="sq4" value="0" disabled={this.state.sq4} onClick={this.makeMove}>{this.state.sq4}</button>
-            <button class="button" data-id="sq5" value="0" disabled={this.state.sq5} onClick={this.makeMove}>{this.state.sq5}</button>
-            <button class="button" data-id="sq6" value="0" disabled={this.state.sq6} onClick={this.makeMove}>{this.state.sq6}</button>
-            <button class="button" data-id="sq7" value="0" disabled={this.state.sq7} onClick={this.makeMove}>{this.state.sq7}</button>
-            <button class="button" data-id="sq8" value="0" disabled={this.state.sq8} onClick={this.makeMove}>{this.state.sq8}</button>
-            <button class="button" data-id="sq9" value="0" disabled={this.state.sq9} onClick={this.makeMove}>{this.state.sq9}</button>
-          </div>
-          <div class="container" id="reset-container">
-            <input type="button" class="button" id="reset-button" value="new game" onClick={this.resetGame}/>
-          </div>
-        </div>
-      )
+        )
+      }
     }
-  }
-  ReactDOM.render(<Tictactoe />, document.getElementById('root'));
+    ReactDOM.render(<Tictactoe />, document.getElementById('root'));
   </script>
   <style>
     body{
