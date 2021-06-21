@@ -10,599 +10,504 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.13.1/umd/react-dom.production.min.js"></script>
   <!--run React-Javascript program to build Tic Tac Toe app-->
   <script type="text/babel">
-  //build State:
-  const buildState = () => ({
-    human: false,
-    computer: false,
-    player: '1',
-    playerX: 'x',
-    playerO: 'o',
-    sq1: false,
-    sq2: false,
-    sq3: false,
-    sq4: false,
-    sq5: false,
-    sq6: false,
-    sq7: false,
-    sq8: false,
-    sq9: false,
-  });
-  //React - Tic Tac Toe 2 Player app:
-  class Tictactoe extends React.Component {
-    constructor(props) {
-      super(props);
-      this.state = { ...buildState() }
-      this.checkWinner = this.checkWinner.bind(this);
-      this.makeMove = this.makeMove.bind(this);
-      this.newGame = this.newGame.bind(this);
-      this.resetGame = this.resetGame.bind(this);
-      this.chooseX = this.chooseX.bind(this);
-      this.chooseO = this.chooseO.bind(this);
-      this.computerFirstMove = this.computerFirstMove.bind(this);
-      this.computerMove = this.computerMove.bind(this);
-    }
-    //start a new game after win/lose/draw:
-    newGame = () => {this.setState({...buildState()}, () => console.log('new game')), [...document.getElementsByClassName('indicator')].forEach((el)=>el.style.display = 'none'), document.getElementById('choice-text').style.display = 'block', document.getElementById('choice-text').style.textAlign = 'center', [...document.getElementsByClassName('reset')].forEach((el)=>el.style.display = 'none'), document.getElementById('board').style.display = "none", [...document.getElementsByTagName('button')].forEach((el)=>el.disabled = false)}
-    //reset the board:
-    resetGame = () => {this.setState({...buildState()}, () => console.log(this.state)), [...document.getElementsByClassName('indicator')].forEach((el)=>el.style.display = 'none'), [...document.getElementsByClassName('choice')].forEach((el)=>el.style.display = 'inline-block'), [...document.getElementsByClassName('reset')].forEach((el)=>el.style.display = 'none'), document.getElementById('board').style.display = "none", [...document.getElementsByTagName('button')].forEach((el)=>el.disabled = false)}
-    //computer makes a move (I'm open to ideas on how to improve this):
-    computerMove() {
-      //check if center square is available:
-      if (this.state.sq5 == false) {
-        this.setState({sq5: this.state.computer}, this.checkWinner(), console.log("computer to sq5"));
-      } 
-      //winning moves:
-        else if (this.state.sq1 == this.state.computer && this.state.sq2 == this.state.computer && this.state.sq3 == false) {
-        this.setState({sq3:this.state.computer}, this.checkWinner(), console.log("computer to sq3"));
-      } else if (this.state.sq1 == this.state.computer && this.state.sq3 == this.state.computer && this.state.sq2 == false) {
-        this.setState({sq2:this.state.computer}, this.checkWinner(), console.log("computer to sq2"));
-      } else if (this.state.sq1 == this.state.computer && this.state.sq4 == this.state.computer && this.state.sq7 == false) {
-        this.setState({sq7:this.state.computer}, this.checkWinner(), console.log("computer to sq7"));
-      } else if (this.state.sq1 == this.state.computer && this.state.sq5 == this.state.computer && this.state.sq9 == false) {
-        this.setState({sq9:this.state.computer}, this.checkWinner(), console.log("computer to sq9"));
-      } else if (this.state.sq1 == this.state.computer && this.state.sq7 == this.state.computer && this.state.sq4 == false) {
-        this.setState({sq4:this.state.computer}, this.checkWinner(), console.log("computer to sq4"));
-      } else if (this.state.sq2 == this.state.computer && this.state.sq3 == this.state.computer && this.state.sq1 == false) {
-        this.setState({sq1:this.state.computer}, this.checkWinner(), console.log("computer to sq1"));
-      } else if (this.state.sq2 == this.state.computer && this.state.sq5 == this.state.computer && this.state.sq8 == false) {
-        this.setState({sq8:this.state.computer}, this.checkWinner(), console.log("computer to sq8"));
-      } else if (this.state.sq3 == this.state.computer && this.state.sq1 == this.state.computer && this.state.sq2 == false) {
-        this.setState({sq2:this.state.computer}, this.checkWinner(), console.log("computer to sq2"));
-      } else if (this.state.sq3 == this.state.computer && this.state.sq5 == this.state.computer && this.state.sq7 == false) {
-        this.setState({sq7:this.state.computer}, this.checkWinner(), console.log("computer to sq7"));
-      } else if (this.state.sq3 == this.state.computer && this.state.sq6 == this.state.computer && this.state.sq9 == false) {
-        this.setState({sq9:this.state.computer}, this.checkWinner(), console.log("computer to sq9"));
-      } else if (this.state.sq3 == this.state.computer && this.state.sq9 == this.state.computer && this.state.sq6 == false) {
-        this.setState({sq9:this.state.computer}, this.checkWinner(), console.log("computer to sq9"));
-      } else if (this.state.sq4 == this.state.computer && this.state.sq5 == this.state.computer && this.state.sq6 == false) {
-        this.setState({sq6:this.state.computer}, this.checkWinner(), console.log("computer to sq6"));
-      } else if (this.state.sq4 == this.state.computer && this.state.sq7 == this.state.computer && this.state.sq1 == false) {
-        this.setState({sq1:this.state.computer}, this.checkWinner(), console.log("computer to sq1"));
-      } else if (this.state.sq5 == this.state.computer && this.state.sq6 == this.state.computer && this.state.sq4 == false) {
-        this.setState({sq4:this.state.computer}, this.checkWinner(), console.log("computer to sq4"));
-      } else if (this.state.sq5 == this.state.computer && this.state.sq7 == this.state.computer && this.state.sq3 == false) {
-        this.setState({sq3:this.state.computer}, this.checkWinner(), console.log("computer to sq3"));
-      } else if (this.state.sq5 == this.state.computer && this.state.sq8 == this.state.computer && this.state.sq2 == false) {
-        this.setState({sq2:this.state.computer}, this.checkWinner(), console.log("computer to sq2"));
-      } else if (this.state.sq5 == this.state.computer && this.state.sq9 == this.state.computer && this.state.sq1 == false) {
-        this.setState({sq1:this.state.computer}, this.checkWinner(), console.log("computer to sq1"));
-      } else if (this.state.sq6 == this.state.computer && this.state.sq9 == this.state.computer && this.state.sq3 == false) {
-        this.setState({sq3:this.state.computer}, this.checkWinner(), console.log("computer to sq3"));
-      } else if (this.state.sq7 == this.state.computer && this.state.sq8 == this.state.computer && this.state.sq9 == false) {
-        this.setState({sq9:this.state.computer}, this.checkWinner(), console.log("computer to sq9"));
-      } else if (this.state.sq7 == this.state.computer && this.state.sq9 == this.state.computer && this.state.sq8 == false) {
-        this.setState({sq8:this.state.computer}, this.checkWinner(), console.log("computer to sq8"));
-      } else if (this.state.sq8 == this.state.computer && this.state.sq9 == this.state.computer && this.state.sq7 == false) {
-        this.setState({sq7:this.state.computer}, this.checkWinner(), console.log("computer to sq7"));
+    //build State:
+    const buildState = () => ({
+      human: false,
+      computer: false,
+      player: '1',
+      playerX: 'x',
+      playerO: 'o',
+      sq1: false,
+      sq2: false,
+      sq3: false,
+      sq4: false,
+      sq5: false,
+      sq6: false,
+      sq7: false,
+      sq8: false,
+      sq9: false,
+    });
+    //React - Tic Tac Toe 2 Player app:
+    class Tictactoe extends React.Component {
+      constructor(props) {
+        super(props);
+        this.state = { ...buildState() }
+        this.checkWinner = this.checkWinner.bind(this);
+        this.makeMove = this.makeMove.bind(this);
+        this.newGame = this.newGame.bind(this);
+        this.resetGame = this.resetGame.bind(this);
+        this.chooseX = this.chooseX.bind(this);
+        this.chooseO = this.chooseO.bind(this);
+        this.computerFirstMove = this.computerFirstMove.bind(this);
+        this.computerMove = this.computerMove.bind(this);
       }
-      // block human's winning moves:
-        else if (this.state.sq1 == this.state.human && this.state.sq2 == this.state.human && this.state.sq3 == false) {
-        this.setState({sq3:this.state.computer}, this.checkWinner(), console.log("computer to sq3"));
-      } else if (this.state.sq1 == this.state.human && this.state.sq3 == this.state.human && this.state.sq2 == false) {
-        this.setState({sq2:this.state.computer}, this.checkWinner(), console.log("computer to sq2"));
-      } else if (this.state.sq1 == this.state.human && this.state.sq4 == this.state.human && this.state.sq7 == false) {
-        this.setState({sq7:this.state.computer}, this.checkWinner(), console.log("computer to sq7"));
-      } else if (this.state.sq1 == this.state.human && this.state.sq7 == this.state.human && this.state.sq4 == false) {
-        this.setState({sq4:this.state.computer}, this.checkWinner(), console.log("computer to sq4"));
-      } else if (this.state.sq1 == this.state.human && this.state.sq5 == this.state.human && this.state.sq9 == false) {
-        this.setState({sq9:this.state.computer}, this.checkWinner(), console.log("computer to sq9"));
-      } else if (this.state.sq2 == this.state.human && this.state.sq5 == this.state.human && this.state.sq8 == false) {
-        this.setState({sq8:this.state.computer}, this.checkWinner(), console.log("computer to sq8"));
-      } else if (this.state.sq3 == this.state.human && this.state.sq5 == this.state.human && this.state.sq7 == false) {
-        this.setState({sq7:this.state.computer}, this.checkWinner(), console.log("computer to sq7"));
-      } else if (this.state.sq3 == this.state.human && this.state.sq6 == this.state.human && this.state.sq9 == false) {
-        this.setState({sq9:this.state.computer}, this.checkWinner(), console.log("computer to sq9"));
-      } else if (this.state.sq3 == this.state.human && this.state.sq9 == this.state.human && this.state.sq6 == false) {
-        this.setState({sq6:this.state.computer}, this.checkWinner(), console.log("computer to sq6"));
-      } else if (this.state.sq4 == this.state.human && this.state.sq5 == this.state.human && this.state.sq6 == false) {
-        this.setState({sq6:this.state.computer}, this.checkWinner(), console.log("computer to sq6"));
-      } else if (this.state.sq4 == this.state.human && this.state.sq7 == this.state.human && this.state.sq1 == false) {
-        this.setState({sq1:this.state.computer}, this.checkWinner(), console.log("computer to sq1"));
-      } else if (this.state.sq5 == this.state.human && this.state.sq6 == this.state.human && this.state.sq4 == false) {
-        this.setState({sq4:this.state.computer}, this.checkWinner(), console.log("computer to sq4"));
-      } else if (this.state.sq5 == this.state.human && this.state.sq7 == this.state.human && this.state.sq3 == false) {
-        this.setState({sq3:this.state.computer}, this.checkWinner(), console.log("computer to sq3"));
-      } else if (this.state.sq5 == this.state.human && this.state.sq8 == this.state.human && this.state.sq2 == false) {
-        this.setState({sq2:this.state.computer}, this.checkWinner(), console.log("computer to sq2"));
-      } else if (this.state.sq5 == this.state.human && this.state.sq9 == this.state.human && this.state.sq1 == false) {
-        this.setState({sq1:this.state.computer}, this.checkWinner(), console.log("computer to sq1"));
-      } else if (this.state.sq6 == this.state.human && this.state.sq9 == this.state.human && this.state.sq3 == false) {
-        this.setState({sq3:this.state.computer}, this.checkWinner(), console.log("computer to sq3"));
-      } else if (this.state.sq7 == this.state.human && this.state.sq8 == this.state.human && this.state.sq9 == false) {
-        this.setState({sq9:this.state.computer}, this.checkWinner(), console.log("computer to sq9"));
-      } else if (this.state.sq7 == this.state.human && this.state.sq9 == this.state.human && this.state.sq8 == false) {
-        this.setState({sq8:this.state.computer}, this.checkWinner(), console.log("computer to sq8"));
-      } else if (this.state.sq8 == this.state.human && this.state.sq9 == this.state.human && this.state.sq7 == false) {
-        this.setState({sq7:this.state.computer}, this.checkWinner(), console.log("computer to sq7"));
-      }
-      // no winning moves, human has a corner:
-        else if (this.state.sq1 == this.state.human && this.state.sq2 == false) {
-        this.setState({sq2:this.state.computer}, this.checkWinner(), console.log("computer to sq2"));
-      } else if (this.state.sq1 == this.state.human && this.state.sq4 == false) {
-        this.setState({sq4:this.state.computer}, this.checkWinner(), console.log("computer to sq4"));
-      } else if (this.state.sq3 == this.state.human && this.state.sq2 == false) {
-        this.setState({sq2:this.state.computer}, this.checkWinner(), console.log("computer to sq2"));
-      } else if (this.state.sq3 == this.state.human && this.state.sq6 == false) {
-        this.setState({sq6:this.state.computer}, this.checkWinner(), console.log("computer to sq6"));
-      } else if (this.state.sq7 == this.state.human && this.state.sq4 == false) {
-        this.setState({sq4:this.state.computer}, this.checkWinner(), console.log("computer to sq4"));
-      } else if (this.state.sq7 == this.state.human && this.state.sq8 == false) {
-        this.setState({sq8:this.state.computer}, this.checkWinner(), console.log("computer to sq8"));
-      } else if (this.state.sq9 == this.state.human && this.state.sq6 == false) {
-        this.setState({sq6:this.state.computer}, this.checkWinner(), console.log("computer to sq6"));
-      } else if (this.state.sq9 == this.state.human && this.state.sq8 == false) {
-        this.setState({sq8:this.state.computer}, this.checkWinner(), console.log("computer to sq8"));
-      }
-      //no winning moves, human does not have a corner, take edge:
-        else if (this.state.sq2 == false ||
-                  this.state.sq4 == false ||
-                  this.state.sq6 == false ||
-                  this.state.sq8 == false) {
-          const edges = ['sq2', 'sq4', 'sq6', 'sq8'];
-          var availEdges = [];
-          edges.forEach(function(item) {
+      //start a new game after win/lose/draw:
+      newGame = () => {this.setState({...buildState()}, () => console.log('new game')), [...document.getElementsByClassName('indicator')].forEach((el)=>el.style.display = 'none'), document.getElementById('choice-text').style.display = 'block', document.getElementById('choice-text').style.textAlign = 'center', [...document.getElementsByClassName('reset')].forEach((el)=>el.style.display = 'none'), document.getElementById('board').style.display = "none", [...document.getElementsByTagName('button')].forEach((el)=>el.disabled = false)}
+      //reset the board:
+      resetGame = () => {this.setState({...buildState()}, () => console.log(this.state)), [...document.getElementsByClassName('indicator')].forEach((el)=>el.style.display = 'none'), [...document.getElementsByClassName('choice')].forEach((el)=>el.style.display = 'inline-block'), [...document.getElementsByClassName('reset')].forEach((el)=>el.style.display = 'none'), document.getElementById('board').style.display = "none", [...document.getElementsByTagName('button')].forEach((el)=>el.disabled = false)}
+      //computer makes a move (I'm open to ideas on how to improve this):
+      computerMove() {
+        //check if center square is available:
+        if (this.state.sq5 == false) {
+          this.setState({sq5: this.state.computer}, this.checkWinner(), console.log("computer to sq5"));
+        } 
+        //winning moves:
+          else if (this.state.sq1 == this.state.computer && this.state.sq2 == this.state.computer && this.state.sq3 == false) {
+          this.setState({sq3:this.state.computer}, this.checkWinner(), console.log("computer to sq3"));
+        } else if (this.state.sq1 == this.state.computer && this.state.sq3 == this.state.computer && this.state.sq2 == false) {
+          this.setState({sq2:this.state.computer}, this.checkWinner(), console.log("computer to sq2"));
+        } else if (this.state.sq1 == this.state.computer && this.state.sq4 == this.state.computer && this.state.sq7 == false) {
+          this.setState({sq7:this.state.computer}, this.checkWinner(), console.log("computer to sq7"));
+        } else if (this.state.sq1 == this.state.computer && this.state.sq5 == this.state.computer && this.state.sq9 == false) {
+          this.setState({sq9:this.state.computer}, this.checkWinner(), console.log("computer to sq9"));
+        } else if (this.state.sq1 == this.state.computer && this.state.sq7 == this.state.computer && this.state.sq4 == false) {
+          this.setState({sq4:this.state.computer}, this.checkWinner(), console.log("computer to sq4"));
+        } else if (this.state.sq2 == this.state.computer && this.state.sq3 == this.state.computer && this.state.sq1 == false) {
+          this.setState({sq1:this.state.computer}, this.checkWinner(), console.log("computer to sq1"));
+        } else if (this.state.sq2 == this.state.computer && this.state.sq5 == this.state.computer && this.state.sq8 == false) {
+          this.setState({sq8:this.state.computer}, this.checkWinner(), console.log("computer to sq8"));
+        } else if (this.state.sq3 == this.state.computer && this.state.sq1 == this.state.computer && this.state.sq2 == false) {
+          this.setState({sq2:this.state.computer}, this.checkWinner(), console.log("computer to sq2"));
+        } else if (this.state.sq3 == this.state.computer && this.state.sq5 == this.state.computer && this.state.sq7 == false) {
+          this.setState({sq7:this.state.computer}, this.checkWinner(), console.log("computer to sq7"));
+        } else if (this.state.sq3 == this.state.computer && this.state.sq6 == this.state.computer && this.state.sq9 == false) {
+          this.setState({sq9:this.state.computer}, this.checkWinner(), console.log("computer to sq9"));
+        } else if (this.state.sq3 == this.state.computer && this.state.sq9 == this.state.computer && this.state.sq6 == false) {
+          this.setState({sq9:this.state.computer}, this.checkWinner(), console.log("computer to sq9"));
+        } else if (this.state.sq4 == this.state.computer && this.state.sq5 == this.state.computer && this.state.sq6 == false) {
+          this.setState({sq6:this.state.computer}, this.checkWinner(), console.log("computer to sq6"));
+        } else if (this.state.sq4 == this.state.computer && this.state.sq7 == this.state.computer && this.state.sq1 == false) {
+          this.setState({sq1:this.state.computer}, this.checkWinner(), console.log("computer to sq1"));
+        } else if (this.state.sq5 == this.state.computer && this.state.sq6 == this.state.computer && this.state.sq4 == false) {
+          this.setState({sq4:this.state.computer}, this.checkWinner(), console.log("computer to sq4"));
+        } else if (this.state.sq5 == this.state.computer && this.state.sq7 == this.state.computer && this.state.sq3 == false) {
+          this.setState({sq3:this.state.computer}, this.checkWinner(), console.log("computer to sq3"));
+        } else if (this.state.sq5 == this.state.computer && this.state.sq8 == this.state.computer && this.state.sq2 == false) {
+          this.setState({sq2:this.state.computer}, this.checkWinner(), console.log("computer to sq2"));
+        } else if (this.state.sq5 == this.state.computer && this.state.sq9 == this.state.computer && this.state.sq1 == false) {
+          this.setState({sq1:this.state.computer}, this.checkWinner(), console.log("computer to sq1"));
+        } else if (this.state.sq6 == this.state.computer && this.state.sq9 == this.state.computer && this.state.sq3 == false) {
+          this.setState({sq3:this.state.computer}, this.checkWinner(), console.log("computer to sq3"));
+        } else if (this.state.sq7 == this.state.computer && this.state.sq8 == this.state.computer && this.state.sq9 == false) {
+          this.setState({sq9:this.state.computer}, this.checkWinner(), console.log("computer to sq9"));
+        } else if (this.state.sq7 == this.state.computer && this.state.sq9 == this.state.computer && this.state.sq8 == false) {
+          this.setState({sq8:this.state.computer}, this.checkWinner(), console.log("computer to sq8"));
+        } else if (this.state.sq8 == this.state.computer && this.state.sq9 == this.state.computer && this.state.sq7 == false) {
+          this.setState({sq7:this.state.computer}, this.checkWinner(), console.log("computer to sq7"));
+        }
+        // block human's winning moves:
+          else if (this.state.sq1 == this.state.human && this.state.sq2 == this.state.human && this.state.sq3 == false) {
+          this.setState({sq3:this.state.computer}, this.checkWinner(), console.log("computer to sq3"));
+        } else if (this.state.sq1 == this.state.human && this.state.sq3 == this.state.human && this.state.sq2 == false) {
+          this.setState({sq2:this.state.computer}, this.checkWinner(), console.log("computer to sq2"));
+        } else if (this.state.sq1 == this.state.human && this.state.sq4 == this.state.human && this.state.sq7 == false) {
+          this.setState({sq7:this.state.computer}, this.checkWinner(), console.log("computer to sq7"));
+        } else if (this.state.sq1 == this.state.human && this.state.sq7 == this.state.human && this.state.sq4 == false) {
+          this.setState({sq4:this.state.computer}, this.checkWinner(), console.log("computer to sq4"));
+        } else if (this.state.sq1 == this.state.human && this.state.sq5 == this.state.human && this.state.sq9 == false) {
+          this.setState({sq9:this.state.computer}, this.checkWinner(), console.log("computer to sq9"));
+        } else if (this.state.sq2 == this.state.human && this.state.sq5 == this.state.human && this.state.sq8 == false) {
+          this.setState({sq8:this.state.computer}, this.checkWinner(), console.log("computer to sq8"));
+        } else if (this.state.sq3 == this.state.human && this.state.sq5 == this.state.human && this.state.sq7 == false) {
+          this.setState({sq7:this.state.computer}, this.checkWinner(), console.log("computer to sq7"));
+        } else if (this.state.sq3 == this.state.human && this.state.sq6 == this.state.human && this.state.sq9 == false) {
+          this.setState({sq9:this.state.computer}, this.checkWinner(), console.log("computer to sq9"));
+        } else if (this.state.sq3 == this.state.human && this.state.sq9 == this.state.human && this.state.sq6 == false) {
+          this.setState({sq6:this.state.computer}, this.checkWinner(), console.log("computer to sq6"));
+        } else if (this.state.sq4 == this.state.human && this.state.sq5 == this.state.human && this.state.sq6 == false) {
+          this.setState({sq6:this.state.computer}, this.checkWinner(), console.log("computer to sq6"));
+        } else if (this.state.sq4 == this.state.human && this.state.sq7 == this.state.human && this.state.sq1 == false) {
+          this.setState({sq1:this.state.computer}, this.checkWinner(), console.log("computer to sq1"));
+        } else if (this.state.sq5 == this.state.human && this.state.sq6 == this.state.human && this.state.sq4 == false) {
+          this.setState({sq4:this.state.computer}, this.checkWinner(), console.log("computer to sq4"));
+        } else if (this.state.sq5 == this.state.human && this.state.sq7 == this.state.human && this.state.sq3 == false) {
+          this.setState({sq3:this.state.computer}, this.checkWinner(), console.log("computer to sq3"));
+        } else if (this.state.sq5 == this.state.human && this.state.sq8 == this.state.human && this.state.sq2 == false) {
+          this.setState({sq2:this.state.computer}, this.checkWinner(), console.log("computer to sq2"));
+        } else if (this.state.sq5 == this.state.human && this.state.sq9 == this.state.human && this.state.sq1 == false) {
+          this.setState({sq1:this.state.computer}, this.checkWinner(), console.log("computer to sq1"));
+        } else if (this.state.sq6 == this.state.human && this.state.sq9 == this.state.human && this.state.sq3 == false) {
+          this.setState({sq3:this.state.computer}, this.checkWinner(), console.log("computer to sq3"));
+        } else if (this.state.sq7 == this.state.human && this.state.sq8 == this.state.human && this.state.sq9 == false) {
+          this.setState({sq9:this.state.computer}, this.checkWinner(), console.log("computer to sq9"));
+        } else if (this.state.sq7 == this.state.human && this.state.sq9 == this.state.human && this.state.sq8 == false) {
+          this.setState({sq8:this.state.computer}, this.checkWinner(), console.log("computer to sq8"));
+        } else if (this.state.sq8 == this.state.human && this.state.sq9 == this.state.human && this.state.sq7 == false) {
+          this.setState({sq7:this.state.computer}, this.checkWinner(), console.log("computer to sq7"));
+        }
+        // no winning moves, human has a corner:
+          else if (this.state.sq1 == this.state.human && this.state.sq2 == false) {
+          this.setState({sq2:this.state.computer}, this.checkWinner(), console.log("computer to sq2"));
+        } else if (this.state.sq1 == this.state.human && this.state.sq4 == false) {
+          this.setState({sq4:this.state.computer}, this.checkWinner(), console.log("computer to sq4"));
+        } else if (this.state.sq3 == this.state.human && this.state.sq2 == false) {
+          this.setState({sq2:this.state.computer}, this.checkWinner(), console.log("computer to sq2"));
+        } else if (this.state.sq3 == this.state.human && this.state.sq6 == false) {
+          this.setState({sq6:this.state.computer}, this.checkWinner(), console.log("computer to sq6"));
+        } else if (this.state.sq7 == this.state.human && this.state.sq4 == false) {
+          this.setState({sq4:this.state.computer}, this.checkWinner(), console.log("computer to sq4"));
+        } else if (this.state.sq7 == this.state.human && this.state.sq8 == false) {
+          this.setState({sq8:this.state.computer}, this.checkWinner(), console.log("computer to sq8"));
+        } else if (this.state.sq9 == this.state.human && this.state.sq6 == false) {
+          this.setState({sq6:this.state.computer}, this.checkWinner(), console.log("computer to sq6"));
+        } else if (this.state.sq9 == this.state.human && this.state.sq8 == false) {
+          this.setState({sq8:this.state.computer}, this.checkWinner(), console.log("computer to sq8"));
+        }
+        //no winning moves, human does not have a corner, take edge:
+          else if (this.state.sq2 == false ||
+                    this.state.sq4 == false ||
+                    this.state.sq6 == false ||
+                    this.state.sq8 == false) {
+            const edges = ['sq2', 'sq4', 'sq6', 'sq8'];
+            var availEdges = [];
+            edges.forEach(function(item) {
+              if (this.state[item] == false) {
+                console.log(console.log("pushing item: ")+item+this.state[item]);
+                availEdges.push(item);
+              }
+            }.bind(this));
+            const randomEdge = Math.floor(Math.random()*availEdges.length);
+            console.log("avail edges: "+availEdges);
+            var randomMove1 = availEdges[randomEdge];
+            console.log("randomMove1: "+randomMove1);
+
+            var possMoves = [];
+
+            const lastTry = (possMoves1) => {
+              this.setState({[possMoves1]: this.state.computer}, this.checkWinner(), console.log("computer to random edge"));
+            }
+
+            function otherMove() {
+              console.log("arguments[0]: "+arguments[0]);
+              console.log("availEdges again "+availEdges);
+
+              for (let i=0; i<availEdges.length;i++) {
+                if (availEdges[i] == arguments[0]) {
+                  console.log("arguments: "+arguments[0]);
+                  console.log("nope: "+availEdges[i]);
+                } else {
+                  console.log("push "+availEdges[i]);
+                  possMoves.push(availEdges[i]);
+                }
+              }
+
+              console.log('possMoves '+possMoves);
+              const nextRandomEdge = Math.floor(Math.random()*possMoves.length);
+              let possMoves1 = possMoves[nextRandomEdge];
+              console.log("possMoves1 "+possMoves1);
+              lastTry(possMoves1);
+            }
+            //check if opposite side of first randomMove is available:
+            if (randomMove1 == 'sq2') {
+              if (this.state.sq8 == false) {
+                this.setState({[randomMove1]: this.state.computer}, this.checkWinner(), console.log("computer to sq2"));
+              } else {
+                if (availEdges.length > 1) {
+                  otherMove('sq2');
+                } else {
+                  this.setState({[randomMove1]: this.state.computer}, this.checkWinner(), console.log("computer to sq2"));
+                }
+              }
+            } else if (randomMove1 == 'sq4') {
+              if (this.state.sq6 == false) {
+                this.setState({[randomMove1]: this.state.computer}, this.checkWinner(), console.log("computer to sq4"));
+              } else {
+                if (availEdges.length > 1) {
+                  otherMove('sq4');
+                } else {
+                  this.setState({[randomMove1]: this.state.computer}, this.checkWinner(), console.log("computer to sq4"));
+                }
+              }
+            } else if (randomMove1 == 'sq6') {
+              if (this.state.sq4 == false) {
+                this.setState({[randomMove1]: this.state.computer}, this.checkWinner(), console.log("computer to sq6"));
+              } else {
+                if (availEdges.length > 1) {
+                  otherMove('sq6');
+                } else {
+                  this.setState({[randomMove1]: this.state.computer}, this.checkWinner(), console.log("computer to sq6"));
+                }
+              }
+            } else if (randomMove1 == 'sq8') {
+              if (this.state.sq2 == false) {
+                this.setState({[randomMove1]: this.state.computer}, this.checkWinner(), console.log("computer to sq8"));
+              } else {
+                if (availEdges.length > 1) {
+                  otherMove('sq8');
+                } else {
+                  this.setState({[randomMove1]: this.state.computer}, this.checkWinner(), console.log("computer to sq8"));
+                }
+              }
+            } 
+        }
+        //if all edges are taken, take corner:
+        else if ((this.state.sq1 == false ||
+                  this.state.sq3 == false ||
+                  this.state.sq7 == false ||
+                  this.state.sq9 == false)) {
+          const corners = ['sq1', 'sq3', 'sq7', 'sq9'];
+          var availCorners = [];
+          corners.forEach(function(item) {
             if (this.state[item] == false) {
-              console.log(console.log("pushing item: ")+item+this.state[item]);
-              availEdges.push(item);
+              availCorners.push(item);
             }
           }.bind(this));
-          const randomEdge = Math.floor(Math.random()*availEdges.length);
-          console.log("avail edges: "+availEdges);
-          var randomMove1 = availEdges[randomEdge];
-          console.log("randomMove1: "+randomMove1);
-
-          var possMoves = [];
-
-          const lastTry = (possMoves1) => {
-            this.setState({[possMoves1]: this.state.computer}, this.checkWinner(), console.log("computer to random edge"));
-          }
-
-          function otherMove() {
-            console.log("arguments[0]: "+arguments[0]);
-            console.log("availEdges again "+availEdges);
-
-            for (let i=0; i<availEdges.length;i++) {
-              if (availEdges[i] == arguments[0]) {
-                console.log("arguments: "+arguments[0]);
-                console.log("nope: "+availEdges[i]);
-              } else {
-                console.log("push "+availEdges[i]);
-                possMoves.push(availEdges[i]);
-              }
-            }
-
-            console.log('possMoves '+possMoves);
-            const nextRandomEdge = Math.floor(Math.random()*possMoves.length);
-            let possMoves1 = possMoves[nextRandomEdge];
-            console.log("possMoves1 "+possMoves1);
-            lastTry(possMoves1);
-          }
-          //check if opposite side of first randomMove is available:
-          if (randomMove1 == 'sq2') {
-            if (this.state.sq8 == false) {
-              this.setState({[randomMove1]: this.state.computer}, this.checkWinner(), console.log("computer to sq2"));
+          const randomCorner = Math.floor(Math.random()*availCorners.length);
+          console.log("avail corners: "+availCorners);
+          var cornerPicked = availCorners[randomCorner];
+          console.log("cornerPicked: "+cornerPicked);
+          this.setState({[cornerPicked]: this.state.computer}, this.checkWinner(), console.log("computer to "+cornerPicked));
+        }
+        //player toggle:
+        if (this.state.player == 1) {
+          this.setState({player: 2}, () => {console.log('player state updated'), this.checkWinner()});
+        } else if (this.state.player == 2) {
+          this.setState({player: 1}, () => {console.log('player state updated'), this.checkWinner()});
+        }
+      }
+      //computer makes the first move:
+      computerFirstMove() {
+        if (this.state.sq1 == false &&
+            this.state.sq2 == false &&
+            this.state.sq3 == false &&
+            this.state.sq4 == false &&
+            this.state.sq5 == false &&
+            this.state.sq6 == false &&
+            this.state.sq7 == false &&
+            this.state.sq8 == false &&
+            this.state.sq9 == false) {
+          const squares = ['sq1', 'sq3', 'sq5', 'sq7', 'sq9'];
+          const random = Math.floor(Math.random()*squares.length);
+          var firstMove = squares[random];
+          console.log("comp firstMove: "+firstMove);
+          this.setState({[firstMove]: this.state.computer}, () => {console.log("end firstMove()")});
+        }
+      }
+      //check if move creates a winning combo:
+      checkWinner() {
+        if (((this.state.sq1 == this.state.sq2 && this.state.sq1 == this.state.sq3) ||
+             (this.state.sq1 == this.state.sq4 && this.state.sq1 == this.state.sq7) ||
+             (this.state.sq1 == this.state.sq5 && this.state.sq1 == this.state.sq9)) &&
+             (this.state.sq1 != false)) {
+          if (this.state.sq1 == "x") {
+            if (confirm("Player X wins! 1,2,3 Play again?")) {
+              console.log("player X wins");
+              this.newGame();
             } else {
-              if (availEdges.length > 1) {
-                otherMove('sq2');
-              } else {
-                this.setState({[randomMove1]: this.state.computer}, this.checkWinner(), console.log("computer to sq2"));
-              }
+              [...document.getElementsByTagName('button')].forEach((el)=>el.disabled = true);
             }
-          } else if (randomMove1 == 'sq4') {
-            if (this.state.sq6 == false) {
-              this.setState({[randomMove1]: this.state.computer}, this.checkWinner(), console.log("computer to sq4"));
+          } else if (this.state.sq1 == "o") {
+            if (confirm("Player O win! Play again?")) {
+              console.log("player O wins");
+              this.newGame();
             } else {
-              if (availEdges.length > 1) {
-                otherMove('sq4');
-              } else {
-                this.setState({[randomMove1]: this.state.computer}, this.checkWinner(), console.log("computer to sq4"));
-              }
+              [...document.getElementsByTagName('button')].forEach((el)=>el.disabled = true);
             }
-          } else if (randomMove1 == 'sq6') {
-            if (this.state.sq4 == false) {
-              this.setState({[randomMove1]: this.state.computer}, this.checkWinner(), console.log("computer to sq6"));
+          }
+        } else if ((this.state.sq2 == this.state.sq5 && this.state.sq2 == this.state.sq8) &&
+                  (this.state.sq2 != false)) {
+          if (this.state.sq2 == "x") {
+            if (confirm("Player X wins! 2,5,8 Play again?")) {
+              console.log("player X wins");
+              this.newGame();
             } else {
-              if (availEdges.length > 1) {
-                otherMove('sq6');
-              } else {
-                this.setState({[randomMove1]: this.state.computer}, this.checkWinner(), console.log("computer to sq6"));
-              }
+              [...document.getElementsByTagName('button')].forEach((el)=>el.disabled = true);
             }
-          } else if (randomMove1 == 'sq8') {
-            if (this.state.sq2 == false) {
-              this.setState({[randomMove1]: this.state.computer}, this.checkWinner(), console.log("computer to sq8"));
+          } else if (this.state.sq2 == "o") {
+            if (confirm("Player O win! Play again?")) {
+              console.log("player O wins");
+              this.newGame();
             } else {
-              if (availEdges.length > 1) {
-                otherMove('sq8');
-              } else {
-                this.setState({[randomMove1]: this.state.computer}, this.checkWinner(), console.log("computer to sq8"));
-              }
+              [...document.getElementsByTagName('button')].forEach((el)=>el.disabled = true);
             }
-          } 
-      }
-      //if all edges are taken, take corner:
-      else if ((this.state.sq1 == false ||
-                this.state.sq3 == false ||
-                this.state.sq7 == false ||
-                this.state.sq9 == false)) {
-        const corners = ['sq1', 'sq3', 'sq7', 'sq9'];
-        var availCorners = [];
-        corners.forEach(function(item) {
-          if (this.state[item] == false) {
-            availCorners.push(item);
           }
-        }.bind(this));
-        const randomCorner = Math.floor(Math.random()*availCorners.length);
-        console.log("avail corners: "+availCorners);
-        var cornerPicked = availCorners[randomCorner];
-        console.log("cornerPicked: "+cornerPicked);
-        this.setState({[cornerPicked]: this.state.computer}, this.checkWinner(), console.log("computer to "+cornerPicked));
-      }
-      //player toggle:
-      if (this.state.player == 1) {
-        this.setState({player: 2}, () => {console.log('player state updated'), this.checkWinner()});
-      } else if (this.state.player == 2) {
-        this.setState({player: 1}, () => {console.log('player state updated'), this.checkWinner()});
-      }
-    }
-    //computer makes the first move:
-    computerFirstMove() {
-      if (this.state.sq1 == false &&
-          this.state.sq2 == false &&
-          this.state.sq3 == false &&
-          this.state.sq4 == false &&
-          this.state.sq5 == false &&
-          this.state.sq6 == false &&
-          this.state.sq7 == false &&
-          this.state.sq8 == false &&
-          this.state.sq9 == false) {
-        const squares = ['sq1', 'sq3', 'sq5', 'sq7', 'sq9'];
-        const random = Math.floor(Math.random()*squares.length);
-        var firstMove = squares[random];
-        console.log("comp firstMove: "+firstMove);
-        this.setState({[firstMove]: this.state.computer}, () => {console.log("end firstMove()")});
-      }
-    }
-    //check if move creates a winning combo:
-    checkWinner() {
-      if (((this.state.sq1 == this.state.sq2 && this.state.sq1 == this.state.sq3) ||
-           (this.state.sq1 == this.state.sq4 && this.state.sq1 == this.state.sq7) ||
-           (this.state.sq1 == this.state.sq5 && this.state.sq1 == this.state.sq9)) &&
-           (this.state.sq1 != false)) {
-        if (this.state.sq1 == "x") {
-          if (confirm("Player X wins! 1,2,3 Play again?")) {
-            console.log("player X wins");
-            this.newGame();
-          } else {
-            [...document.getElementsByTagName('button')].forEach((el)=>el.disabled = true);
+        } else if (((this.state.sq3 == this.state.sq6 && this.state.sq3 == this.state.sq9) ||
+                    (this.state.sq3 == this.state.sq5 && this.state.sq3 == this.state.sq7)) &&
+                    (this.state.sq3 != false)) {
+          if (this.state.sq3 == "x") {
+            if (confirm("Player X wins! 3,6,9 Play again?")) {
+              console.log("player X wins");
+              this.newGame();
+            } else {
+              [...document.getElementsByTagName('button')].forEach((el)=>el.disabled = true);
+            }
+          } else if (this.state.sq3 == "o") {
+            if (confirm("Player O win! Play again?")) {
+              console.log("player O wins");
+              this.newGame();
+            } else {
+              [...document.getElementsByTagName('button')].forEach((el)=>el.disabled = true);
+            }
           }
-        } else if (this.state.sq1 == "o") {
-          if (confirm("Player O win! Play again?")) {
-            console.log("player O wins");
-            this.newGame();
-          } else {
-            [...document.getElementsByTagName('button')].forEach((el)=>el.disabled = true);
+        } else if ((this.state.sq4 == this.state.sq5 && this.state.sq4 === this.state.sq6) &&
+                   (this.state.sq4 != false)) {
+          if (this.state.sq4 == "x") {
+            if (confirm("Player X wins! 4,5,6 Play again?")) {
+              console.log("player X wins");
+              this.newGame();
+            } else {
+              [...document.getElementsByTagName('button')].forEach((el)=>el.disabled = true);
+            }
+          } else if (this.state.sq4 == "o") {
+            if (confirm("Player O win! Play again?")) {
+              console.log("player O wins");
+              this.newGame()
+            } else {
+              [...document.getElementsByTagName('button')].forEach((el)=>el.disabled = true);
+            }
           }
-        }
-      } else if ((this.state.sq2 == this.state.sq5 && this.state.sq2 == this.state.sq8) &&
-                (this.state.sq2 != false)) {
-        if (this.state.sq2 == "x") {
-          if (confirm("Player X wins! 2,5,8 Play again?")) {
-            console.log("player X wins");
-            this.newGame();
-          } else {
-            [...document.getElementsByTagName('button')].forEach((el)=>el.disabled = true);
+        } else if ((this.state.sq7 == this.state.sq8 && this.state.sq7 == this.state.sq9) &&
+                    this.state.sq7 != false) {
+          if (this.state.sq7 == "x") {
+            if (confirm("Player X wins! 7,8,9 Play again?")) {
+              console.log("player X wins");
+              this.newGame();
+            } else {
+              [...document.getElementsByTagName('button')].forEach((el)=>el.disabled = true);
+            }
+          } else if (this.state.sq7 == "o") {
+            if (confirm("Player O win! Play again?")) {
+              console.log("player O wins");
+              this.newGame()
+            } else {
+              [...document.getElementsByTagName('button')].forEach((el)=>el.disabled = true);
+            }
           }
-        } else if (this.state.sq2 == "o") {
-          if (confirm("Player O win! Play again?")) {
-            console.log("player O wins");
-            this.newGame();
-          } else {
-            [...document.getElementsByTagName('button')].forEach((el)=>el.disabled = true);
+        } else if (this.state.sq1 != false &&
+                   this.state.sq2 != false &&
+                   this.state.sq3 != false &&
+                   this.state.sq4 != false &&
+                   this.state.sq5 != false &&
+                   this.state.sq6 != false &&
+                   this.state.sq7 != false &&
+                   this.state.sq8 != false &&
+                   this.state.sq9 != false) {
+          if (confirm("No one wins. Play again?")) {
+              this.newGame()
+            }
+        } else {
+          console.log("no winner");
+          if (arguments[0] == 'human') {
+            console.log("human didn't win");
+            this.computerMove();
           }
         }
-      } else if (((this.state.sq3 == this.state.sq6 && this.state.sq3 == this.state.sq9) ||
-                  (this.state.sq3 == this.state.sq5 && this.state.sq3 == this.state.sq7)) &&
-                  (this.state.sq3 != false)) {
-        if (this.state.sq3 == "x") {
-          if (confirm("Player X wins! 3,6,9 Play again?")) {
-            console.log("player X wins");
-            this.newGame();
-          } else {
-            [...document.getElementsByTagName('button')].forEach((el)=>el.disabled = true);
-          }
-        } else if (this.state.sq3 == "o") {
-          if (confirm("Player O win! Play again?")) {
-            console.log("player O wins");
-            this.newGame();
-          } else {
-            [...document.getElementsByTagName('button')].forEach((el)=>el.disabled = true);
-          }
+      }
+      //player makes a move:
+      makeMove = event => {
+        const sqId = event.target.getAttribute("data-id");
+        if (this.state.human != false ) {
+          if (sqId == "sq1") {this.setState({sq1: this.state.human}, () => this.checkWinner('human'), console.log('human sq1'));}
+          else if (sqId == "sq2") {this.setState({sq2: this.state.human}, () => this.checkWinner('human'), console.log('human sq2'));}
+          else if (sqId == "sq3") {this.setState({sq3: this.state.human}, () => this.checkWinner('human'), console.log('human sq3'));}
+          else if (sqId == "sq4") {this.setState({sq4: this.state.human}, () => this.checkWinner('human'), console.log('human sq4'));}
+          else if (sqId == "sq5") {this.setState({sq5: this.state.human}, () => this.checkWinner('human'), console.log('human sq5'));}
+          else if (sqId == "sq6") {this.setState({sq6: this.state.human}, () => this.checkWinner('human'), console.log('human sq6'));}
+          else if (sqId == "sq7") {this.setState({sq7: this.state.human}, () => this.checkWinner('human'), console.log('human sq7'));}
+          else if (sqId == "sq8") {this.setState({sq8: this.state.human}, () => this.checkWinner('human'), console.log('human sq8'));}
+          else if (sqId == "sq9") {this.setState({sq9: this.state.human}, () => this.checkWinner('human'), console.log('human sq9'));}
         }
-      } else if ((this.state.sq4 == this.state.sq5 && this.state.sq4 === this.state.sq6) &&
-                 (this.state.sq4 != false)) {
-        if (this.state.sq4 == "x") {
-          if (confirm("Player X wins! 4,5,6 Play again?")) {
-            console.log("player X wins");
-            this.newGame();
-          } else {
-            [...document.getElementsByTagName('button')].forEach((el)=>el.disabled = true);
-          }
-        } else if (this.state.sq4 == "o") {
-          if (confirm("Player O win! Play again?")) {
-            console.log("player O wins");
-            this.newGame()
-          } else {
-            [...document.getElementsByTagName('button')].forEach((el)=>el.disabled = true);
-          }
-        }
-      } else if ((this.state.sq7 == this.state.sq8 && this.state.sq7 == this.state.sq9) &&
-                  this.state.sq7 != false) {
-        if (this.state.sq7 == "x") {
-          if (confirm("Player X wins! 7,8,9 Play again?")) {
-            console.log("player X wins");
-            this.newGame();
-          } else {
-            [...document.getElementsByTagName('button')].forEach((el)=>el.disabled = true);
-          }
-        } else if (this.state.sq7 == "o") {
-          if (confirm("Player O win! Play again?")) {
-            console.log("player O wins");
-            this.newGame()
-          } else {
-            [...document.getElementsByTagName('button')].forEach((el)=>el.disabled = true);
-          }
-        }
-      } else if (this.state.sq1 != false &&
-                 this.state.sq2 != false &&
-                 this.state.sq3 != false &&
-                 this.state.sq4 != false &&
-                 this.state.sq5 != false &&
-                 this.state.sq6 != false &&
-                 this.state.sq7 != false &&
-                 this.state.sq8 != false &&
-                 this.state.sq9 != false) {
-        if (confirm("No one wins. Play again?")) {
-            this.newGame()
-          }
-      } else {
-        console.log("no winner");
-        if (arguments[0] == 'human') {
-          console.log("human didn't win");
-          this.computerMove();
+        //player toggle:
+        if (this.state.player == 1) {
+          this.setState({player: 2}, () => {console.log('player state updated'), this.checkWinner()});
+        } else if (this.state.player == 2) {
+          this.setState({player: 1}, () => {console.log('player state updated'), this.checkWinner()});
         }
       }
-    }
-    //player makes a move:
-    makeMove = event => {
-      const sqId = event.target.getAttribute("data-id");
-      if (this.state.human != false ) {
-        if (sqId == "sq1") {this.setState({sq1: this.state.human}, () => this.checkWinner('human'), console.log('human sq1'));}
-        else if (sqId == "sq2") {this.setState({sq2: this.state.human}, () => this.checkWinner('human'), console.log('human sq2'));}
-        else if (sqId == "sq3") {this.setState({sq3: this.state.human}, () => this.checkWinner('human'), console.log('human sq3'));}
-        else if (sqId == "sq4") {this.setState({sq4: this.state.human}, () => this.checkWinner('human'), console.log('human sq4'));}
-        else if (sqId == "sq5") {this.setState({sq5: this.state.human}, () => this.checkWinner('human'), console.log('human sq5'));}
-        else if (sqId == "sq6") {this.setState({sq6: this.state.human}, () => this.checkWinner('human'), console.log('human sq6'));}
-        else if (sqId == "sq7") {this.setState({sq7: this.state.human}, () => this.checkWinner('human'), console.log('human sq7'));}
-        else if (sqId == "sq8") {this.setState({sq8: this.state.human}, () => this.checkWinner('human'), console.log('human sq8'));}
-        else if (sqId == "sq9") {this.setState({sq9: this.state.human}, () => this.checkWinner('human'), console.log('human sq9'));}
+      //player chose X:
+      chooseX = () => {
+        this.setState({human: 'x', computer: 'o'}, () => {
+          console.log('player chose X');
+          console.log(this.state);
+          this.computerFirstMove();
+        });
+        document.getElementById('game-text').style.display = 'grid';
+        document.getElementById('board').style.display = 'grid';
+        [...document.getElementsByClassName('choice-button')].forEach((el)=>el.disabled=false);
+        document.getElementById('reset-container').style.gridColumnStart = '3';
+        document.getElementById('reset-container').style.gridRowStart = '1';
+        document.getElementById('reset-container').style.textAlign = 'right';
+        document.getElementById('reset-button').style.display = 'inline-block';
+        document.getElementById('reset-button').style.gridColumnStart = '3';
+        document.getElementById('choice-text').style.display = 'none';
       }
-      //player toggle:
-      if (this.state.player == 1) {
-        this.setState({player: 2}, () => {console.log('player state updated'), this.checkWinner()});
-      } else if (this.state.player == 2) {
-        this.setState({player: 1}, () => {console.log('player state updated'), this.checkWinner()});
+      //player chose O:
+      chooseO = () => {
+        this.setState({human: 'o', computer: 'x'}, () => {
+          console.log('player chose O');
+          this.computerFirstMove();
+        });
+        document.getElementById('game-text').style.display = 'grid';
+        document.getElementById('board').style.display = 'grid';
+        [...document.getElementsByClassName('choice-button')].forEach((el)=>el.disabled=false);
+        document.getElementById('reset-container').style.gridColumnStart = '3';
+        document.getElementById('reset-container').style.gridRowStart = '1';
+        document.getElementById('reset-container').style.textAlign = 'right';
+        document.getElementById('reset-button').style.display = 'inline-block';
+        document.getElementById('reset-button').style.gridColumnStart = '3';
+        document.getElementById('choice-text').style.display = 'none';
       }
-    }
-    //player chose X:
-    chooseX = () => {
-      this.setState({human: 'x', computer: 'o'}, () => {
-        console.log('player chose X');
-        console.log(this.state);
-        this.computerFirstMove();
-      });
-      document.getElementById('game-text').style.display = 'grid';
-      document.getElementById('board').style.display = 'grid';
-      [...document.getElementsByClassName('choice-button')].forEach((el)=>el.disabled=false);
-      document.getElementById('reset-container').style.gridColumnStart = '3';
-      document.getElementById('reset-container').style.gridRowStart = '1';
-      document.getElementById('reset-container').style.textAlign = 'right';
-      document.getElementById('reset-button').style.display = 'inline-block';
-      document.getElementById('reset-button').style.gridColumnStart = '3';
-      document.getElementById('choice-text').style.display = 'none';
-    }
-    //player chose O:
-    chooseO = () => {
-      this.setState({human: 'o', computer: 'x'}, () => {
-        console.log('player chose O');
-        this.computerFirstMove();
-      });
-      document.getElementById('game-text').style.display = 'grid';
-      document.getElementById('board').style.display = 'grid';
-      [...document.getElementsByClassName('choice-button')].forEach((el)=>el.disabled=false);
-      document.getElementById('reset-container').style.gridColumnStart = '3';
-      document.getElementById('reset-container').style.gridRowStart = '1';
-      document.getElementById('reset-container').style.textAlign = 'right';
-      document.getElementById('reset-button').style.display = 'inline-block';
-      document.getElementById('reset-button').style.gridColumnStart = '3';
-      document.getElementById('choice-text').style.display = 'none';
-    }
-    render() {
-      return (
-        <div class="container" id="game">
-          <div class="choice container" id="choice-text">
-            <p class="choice player-choice" id="choice-indicator">Pick your player</p>
-            <button class="choice choice-button" id="player-x" onClick={this.chooseX}>X</button>
-            <button class="choice choice-button" id="player-o" onClick={this.chooseO}>O</button>
+      render() {
+        return (
+          <div class="container" id="game">
+            <div class="choice container" id="choice-text">
+              <p class="choice player-choice" id="choice-indicator">Pick your player</p>
+              <button class="choice choice-button" id="player-x" onClick={this.chooseX}>X</button>
+              <button class="choice choice-button" id="player-o" onClick={this.chooseO}>O</button>
+            </div>
+            <div class="indicator container" id="game-text">
+              <p class="title-text board-text" id="title">Tic Tac Toe</p>
+              <p class="board-text" id="level-indicator">Level: HARD</p>
+              <div class="container" id="reset-container">
+              <input type="button" class="reset button" id="reset-button" value="new game" onClick={this.newGame}/>
+            </div>
+            </div>
+            <div class="board container" id="board" >
+              <button class="button game-button" data-id="sq1" value="0" disabled={this.state.sq1} onClick={this.makeMove}>{this.state.sq1}</button>
+              <button class="button game-button" data-id="sq2" value="0" disabled={this.state.sq2} onClick={this.makeMove}>{this.state.sq2}</button>
+              <button class="button game-button" data-id="sq3" value="0" disabled={this.state.sq3} onClick={this.makeMove}>{this.state.sq3}</button>
+              <button class="button game-button" data-id="sq4" value="0" disabled={this.state.sq4} onClick={this.makeMove}>{this.state.sq4}</button>
+              <button class="button game-button" data-id="sq5" value="0" disabled={this.state.sq5} onClick={this.makeMove}>{this.state.sq5}</button>
+              <button class="button game-button" data-id="sq6" value="0" disabled={this.state.sq6} onClick={this.makeMove}>{this.state.sq6}</button>
+              <button class="button game-button" data-id="sq7" value="0" disabled={this.state.sq7} onClick={this.makeMove}>{this.state.sq7}</button>
+              <button class="button game-button" data-id="sq8" value="0" disabled={this.state.sq8} onClick={this.makeMove}>{this.state.sq8}</button>
+              <button class="button game-button" data-id="sq9" value="0" disabled={this.state.sq9} onClick={this.makeMove}>{this.state.sq9}</button>
+            </div>
           </div>
-          <div class="indicator container" id="game-text">
-            <p class="title-text board-text" id="title">Tic Tac Toe</p>
-            <p class="board-text" id="level-indicator">Level: HARD</p>
-            <div class="container" id="reset-container">
-            <input type="button" class="reset button" id="reset-button" value="new game" onClick={this.newGame}/>
-          </div>
-          </div>
-          <div class="board container" id="board" >
-            <button class="button game-button" data-id="sq1" value="0" disabled={this.state.sq1} onClick={this.makeMove}>{this.state.sq1}</button>
-            <button class="button game-button" data-id="sq2" value="0" disabled={this.state.sq2} onClick={this.makeMove}>{this.state.sq2}</button>
-            <button class="button game-button" data-id="sq3" value="0" disabled={this.state.sq3} onClick={this.makeMove}>{this.state.sq3}</button>
-            <button class="button game-button" data-id="sq4" value="0" disabled={this.state.sq4} onClick={this.makeMove}>{this.state.sq4}</button>
-            <button class="button game-button" data-id="sq5" value="0" disabled={this.state.sq5} onClick={this.makeMove}>{this.state.sq5}</button>
-            <button class="button game-button" data-id="sq6" value="0" disabled={this.state.sq6} onClick={this.makeMove}>{this.state.sq6}</button>
-            <button class="button game-button" data-id="sq7" value="0" disabled={this.state.sq7} onClick={this.makeMove}>{this.state.sq7}</button>
-            <button class="button game-button" data-id="sq8" value="0" disabled={this.state.sq8} onClick={this.makeMove}>{this.state.sq8}</button>
-            <button class="button game-button" data-id="sq9" value="0" disabled={this.state.sq9} onClick={this.makeMove}>{this.state.sq9}</button>
-          </div>
-        </div>
-      )
+        )
+      }
     }
-  }
-  ReactDOM.render(<Tictactoe />, document.getElementById('root'));
+    ReactDOM.render(<Tictactoe />, document.getElementById('root'));
   </script>
   <style>
-
-  body{
-    background-color: #9cfa4d;
-  }
-
-  #choice-text{
-    font-size:calc(20px + 5vw);
-    /* system fonts */
-    font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    text-align: center;
-  }
-  #choice-indicator{
-    color: #243555;
-  }
-  .choice-button{
-    padding: 25px;
-    margin: 15px;
-    color: #9cfa4d;
-    background-color: #243555;
-    font-weight: 900;
-    font-size: 35px;
-    border: none;
-  }
-  #title{
-    display: inline-block;
-    grid-column-start: 2;
-    grid-row-start: 1;
-    padding-bottom: 0;
-    margin-bottom: 0;
-    text-align: center;
-    color: #243555;
-    font-size:calc(16px + 1vw);
-    /* system fonts */
-    font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  }
-  #level-indicator{
-    display: inline-block;
-    grid-column-start: 2;
-    grid-row-start: 2;
-    padding-bottom: 0;
-    margin-bottom: 0;
-    text-align: center;
-    color: #243555;
-    font-size:calc(12px + 1vw);
-    /* system fonts */
-    font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  }
-  #board{
-    padding-top: 0;
-    margin: auto;
-    margin-top: 0;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, 1fr);
-    grid-gap: 1px;
-    min-width: 10vw;
-    max-width: 400px;
-    min-height: 10vh;
-    max-height: 75vh;
-    padding-left:10vw;
-    padding-right: 10vw;
-    /* system fonts */
-    font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";  
-  }
-  /*disable board during player choice */
-  #board{
-    display: none;
-  }
-  .button{
-    aspect-ratio: 1;
-    color: #9cfa4d;
-    background-color: #243555;
-    /* system fonts */
-    font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    font-size: 56px;
-    border: none;
-  }
-  #game-text{
-    grid-template-columns: repeat(3, 1fr);
-    /*disable board during player choice */
-    display: none;
-  }
-  .player-indicator{
-    color: blue;
-    /* system fonts */
-    font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    font-weight: 900;
-  }
-  #reset-container{
-    display: inline-block;
-    text-align: right;
-  }
-  /*individual buttons*/
-  #reset-button{
-    display: none;
-    color: #9cfa4d;
-    /* system fonts */
-    font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    font-size:12px;
-  }
-  /*smaller screens aka phones*/
-  @media only screen and (max-width: 450px) {
-    #board{
-      /*disable board during player choice */
-      display: none;
-      grid-gap: 2px;
+    body{
+      background-color: #9cfa4d;
     }
-    #game-text{
-      display: grid;
-      grid-template-columns: 1fr;
-      grid-template-rows: repeat(3, 1fr);
+
+    #choice-text{
+      font-size:calc(20px + 5vw);
+      /* system fonts */
+      font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+      text-align: center;
     }
-    #game-text{
-      /*disable board during player choice */
-      display: none;
+    #choice-indicator{
+      color: #243555;
+    }
+    .choice-button{
+      padding: 25px;
+      margin: 15px;
+      color: #9cfa4d;
+      background-color: #243555;
+      font-weight: 900;
+      font-size: 35px;
+      border: none;
     }
     #title{
       display: inline-block;
-      grid-column-start: 1;
-      grid-row-start: 2;
+      grid-column-start: 2;
+      grid-row-start: 1;
       padding-bottom: 0;
       margin-bottom: 0;
-      margin-left: 0;
       text-align: center;
       color: #243555;
       font-size:calc(16px + 1vw);
@@ -611,32 +516,126 @@
     }
     #level-indicator{
       display: inline-block;
-      grid-column-start: 1;
-      grid-row-start: 3;
+      grid-column-start: 2;
+      grid-row-start: 2;
       padding-bottom: 0;
       margin-bottom: 0;
-      margin-left: 0;
       text-align: center;
       color: #243555;
       font-size:calc(12px + 1vw);
       /* system fonts */
       font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     }
+    #board{
+      padding-top: 0;
+      margin: auto;
+      margin-top: 0;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      grid-gap: 1px;
+      min-width: 10vw;
+      max-width: 400px;
+      min-height: 10vh;
+      max-height: 75vh;
+      padding-left:10vw;
+      padding-right: 10vw;
+      /* system fonts */
+      font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";  
+    }
+    /*disable board during player choice */
+    #board{
+      display: none;
+    }
+    .button{
+      aspect-ratio: 1;
+      color: #9cfa4d;
+      background-color: #243555;
+      /* system fonts */
+      font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+      font-size: 56px;
+      border: none;
+    }
+    #game-text{
+      grid-template-columns: repeat(3, 1fr);
+      /*disable board during player choice */
+      display: none;
+    }
+    .player-indicator{
+      color: blue;
+      /* system fonts */
+      font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+      font-weight: 900;
+    }
+    #reset-container{
+      display: inline-block;
+      text-align: right;
+    }
+    /*individual buttons*/
     #reset-button{
       display: none;
       color: #9cfa4d;
-      font-size:calc(12px + 1vw);
-      aspect-ratio: 0;
+      /* system fonts */
+      font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+      font-size:12px;
     }
-  }
-  @media only screen and (max-width: 280px) {
-    #board{
-      grid-gap: 3px;
+    /*smaller screens aka phones*/
+    @media only screen and (max-width: 450px) {
+      #board{
+        /*disable board during player choice */
+        display: none;
+        grid-gap: 2px;
+      }
+      #game-text{
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(3, 1fr);
+      }
+      #game-text{
+        /*disable board during player choice */
+        display: none;
+      }
+      #title{
+        display: inline-block;
+        grid-column-start: 1;
+        grid-row-start: 2;
+        padding-bottom: 0;
+        margin-bottom: 0;
+        margin-left: 0;
+        text-align: center;
+        color: #243555;
+        font-size:calc(16px + 1vw);
+        /* system fonts */
+        font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+      }
+      #level-indicator{
+        display: inline-block;
+        grid-column-start: 1;
+        grid-row-start: 3;
+        padding-bottom: 0;
+        margin-bottom: 0;
+        margin-left: 0;
+        text-align: center;
+        color: #243555;
+        font-size:calc(12px + 1vw);
+        /* system fonts */
+        font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+      }
+      #reset-button{
+        display: none;
+        color: #9cfa4d;
+        font-size:calc(12px + 1vw);
+        aspect-ratio: 0;
+      }
     }
-    .button{
-      font-size: 35px;
+    @media only screen and (max-width: 280px) {
+      #board{
+        grid-gap: 3px;
+      }
+      .button{
+        font-size: 35px;
+      }
     }
-  }
   </style>
 </head>
 <body>
