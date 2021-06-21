@@ -1,6 +1,6 @@
 # Folder for extra JavaScript projects using React.
 <div>
-<p>The content and styling are very simple. The purpose of these projects is to utilize Javascript's functionality.</p>
+<p>The content and styling of these projects are very simple. The purpose of these projects is to utilize Javascript's functionality.</p>
 </div>
 
 
