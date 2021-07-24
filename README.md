@@ -9,7 +9,6 @@
 </ul>  
 <br/>
 
-
 #### &#9745; Javascript and React projects:
 <ul>
   <li>
