@@ -6,8 +6,7 @@
   <li>
     <a href="https://saltyhobo.github.io/freecodecamp/data-visualization/">Data Visualization Projects</a>
   </li>
-</ul>  
-<br/>
+</ul>
 
 #### &#9745; Javascript and React projects:
 <ul>
@@ -25,7 +24,6 @@
     <a href="https://SaltyHobo.github.io/freecodecamp/javascript-certification/">Javascript Certification Projects</a>
   </li>
 </ul>
-<br/>
 
 #### &#9745; My capstone project for Web Design for Everybody specialization can be found here:
 <ul>
