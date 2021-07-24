@@ -9,6 +9,14 @@
 </ul>  
 <br/>
 
+
+#### &#9745; Javascript and React projects:
+<ul>
+  <li>
+    <a href="https://saltyhobo.github.io/extra-js-react-projects/">Javascript+React Projects</a>
+  </li>
+</ul>
+
 #### &#9745; My attempts at using Javascript, React, and Redux:
 <ul>
   <li>
