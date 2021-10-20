@@ -3,6 +3,7 @@
 <p>The content and styling are very simple. The purpose of these projects is to utilize data visualization.</p>
 
 </div>
+<p>Please allow time for D3 visualizations to load, roughly 5-10 seconds.</p>
 
 
 
