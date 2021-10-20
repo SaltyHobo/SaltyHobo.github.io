@@ -9,8 +9,9 @@
 
   <style>
     .legend{
-      outline: solid 1px gray;
-      outline-offset: 3px;
+      outline: solid 2px gray;
+      outline-offset: 1px;
+      font-size: 20px;
     }
     #tooltip {
       position: absolute;
@@ -80,6 +81,12 @@
         svg
           .selectAll('rect').data(legendData).attr('y', (d)=>d+50)
           .attr('fill', (d)=>color(d));
+        //legend labels
+        svg
+          .selectAll('g:first-child').append('text').text('low %').attr('x', 1025).attr('y', 70).attr('id', 'legend-label-low');
+        svg
+          .selectAll('g:last-child').append('text').text('high %').attr('x', 1025).attr('y', 145).attr('id', 'legend-label-high');
+        //create map
         svg
           .append('g')
           .attr('class', 'counties')
