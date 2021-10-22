@@ -8,18 +8,29 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/6.2.0/d3.min.js"></script>
 
   <style>
+    body{
+      background-color: black;
+    }
     #title{
       font-size: 20px;
       font-weight: bold;
+      fill: #87bdd8;
     }
     #description{
       font-size: 20px;
       font-weight: bold;
+      fill: #87bdd8;
     }
     #legendContainer{
-      outline: solid 2px gray;
+      outline: solid 2px #87bdd8;
       outline-offset: 1px;
       font-size: 20px;
+    }
+    g:first-child{
+      fill: white;
+    }
+    svg>g>text{
+      fill: blue;
     }
     #tooltip {
       position: absolute;
