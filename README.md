@@ -1,7 +1,7 @@
 # SaltyHobo.github.io
 ### Test site for Web Design and Web Applications (Coursera, freeCodeCamp, Frontend Mentor).
 
-#### &#9745; Some D3 Data Visualization:
+#### &#9745; Some SVG D3 Data Visualization:
 <ul>
   <li>
     <a href="https://saltyhobo.github.io/freecodecamp/data-visualization/">Data Visualization Projects</a>
