@@ -1,5 +1,5 @@
 # SaltyHobo.github.io
-### Test site for Web Design and Web Applications (Coursera, freeCodeCamp).
+### Test site for Web Design and Web Applications (Coursera, freeCodeCamp, Frontend Mentor).
 
 #### &#9745; Some D3 Data Visualization:
 <ul>
