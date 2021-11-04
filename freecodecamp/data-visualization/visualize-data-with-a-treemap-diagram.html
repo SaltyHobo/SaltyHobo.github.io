@@ -1,0 +1,183 @@
+<!--This D3 project has only been tested in Google Chrome-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--load D3.js-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/6.2.0/d3.min.js"></script>
+<style>
+  body{
+    background-color: lightGray;
+  }
+  #tree-container{
+    transform: translate(50px, 150px);
+  }
+  .tree-label{
+    fill: red;
+    font-size: 0.5em;
+    font-weight: bold;
+    font-family: arial;
+  }
+  #tooltip {
+    position: absolute;
+    margin-left: 1px;
+    color: #801738;
+    background-color: lightGray;
+    padding: 3px 15px 3px 5px;
+    font: 15px arial;
+    font-weight: bold;
+    border: 0px;
+    border-radius: 5px 15px 15px 5px; 
+  }
+</style>
+</head>
+<body>
+<script src='https://d3js.org/d3.v4.min.js'></script>
+<script src='https://d3js.org/topojson.v2.min.js'></script>
+<script src='https://d3js.org/d3-scale-chromatic.v1.min.js'></script>
+<!--run D3-->
+<script type="text/javascript">
+  /* global d3 */
+
+  //Notes on d3 version migration:
+  //d3 v 5.7 works with d3.event.pageX: https://cdnjs.cloudflare.com/ajax/libs/d3/5.7.0/d3.min.js
+  //d3 v 6.2 causes error Cannot read property 'pageX' of undefined: https://cdnjs.cloudflare.com/ajax/libs/d3/6.2.0/d3.min.js
+  //d3 v 6.2 migration, use: ...  .on('mouseover', function(event, d) {... .style('left', d3.select(this).attr("x") + 'px') ...}
+
+  //FCC - Data Visualization Projects - Visualize Data with a Treemap Diagram
+
+  const projectName = 'Visualize Data with a Treemap Diagram';
+
+  //data URL
+  const dataVideoGameSales = 'https://cdn.freecodecamp.org/testable-projects-fcc/data/tree_map/video-game-sales-data.json';
+  //dimensions
+  const width = 1400;
+  const height = 1400;
+  //svg
+  const svg = d3.select('body').append('svg').attr('width', width).attr('height', height).attr('class', 'svg').attr('id', 'svg').attr('overflow', 'scroll');
+  //title
+  const title = svg.append('text').text('Treemap Diagram').attr('x', 250).attr('y', 15).attr('id', 'title').attr('class', 'heading');
+  //description
+  const description = svg.append('text').text('Video Game Sales'). attr('x', 450).attr('y', 15).attr('id', 'description').attr('class', 'heading');
+  //tooltip div
+  var tooltip = d3.select('body').append('tooltip').attr('class', 'tooltip').attr('id', 'tooltip').style('opacity', 0);
+
+  // Defining async function
+  async function getData(url) {
+    // Storing response
+    const response = await fetch(url);
+    // Storing data in form of JSON
+    var data = await response.json();
+    var gameConsoles = [];
+    function findConsole(obj) {
+      for (var key1 in obj) {
+        var value1 = obj[key1].name;
+        gameConsoles.push(value1);
+      }
+    }
+    findConsole(data.children);
+
+    //treemap color scale
+    const colorScale = {
+      '2600': 'brown',
+      'Wii': 'white',
+      'NES': 'gray',
+      'GB': 'darkgreen',
+      'DS': 'pink',
+      'X360': 'limegreen',
+      'PS3': 'black',
+      'PS2': 'blue',
+      'SNES': 'palevioletred',
+      'GBA': 'plum',
+      'PS4': '#171717',
+      '3DS': '#40E0D0',
+      "N64": 'yellow',
+      'PS': 'DarkGray',
+      'XB': 'lightgreen',
+      'PC': '#faf0e6',
+      'PSP': 'purple',
+      'XOne': '#32cd32'
+    };
+
+    //legend data
+    var legendData = gameConsoles;
+    console.log('legend data len: '+legendData.length);
+    //legend container
+    const legendContainer = svg.append('g').attr('class', 'legend').attr('id', 'legend');
+    //legend
+    const legendFilled = legendContainer
+      .selectAll('rectGroup').data(legendData)
+      .enter()
+      .append('g')
+      .selectAll('rect')
+      .data(function(d,i) {
+        for (i in legendData) {
+          return i;
+        };
+      })
+      .enter().append('rect').attr('width', '25px').attr('height', '20px').attr('y', 100).attr('class','legend-item');
+    svg
+      .selectAll('rect').data(legendData).attr('x', (d,i)=>50+i*50)
+      .attr('fill', (d,i)=>colorScale[d]);
+    //legend labels
+    svg
+      .selectAll('g').append('text').text((d)=>d).attr('x', (d,i)=>i*50).attr('y', 90).attr('class', 'legend-label');
+
+    //tree container
+    const treeContainer = svg.append('g').attr('class', 'tree').attr('id', 'tree-container');
+    //build treemap basics
+    const treeMap = d3.treemap().size([1000, 1000]).padding(1);
+    let hierachy = d3.hierarchy(data, d=>d.children)
+      .sum(d=>d.value)
+      .sort((d1, d2)=>d2.value - d1.value);
+    treeMap(hierachy);
+    //build tree inside container
+    const tree = treeContainer
+      .selectAll('rectGroup').data(hierachy.leaves()).enter().append('g');
+    //rect
+    tree.attr('transform', d=>'translate('+ d.x0 +','+ d.y0 +')')
+      .append('rect')
+      .attr('class','tile')
+      .attr('fill', d=>colorScale[d.data.category])
+      .attr('data-name', d => d.data.name)
+      .attr('data-category', d => d.data.category)
+      .attr('data-value', d=>d.data.value)
+      .attr('width', d=>d.x1 - d.x0)
+      .attr('height', d=>d.y1 - d.y0)
+      //tooltip using <title> works with Chrome, but does not pass FCC tests, use this instead for FCC: 
+      .on('mouseover', function(d){
+        var result = d.data;
+        tooltip
+          .transition()
+          .duration(200)
+          .style('opacity', 200);
+        tooltip
+          .html('Game: '+result.name+'<br/>'+'Score: '+result.value)
+          .style('left',(d3.event.pageX+5)+'px')
+          .style('top',(d3.event.pageY-5)+'px')
+        tooltip
+          .attr('game', result.name)
+          .attr('data-value', result.value)
+      })
+      .on('mouseout', function(d) {
+        tooltip
+          .transition()
+          .duration(400)
+          .style('opacity', 0);
+      }); 
+
+    //add text to tree
+    tree.append('text').selectAll('tspan').data(d=>d.data.name.split(/(?=[A-Z][^A-Z])/g)).enter().append('tspan').text(d=>d).attr('width', 10).attr('x', 1)
+         .attr('y', (d, i)=> 15 + i * 10).attr('class', 'tree-label');
+
+    if (response) {
+      hideloader();
+    }
+    //show(data);
+  }
+  // Calling that async function
+  getData(dataVideoGameSales);
+</script>
+</body>
+</html>
