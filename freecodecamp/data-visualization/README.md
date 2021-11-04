@@ -18,8 +18,8 @@
 
 
 
-<p>(note 1: While I normally prefer to maintain styling and scripts in separate files, for these projects I included everything in the HTML file for the sake of keeping everything in one place.)</p>
-<p>(note 2: On my machine (running Google Chrome) these files are working just fine, but you are having trouble loading the scripts, please try opening them on CodePen.)</p>
+<p>(note 1: While I normally prefer to maintain styling and scripts in separate files, for these projects I included everything in the HTML file for the sake of keeping everything in one place/file.)</p>
+<p>(note 2: On my machine (running Google Chrome) these files are working just fine, but if you are having trouble loading the scripts, please try opening them in CodePen.)</p>
 
 
 <p>
