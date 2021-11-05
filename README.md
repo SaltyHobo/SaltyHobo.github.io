@@ -43,7 +43,7 @@ The colors need to be changed since the current color setup is not appealing, bu
 #### &#9745; My Responsive Web Design projects can be found here:
 <ul>
   <li>
-    <a href="https://saltyhobo.github.io/frontendmentor/three-column-preview/index.html">A simple CSS/Flexbox design</a>
+    <a href="https://saltyhobo.github.io/frontendmentor/newbie/three-column-preview/index.html">A simple CSS/Flexbox design</a>
   </li>
   <li>
     <a href="https://saltyhobo.github.io/freecodecamp/portfolio/index.html">Responsive Web Design Project</a>
