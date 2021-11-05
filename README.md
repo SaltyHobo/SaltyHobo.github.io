@@ -40,8 +40,12 @@ The colors need to be changed since the current color setup is not appealing, bu
   <li> - [x] [Web accessible](http://wave.webaim.org/). </li>
 </ul>
 <br/>
-#### &#9745; My Responsive Web Design project for freeCodeCamp certification can be found here:
+SaltyHobo.github.io/frontendmentor/newbie/three-column-preview/index.html
+#### &#9745; My Responsive Web Design projects can be found here:
 <ul>
+  <li>
+    <a href="https://saltyhobo.github.io/frontendmentor/three-column-preview/index.html">A simple CSS/Flexbox design</a>
+  </li>
   <li>
     <a href="https://saltyhobo.github.io/freecodecamp/portfolio/index.html">Responsive Web Design Project</a>
   </li>
