@@ -40,7 +40,6 @@ The colors need to be changed since the current color setup is not appealing, bu
   <li> - [x] [Web accessible](http://wave.webaim.org/). </li>
 </ul>
 <br/>
-
 #### &#9745; My Responsive Web Design projects can be found here:
 <ul>
   <li>
